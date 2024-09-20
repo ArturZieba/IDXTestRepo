@@ -5,8 +5,11 @@
   channel = "stable-23.11"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [
+    pkgs.apt
     pkgs.docker
     pkgs.docker-compose
+    pkgs.gcc
+    pkgs.swiftPackages.swift-unwrapped
   ];
   # Enable Docker
   services.docker = {
