@@ -12,7 +12,7 @@ void randomIntegerInRange(int rangeMin, int rangeMax, int integersToGenerate)
 
     for (int i; i < integersToGenerate; i++)
     {
-        std::cout << round(distribution(randomNumberGenerator)) << '\n';
+        std::cout << round(distribution(randomNumberGenerator)) << ' ';
     }
 
     std::cout << '\n';
@@ -21,7 +21,20 @@ void randomIntegerInRange(int rangeMin, int rangeMax, int integersToGenerate)
 // TODO: Generate and print a specified number of random integers without repeating them
 void randomUniqueIntegerInRange(int rangeMin, int rangeMax, int integersToGenerate)
 {
-    std::cout << "Test: " << rangeMin << " " << rangeMax << " " << integersToGenerate << '\n';
+    std::mt19937_64 randomNumberGenerator(std::time(nullptr)); // Seed at runtime the same as the previous function, change seeding method - maybe multiply/add/do some incremental operation on the value?
+    std::uniform_real_distribution<> distribution(rangeMin, rangeMax);
+
+    std::cout << integersToGenerate << " random unique integers in range " << rangeMin << " to " << rangeMax << ": \n\n";
+
+    // For loop does not execute code in it, but while loop does - investigate later
+    int i = 0;
+    while (i < 5)
+    {
+        std::cout << round(distribution(randomNumberGenerator)) << ' ';
+        i++;
+    }
+
+    std::cout << '\n';
 }
 
 int main()
@@ -43,5 +56,8 @@ int main()
 
     // TODO: Add accepting input from the Terminal
     randomIntegerInRange(rangeMin, rangeMax, integersToGenerate);
+    std::cout << '\n';
+
     randomUniqueIntegerInRange(rangeMin, rangeMax, integersToGenerate);
+    std::cout << '\n';
 }
