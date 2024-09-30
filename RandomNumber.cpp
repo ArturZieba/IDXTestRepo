@@ -1,5 +1,3 @@
-// TEST COMMENT FROM DIFFERENT MACHINE
-
 #include <ctime> //For std::time for use as a seed
 #include <iostream>
 #include <random> //For Mersenne Twister Engine
