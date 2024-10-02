@@ -26,7 +26,7 @@ void randomUniqueIntegerInRange(int rangeMin, int rangeMax, int integersToGenera
 
     std::cout << integersToGenerate << " random unique integers in range " << rangeMin << " to " << rangeMax << ": \n\n";
 
-    // For loop does not execute code in it, but while loop does - investigate later
+    // For loop does not execute code in it, but while loop does - investigate later -> Try break; ?
     int i = 0;
     while (i < 5)
     {
