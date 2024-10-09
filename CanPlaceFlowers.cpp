@@ -1,4 +1,4 @@
-//Soruce: https://leetcode.com/problems/can-place-flowers/description/?envType=study-plan-v2&envId=leetcode-75
+// Source: https://leetcode.com/problems/can-place-flowers/description/?envType=study-plan-v2&envId=leetcode-75
 
 #include <iostream>
 #include <vector>
