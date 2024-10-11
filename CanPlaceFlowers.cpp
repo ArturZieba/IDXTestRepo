@@ -6,52 +6,52 @@
 bool canPlaceFlowers(std::vector<int>& flowerbed, int n)
 {
     int iterator = 0;
+    int validPlacementPlots = 0;
 
-    for(int flower : flowerbed)
+    for(int plot : flowerbed)
     {
-        if(flower == 0)
+        if(plot == 0)
         {
-            if (iterator == 0)
+            if (iterator == 0) // First element of the vector
             {
                 if (flowerbed[iterator + 1] == 0)
                 {
-                    n -= 1;
-                    std::cout << "Ping element: " << iterator << '\n';
+                    validPlacementPlots++;
                 }
             }
-            else if (iterator == flowerbed.size())
+            else if (iterator == flowerbed.size()) // Last element of the vector
             {
                 if (flowerbed[iterator - 1] == 0)
                 {
-                    n -= 1;
-                    std::cout << "Ping element: " << iterator << '\n';
+                    validPlacementPlots++;
                 }
             }
-            else 
+            else // Any other element of the vector
             {
                 if (flowerbed[iterator - 1] == 0 && flowerbed[iterator + 1] == 0)
                 {
-                    n -= 1;
-                    std::cout << "Ping element: " << iterator << '\n';
+                    validPlacementPlots++;
                 }
             }
 
-            iterator += 1;
+            iterator++;
         }
-        else if (flower == 1)
+        else if (plot == 1)
         {
-            iterator += 1;
+            iterator++;
+        }
+        else
+        {
+            std::cout << "Vector should only contain 0 and 1 values";
         }
     }
 
-     if (n > 0)
+     if (validPlacementPlots >= n)
     {
-        std::cout << "n: " << n << '\n';
         return true;
     }
     else
     {
-        std::cout << "n: " << n << '\n';
         return false;
     }
 }
@@ -74,6 +74,6 @@ int main()
     std::vector<int> flowerbed1 = { 1, 0, 0, 0, 1 };
     int n1 = 2;
 
-    printBool(canPlaceFlowers(flowerbed0, n0)); //Expected output: true
-    printBool(canPlaceFlowers(flowerbed1, n1)); //Expected output: false
+    printBool(canPlaceFlowers(flowerbed0, n0)); // Expected output: true
+    printBool(canPlaceFlowers(flowerbed1, n1)); // Expected output: false
 }
