@@ -8,16 +8,42 @@
 
 std::string reverseVowels (std::string s)
 {
-    // Vowels: 'a', 'e', 'i', 'o', 'u'
+    int i = 0;
+
     std::vector<char> vowels = { 'a', 'e', 'i', 'o', 'u' };
+    std::string toReverse;
 
     for(char& character : s)
     {
-        if(std::find(vowels.begin(), vowels.end(), std::tolower(character)) != vowels.end()) // TODO: Check std::search
+        if(std::find(vowels.begin(), vowels.end(), std::tolower(character)) != vowels.end()) 
         {
             std::cout << character;
+            toReverse[i] = character;
+            i++;
+        }
+        else
+        {
+            i++;
         }
     }
+
+    std::cout << toReverse << '\n';
+
+    for(char& character : s)
+    {
+        if(std::find(vowels.begin(), vowels.end(), std::tolower(character)) != vowels.end()) 
+        {
+            std::cout << character;
+            character = toReverse[i];
+            i--;
+        }
+        else
+        {
+            i--;
+        }
+    }
+    
+    std::cout << toReverse << '\n';
 
     return s;
 }
