@@ -1,13 +1,42 @@
 // Source: https://leetcode.com/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=leetcode-75
 
-// TEST REMOVE
-
 #include <iostream>
 #include <string>
 
 std::string reverseWords(std::string s)
 {
-    return s;
+    /*
+    for(char& character : s)
+    {
+        if(character != ' ')
+        {
+            std::cout << character;
+
+            
+        }
+
+        if(character == ' ' && s[i-1])
+        {
+            std::cout << character;
+        }
+     }
+    */
+
+    std::string modString;
+
+    for(int i = 0; i < s.size(); i++)
+    {
+        if(s[i] != ' ')
+        {
+            modString += s[i];
+        }
+        else if(s[i] == ' ' && s[i - 1] != ' ')
+        {
+            modString += s[i];
+        }
+    }
+
+     return modString;
 }
 
 int main()
