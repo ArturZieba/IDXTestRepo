@@ -6,30 +6,49 @@
 std::string reverseWords(std::string s)
 {
     std::string modString;
-    std::string reverseString;
+    std::string toReverse;
+    
+    int i = 0; // Iterator for std::string toReverse
 
-    modString += "\"";
+    toReverse += "\""; // Add " at the end of the string
 
     for(int i = s.find_first_not_of(" "); i < s.size(); i++)
     {
         if(s[i] != ' ')
         {
-            modString += s[i];
+            toReverse += s[i];
         }
         else if(s[i] == ' ' && s[i - 1] != ' ')
         {
-            modString += s[i];
+            toReverse += s[i];
         }
     }
 
-    if(modString.substr(modString.size() - 1) == " ")
+    if(toReverse.substr(toReverse.size() - 1) == " ")
     {
-        modString.pop_back();
+        toReverse.pop_back();
     }
 
-    modString += "\"";
+    toReverse += "\""; // Add " at the end of the string
 
-     return modString;
+    for(char& character : toReverse)
+    {
+        if(character != ' ') 
+        {
+            toReverse[i] = character;
+            i++;
+        }
+    }
+    for(char& character : toReverse)
+    {
+        if(character != ' ') 
+        {
+            character = toReverse[i - 1];
+            i--;
+        }
+    }
+
+    return toReverse;
 }
 
 int main()
