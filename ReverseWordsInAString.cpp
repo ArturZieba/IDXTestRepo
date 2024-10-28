@@ -1,5 +1,6 @@
 // Source: https://leetcode.com/problems/reverse-words-in-a-string/description/?envType=study-plan-v2&envId=leetcode-75
 
+#include <algorithm> // For reverse()
 #include <iostream>
 #include <string>
 
@@ -7,10 +8,6 @@ std::string reverseWords(std::string s)
 {
     std::string modString;
     std::string toReverse;
-    
-    int i = 0; // Iterator for std::string toReverse
-
-    toReverse += "\""; // Add " at the end of the string
 
     for(int i = s.find_first_not_of(" "); i < s.size(); i++)
     {
@@ -29,24 +26,25 @@ std::string reverseWords(std::string s)
         toReverse.pop_back();
     }
 
-    toReverse += "\""; // Add " at the end of the string
+    reverse(toReverse.begin(), toReverse.end());
+    toReverse.insert(toReverse.end(), ' ');
 
-    for(char& character : toReverse)
+    int j = 0; // Iterator for word count in the string
+
+    for(int i = 0; i < toReverse.size(); i++)
     {
-        if(character != ' ') 
+        if(toReverse[i] == ' ')
         {
-            toReverse[i] = character;
-            i++;
+            reverse(toReverse.begin() + j, toReverse.begin() + i);
+
+            j = i + 1;
         }
     }
-    for(char& character : toReverse)
-    {
-        if(character != ' ') 
-        {
-            character = toReverse[i - 1];
-            i--;
-        }
-    }
+
+    toReverse.pop_back();
+
+    toReverse.insert(toReverse.begin(), '\"');
+    toReverse.insert(toReverse.end(), '\"');
 
     return toReverse;
 }
