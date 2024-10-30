@@ -1,9 +1,29 @@
+// Source: https://leetcode.com/problems/product-of-array-except-self/?envType=study-plan-v2&envId=leetcode-75
+
 #include <iostream>
 #include <vector>
 
 std::vector<int> productExceptSelf(std::vector<int>& nums)
 {
-    return nums;
+    
+    std::vector<int> sums;
+
+    for(int i = 0; i < nums.size(); i++)
+    {
+        int sum = 0;
+
+        for(int j = 0; i < nums.size(); j++)
+        {
+            if(j != i)
+            {
+                sum += nums[i];
+            }
+        }
+        
+        sums.push_back(sum);
+    }
+
+    return sums;
 }
 
 int main()
