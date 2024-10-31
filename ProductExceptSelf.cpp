@@ -5,23 +5,15 @@
 
 std::vector<int> productExceptSelf(std::vector<int>& nums)
 {
-    
+    int sum = 0;
     std::vector<int> sums;
 
     for(int i = 0; i < nums.size(); i++)
     {
-        int sum = 0;
-
-        for(int j = 0; i < nums.size(); j++)
-        {
-            if(j != i)
-            {
-                sum += nums[i];
-            }
-        }
-        
-        sums.push_back(sum);
+        sum += nums[i];
     }
+
+    sums.push_back(sum);
 
     return sums;
 }
