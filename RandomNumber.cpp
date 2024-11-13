@@ -39,11 +39,11 @@ void randomUniqueIntegerInRange(int rangeMin, int rangeMax, int integersToGenera
 
 int main()
 {
-    int rangeMin = 5; //REMOVE INITIALIZATION AFTER FINISHING FUNCTIONS
-    int rangeMax = 10; //REMOVE INITIALIZATION AFTER FINISHING FUNCTIONS
-    int integersToGenerate = 5; //REMOVE INITIALIZATION AFTER FINISHING FUNCTIONS
+    int rangeMin = 58; // REMOVE INITIALIZATION AFTER FINISHING FUNCTIONS
+    int rangeMax = 247; // REMOVE INITIALIZATION AFTER FINISHING FUNCTIONS
+    int integersToGenerate = 1; // REMOVE INITIALIZATION AFTER FINISHING FUNCTIONS
 
-    //REMOVE COMMENT AFTER FINISHING FUNCTIONS
+    // REMOVE COMMENT AFTER FINISHING FUNCTIONS
     /*
     std::cout << "Choose values for the random integer generation functions (please type in only integer values, max value higher than min, and non-negative number of numbers to generate)\n"; //TODO: Potentially add safeguards against unacceptable inputs?
     std::cout << "Type in lower range: ";
