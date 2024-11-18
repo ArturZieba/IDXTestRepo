@@ -41,8 +41,8 @@ std::string mergeAlternately(std::string word1, std::string word2)
 
 int main()
 {
-    std::cout << mergeAlternately("abc", "pqr"); //Expected output: apbqcr
-    std::cout << mergeAlternately("ab", "pqrs"); //Expected output: apbqrs
-    std::cout << mergeAlternately("abcd", "pq"); //Expected output: apbqcd
-    std::cout << mergeAlternately("test","TTEESSTT"); //Expected output: tTeTsEtESSTT
+    std::cout << mergeAlternately("abc", "pqr"); // Expected output: apbqcr
+    std::cout << mergeAlternately("ab", "pqrs"); // Expected output: apbqrs
+    std::cout << mergeAlternately("abcd", "pq"); // Expected output: apbqcd
+    std::cout << mergeAlternately("test","TTEESSTT"); // Expected output: tTeTsEtESSTT
 }

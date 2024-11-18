@@ -27,9 +27,9 @@ std::string reverseWords(std::string s)
     }
 
     reverse(toReverse.begin(), toReverse.end());
-    toReverse.insert(toReverse.end(), ' ');
+    toReverse.insert(toReverse.end(), ' '); // Add a space temporarily so that the last word in a string is recognized later as a separate word
 
-    int j = 0; // Iterator for word count in the string
+    int j = 0; // Element marking the end of the word in the string
 
     for(int i = 0; i < toReverse.size(); i++)
     {
@@ -51,8 +51,8 @@ std::string reverseWords(std::string s)
 
 int main()
 {
-    std::string s0 = "the sky is blue"; // Expected output: "blue is sky the"
-    std::string s1 = "  hello world  "; // Expected output: "world hello"
+    std::string s0 = "the sky is blue";  // Expected output: "blue is sky the"
+    std::string s1 = "  hello world  ";  // Expected output: "world hello"
     std::string s2 = "a good   example"; // Expected output: "example good a"
 
     std::cout << reverseWords(s0) << '\n';

@@ -20,8 +20,8 @@ std::string gcdOfStrings(std::string str1, std::string str2)
 
 int main()
 {
-    std::cout << gcdOfStrings("ABCABC", "ABC") << '\n';  //Expected output: "ABC"
-    std::cout << gcdOfStrings("ABABAB", "AB") << '\n';   //Expected output: "AB"
-    std::cout << gcdOfStrings("LEET", "CODE") << '\n';   //Expected output: ""
-    std::cout << gcdOfStrings("TEST","TESTTES") << '\n'; //Expected output: "TEST"
+    std::cout << gcdOfStrings("ABCABC", "ABC") << '\n';  // Expected output: "ABC"
+    std::cout << gcdOfStrings("ABABAB", "AB") << '\n';   // Expected output: "AB"
+    std::cout << gcdOfStrings("LEET", "CODE") << '\n';   // Expected output: ""
+    std::cout << gcdOfStrings("TEST","TESTTES") << '\n'; // Expected output: "TEST"
 }

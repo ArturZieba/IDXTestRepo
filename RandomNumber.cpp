@@ -1,6 +1,6 @@
-#include <ctime> //For std::time for use as a seed
+#include <ctime> // For std::time for use as a seed
 #include <iostream>
-#include <random> //For Mersenne Twister Engine
+#include <random> // For Mersenne Twister Engine
 
 // Generate and print a specified number of random integers
 void randomIntegerInRange(int rangeMin, int rangeMax, int integersToGenerate)

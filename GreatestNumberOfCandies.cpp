@@ -1,6 +1,6 @@
 // Source: https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description/?envType=study-plan-v2&envId=leetcode-75
 
-#include <algorithm> //For *std::max_element
+#include <algorithm> // For *std::max_element
 #include <iostream>
 #include <vector>
 
@@ -17,18 +17,14 @@ std::vector<bool> kidsWithCandies(std::vector<int>& candies, int extraCandies)
         if (kid >= *std::max_element(candies.begin(), candies.end())) 
         {
             hasGreatestNumberOfCandies[iterator] = true;
-            //std::cout << "Iterator: " << iterator << " Value: " << kid << '\n';
         }
         else
         {
             hasGreatestNumberOfCandies[iterator] = false;
-            //std::cout << "Iterator: " << iterator << " Value: " << kid << '\n';
         }
 
         iterator++;
     }
-
-    //std::cout << '\n';
 
     return hasGreatestNumberOfCandies;
 }
