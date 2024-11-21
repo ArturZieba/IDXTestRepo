@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 void printBool (bool bInput)
 {
@@ -14,33 +15,30 @@ void printBool (bool bInput)
 
 bool isSubsequence(std::string s, std::string t)
 {
-    int subsequenceChars = 0;
+    int subsequenceCount = 0;
 
-    for (int i = 0; i < s.size(); i++)
+    if(t.size() >= s.size()) // Confirm that the t string can even contain s string
     {
-        for (int j = 0; j < t.size(); j++)
+        for(int i = 0; i < t.size(); i++)
         {
-            if (s[i] == t[j])
+            for(int j = 0; j < s.size(); j++)
             {
-                subsequenceChars++;
+                if (t[i] == s[j])
+                {
+                    subsequenceCount++;
+                    std::cout << subsequenceCount;
+                }
             }
         }
     }
 
-    if(subsequenceChars == s.size())
-    {
-        return true;
-    }
-    else 
-    {
-        return false;
-    }
+    return subsequenceCount == s.size();
 }
 
 int main()
 {
     std::string s0 = "abc";
-    std::string t0 = "ahbgdc";
+    std::string t0 = "aahbgdc";
 
     std::string s1 = "axc";
     std::string t1 = "ahbgdc";
