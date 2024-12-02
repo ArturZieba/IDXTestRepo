@@ -1,3 +1,5 @@
+// Source: https://leetcode.com/problems/is-subsequence/description/?envType=study-plan-v2&envId=leetcode-75
+
 #include <iostream>
 #include <string>
 
