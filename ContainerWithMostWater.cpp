@@ -1,10 +1,13 @@
 // Source: https://leetcode.com/problems/container-with-most-water/description/?envType=study-plan-v2&envId=leetcode-75
+#include <algorithm> // For max_element
 #include <iostream>
 #include <vector>
 
 int maxArea(std::vector<int>& height)
 {
-    return 1;
+    int highestHeight = *max_element(height.begin(), height.end());
+
+    return highestHeight;
 }
 
 int main()
