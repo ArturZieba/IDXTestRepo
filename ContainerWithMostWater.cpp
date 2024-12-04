@@ -1,11 +1,19 @@
 // Source: https://leetcode.com/problems/container-with-most-water/description/?envType=study-plan-v2&envId=leetcode-75
-#include <algorithm> // For max_element
+#include <algorithm> // For max_element()
 #include <iostream>
 #include <vector>
 
 int maxArea(std::vector<int>& height)
 {
+    if (height.size() <= 1) // Container cannot be made with a zero or one element vector
+    {
+        return 0;
+    }
+
     int highestHeight = *max_element(height.begin(), height.end());
+
+    // Water area = value of the lowest element * (index of the element closest to vector.end() - index of the element closest to vector.begin())
+    // Determine these "walls"
 
     return highestHeight;
 }
