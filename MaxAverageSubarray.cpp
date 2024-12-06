@@ -5,7 +5,15 @@
 
 double findMaxAverage(std::vector<int>& nums, int k)
 {
-    return 1.2;
+    int sum = 0;
+
+    for (int i = 0; i + k <= nums.size(); i++)
+    {
+        sum += nums[i];
+        // Get sums and compare them
+    }
+
+    return sum / k; // Average
 }
 
 int main()
