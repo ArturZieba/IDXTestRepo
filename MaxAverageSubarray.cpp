@@ -6,16 +6,27 @@
 
 double findMaxAverage(std::vector<int>& nums, int k)
 {
+    int iStart = 0; // Iterator for separate sums
+    int jStart = 0; // Iterator for elements inside individual sums
     int sum = 0;
     std::vector<int> sumVector;
 
-    for (int i = 0; i + k <= nums.size(); i++)
+    for (int i = iStart; i + k <= nums.size(); i++) // Make sure that element sum does not go outside of the vector
     {
-        sum += nums[i];
-        sumVector.push_back(sum);
+        for (int j = jStart; j < i + k; j++)
+        {
+            sum += nums[j]; // Add to a total sum
+            std::cout << sum << " element: " << j << ' ';
+            sumVector.push_back(sum); // Add the sum to a vector
+            jStart++;
+        }
+
+        sum = 0; // Reset sum before next adding up
+
+        iStart++;
     }
 
-    int highestSum = *std::max_element(sumVector.begin(), sumVector.end());
+    int highestSum = *std::max_element(sumVector.begin(), sumVector.end()); // Check vector for the highest element
 
     return highestSum / k; // Average
 }
