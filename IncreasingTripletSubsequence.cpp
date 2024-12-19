@@ -14,7 +14,7 @@ int main()
     std::vector<int> nums1 = { 5, 4, 3, 2, 1 };
     std::vector<int> nums2 = { 2, 1, 5, 0, 4, 6 };
 
-    std::cout << increasingTriplet(nums0);
-    std::cout << increasingTriplet(nums1);
-    std::cout << increasingTriplet(nums2);
+    std::cout << increasingTriplet(nums0); // Expected output: true
+    std::cout << increasingTriplet(nums1); // Expected output: false
+    std::cout << increasingTriplet(nums2); // Expected output: true
 }
