@@ -1,4 +1,5 @@
 // Source: https://leetcode.com/problems/container-with-most-water/description/?envType=study-plan-v2&envId=leetcode-75
+
 #include <algorithm> // For max_element()
 #include <iostream>
 #include <vector>
