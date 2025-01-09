@@ -8,7 +8,6 @@ std::vector<std::vector<int>> findDifference(std::vector<int>& nums1, std::vecto
     return { nums1, nums2 };
 }
 
-
 int main()
 {
     std::vector<int> nums01 = { 1, 2, 3 };
