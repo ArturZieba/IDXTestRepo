@@ -8,7 +8,6 @@ std::string decodeString (std::string s)
     return s;
 }
 
-
 int main()
 {
     std::string s0 = "3[a]2[bc]";
