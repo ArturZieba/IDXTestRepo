@@ -9,7 +9,10 @@
     pkgs.docker
     pkgs.docker-compose
     pkgs.gcc
-    pkgs.swiftPackages.swift-unwrapped
+    pkgs.swiftPackages.swift-unwrapped 
+    pkgs.python3
+    pkgs.python311
+    pkgs.python311Packages.pip
   ];
   # Enable Docker
   services.docker = {
