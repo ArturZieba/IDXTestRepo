@@ -52,6 +52,8 @@ print(carriage_string)
 tab_string = 'tab\tstring\\'
 print(tab_string)
 
+print('========\n')
+
 modified_string = 'Hello World\t 123'
 print(modified_string.lower())
 print(modified_string.upper())
@@ -63,5 +65,41 @@ print(modified_string.replace('Hello', 'Bye'))
 print(modified_string[4] + modified_string[10])
 print(modified_string[::-1].upper())
 
+print('========\n')
+
 my_money = 20
 print(f'I have {my_money} money')
+
+print('========\n')
+
+boolean_test = True
+if boolean_test:
+    print('true')
+else:
+    print('false')
+
+print('========\n')
+
+print(2 > 1)
+print(3 < 2)
+print(4 <= 5)
+print(6 == 6)
+print(7 != 7)
+print('h' == "i")
+print("j" > 'k')
+
+print('========\n')
+
+print(True)
+print(False)
+print(not True)
+print(not False)
+print(True and True)
+print(True and False)
+print(False and False)
+print(True or True)
+print(True or False)
+print(False or False)
+
+print('========')
+
