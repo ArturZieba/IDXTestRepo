@@ -101,5 +101,60 @@ print(True or True)
 print(True or False)
 print(False or False)
 
-print('========')
+print('========\n')
 
+for letter in 'Hello World':
+    print(letter)
+
+my_list = [1, 'a', 'Hello 123']
+print(my_list[2])
+for item in my_list:
+    print(item)
+
+list_of_lists = [[2, 'c'], [3, 'd'], [4, 'e']]
+print(list_of_lists[0][1])
+print(list_of_lists[2][0])
+
+i = 1
+while i <= 4:
+    print(i)
+    i = i + 1
+
+print('========\n')
+
+def hi(name):
+    print('hi', name)
+
+hi('Bob')
+
+def hi_two_arguments(name0, name1):
+    print('hi', name0, 'and', name1)
+
+hi_two_arguments('Wilhelm', 'Gilbert')
+
+def add(a, b):
+    return a + b
+
+result = add(4, 8)
+print(result)
+
+def omit_number(number):
+    if number == 3:
+        return
+    
+    print(number)
+
+omit_number(1)
+omit_number(2)
+omit_number(3)
+omit_number(4)
+
+def default_arguments(value0 = 1, value1 = 3):
+    print('Values are', value0, 'and', value1)
+
+default_arguments()
+default_arguments(5)
+default_arguments(value1 = 7)
+default_arguments(8,9)
+
+print('========\n')
