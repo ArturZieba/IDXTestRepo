@@ -123,7 +123,10 @@ while i <= 4:
 print('========\n')
 
 def hi(name):
-    print('hi', name)
+    if(name == ''):
+        print('No name given')
+    else:
+        print('hi', name)
 
 hi('Bob')
 
@@ -156,5 +159,11 @@ default_arguments()
 default_arguments(5)
 default_arguments(value1 = 7)
 default_arguments(8,9)
+
+print('========\n')
+
+# while True:
+#     input_name = input("Type in a name: ")
+#     hi(input_name)
 
 print('========\n')
