@@ -167,3 +167,48 @@ print('========\n')
 #     hi(input_name)
 
 print('========\n')
+
+print(dir(5))
+
+print(type('a'))
+print(type(1))
+print(type(True))
+
+class Car:
+    speed = 0
+    started = False
+
+    def start(self):
+        self.started = True
+        print("Is car started?", self.started)
+    
+    def stop(self):
+        self.started = False
+        print("Is car started?", self.started)
+
+    def speed(self):
+        self.speed = 0
+        print("Speed:", self.speed)
+
+    def speed_up(self, delta):
+        self.speed += delta
+        print("Speed:", self.speed)
+
+    def slow_down(self, delta):
+        self.speed -= delta
+        print("Speed:", self.speed)
+
+
+car0 = Car()
+car1 = Car()
+
+car0.start()
+car0.stop()
+car0.speed()
+car0.speed_up(delta = 20)
+car0.slow_down(delta = 30)
+
+print(id(car0))
+print(id(car1))
+
+print('========\n')
