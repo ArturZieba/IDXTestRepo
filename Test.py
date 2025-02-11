@@ -178,6 +178,7 @@ class Vehicle:
     def __init__(self, speed = 0, started = False):
         self.speed = speed
         self.started = started
+        print("Vehicle class init'ed")
 
     def start(self):
         self.started = True
@@ -215,7 +216,43 @@ print(id(vehicle1))
 print('========\n')
 
 class Car(Vehicle):
-    trunk_open = False
+    def __init__(self, trunk_open = False):
+        self.trunk_open = trunk_open
+        print("Car class init'ed")
+
+    def open_trunk(self):
+        self.trunk_open = True
+        print('Opening trunk, is it open?', self.trunk_open)
+
+    def close_trunk(self):
+        self.trunk_open = False
+        print('Closing trunk, is it open?', self.trunk_open)
+
+car = Car()
+
+car.start()
+car.current_speed()
+car.open_trunk()
+car.close_trunk()
+
+print('========\n')
+
+class Motorcycle(Vehicle):
+    def __init__(self, center_stand_out = False):
+        self.center_stand_out = center_stand_out
+        super().__init__()
+        print("Motorcycle class init'ed")
+    
+    def start(self):
+        print('Starting the motorcycle')
+
+motorcycle = Motorcycle()
+
+motorcycle.start()
+motorcycle.current_speed()
+
+print('========\n')
+
 
 
 print('========\n')
