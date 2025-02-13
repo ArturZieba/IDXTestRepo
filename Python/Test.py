@@ -1,6 +1,7 @@
 # import selenium
-import mymodule
-from mymodule import my_variable_0, my_variable_1
+import package_test.mymodule
+from package_test.mymodule import my_variable_0, my_variable_1
+import package_test.package_subdirectory_0
 
 print('Hello World 123')
 
@@ -255,7 +256,7 @@ motorcycle.current_speed()
 
 print('========\n')
 
-mymodule.my_function()
+package_test.mymodule.my_function()
 print(my_variable_0, my_variable_1) # my_variable is imported via "from mymodule import my_variable_0, my_variable_1"
 
 print('========\n')
