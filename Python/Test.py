@@ -2,6 +2,8 @@
 import package_test.mymodule
 from package_test.mymodule import my_variable_0, my_variable_1
 import package_test.package_subdirectory_0
+import random
+from math import floor, ceil
 
 print('Hello World 123')
 
@@ -258,5 +260,31 @@ print('========\n')
 
 package_test.mymodule.my_function()
 print(my_variable_0, my_variable_1) # my_variable is imported via "from mymodule import my_variable_0, my_variable_1"
+
+print('========\n')
+
+print(int('123'))
+print(int(1.23))
+print(str(321))
+
+print(random.randint(1, 10))
+
+if isinstance(int('4'), int):
+    print("Integer")
+
+print(float(2.0))
+print(float(2))
+print(float('2'))
+
+print(1.25e3)
+
+print(round(1.5345))
+print(round(1.5345, 2))
+print(round(1.5345, 1))
+
+print(floor(1.23))
+print(ceil(1.23))
+
+print(0.1 + 0.2)
 
 print('========\n')
