@@ -288,3 +288,97 @@ print(ceil(1.23))
 print(0.1 + 0.2)
 
 print('========\n')
+
+my_list = [1, "Hi", {'abc' : 'def'}]
+empty_list = []
+
+print(my_list[0])
+print(my_list[1])
+print(my_list[2])
+print(my_list[-1])
+print(my_list[-2])
+print(my_list[-3])
+
+print(list(range(1, 7)))
+
+list_of_lists = [[1, 2], [3, 4], [5, 6]]
+print(list_of_lists[0])
+print(list_of_lists[0][1])
+print(list_of_lists[1][0])
+print(list_of_lists[2][1])
+
+my_list.append(4)
+print(my_list)
+my_list.append('ghi')
+print(my_list)
+
+list1 = [6, 5, 4]
+list2 = [3, 2, 1]
+list3 = list1 + list2
+print(list3)
+
+list1.extend(list2)
+print(list1)
+print(list2)
+
+list1.pop()
+print(list1)
+list1.pop(0)
+print(list1)
+
+# del list1
+# print(list1)
+
+list_remove = [1, 1 ,1, 2, 2, 3, 3, 3, 3]
+list_remove.remove(1)
+print(list_remove)
+list_remove.remove(1)
+print(list_remove)
+
+list_remove.clear()
+print(list_remove)
+
+list_duplicates = [1, 1, 2, 2, 3, 3, 3, 4, 5, 5, 5, 5]
+print(list(set(list_duplicates)))
+list_duplicates[2] = 222
+print(list_duplicates)
+print(len(list_duplicates))
+print(list_duplicates.count(3))
+
+if 1 in list_duplicates:
+    print("It's in")
+
+print(list_duplicates.index(4))
+
+for i in list_duplicates:
+    print(i)
+
+string_from_list = str(list_duplicates)
+print(string_from_list)
+
+list_duplicates.sort()
+print(list_duplicates)
+list_duplicates.sort(reverse=True)
+print(list_duplicates)
+
+print(sorted(list_duplicates))
+print(sorted(list_duplicates, reverse=True))
+
+print(list_duplicates[5:])
+print(list_duplicates[:2])
+print(list_duplicates[::2])
+print(list_duplicates[-1:-3:-1])
+
+list_duplicates.reverse()
+print(list_duplicates)
+print(list_duplicates[::-1])
+
+rev_list = reversed(list_duplicates)
+for i in rev_list:
+    print(i)
+
+print('========\n')
+
+
+
+print('========\n')
