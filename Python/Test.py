@@ -379,6 +379,27 @@ for i in rev_list:
 
 print('========\n')
 
+tuple_numbers = (1, 2, 3)
+print(tuple_numbers)
+tuple_no_par = 1, 2, 3
+print(tuple_no_par)
+tuple_mix = (True, 2, 'Three')
+print(tuple_mix)
+
+list_for_tuple0 = [0, 1, 2]
+list_for_tuple1 = [3, 4, 5]
+tuple_from_lists = (*list_for_tuple0, *list_for_tuple1) # * unpacks lists into individual elements
+print(tuple_from_lists)
+print(tuple_from_lists[2])
+print(tuple_from_lists[4])
+print(len(tuple_from_lists))
+
+print(list(tuple_from_lists))
+print(set(tuple_from_lists))
+print(str(tuple_from_lists))
+
+print('========\n')
+
 
 
 print('========\n')
