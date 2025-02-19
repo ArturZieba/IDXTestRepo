@@ -400,6 +400,58 @@ print(str(tuple_from_lists))
 
 print('========\n')
 
+my_set = {"hi", "there", "world"}
+print(my_set)
+my_mixed_set = {1, "two", (3, 4)}
+print(my_mixed_set)
 
+another_set = set()
+print(another_set)
+another_set.add(1)
+print(another_set)
+another_set.add("oi")
+print(another_set)
+another_set.add((4, 6))
+print(another_set)
+another_set.update([8, 9, 10])
+print(another_set)
+
+deduplicate_list = [1, 1, 1, 2, 2, 3, 3, 3, 3, 3, 4, 4, 5, 5, 5, 5, 5]
+deduplicate_set = set(deduplicate_list)
+print(deduplicate_set)
+
+list_from_set = list(deduplicate_set)
+print(list_from_set)
+
+set_A = {1, 2, 3, 4, 5}
+set_B = {3, 4, 5, 6, 7}
+print(set_A - set_B)
+print(set_B - set_A)
+print(set_A ^ set_B)
+print(set_A & set_B)
+
+set_1 = {1, 2, 3}
+set_2 = {1, 2, 3, 4, 5}
+set_3 = {1, 2, 3, 10}
+print(set_1 < set_2)
+print(set_3 < set_2)
+print(set_2 > set_1)
+print(set_2 > set_3)
+print(set_1 < set_1)
+print(set_1 <= set_1)
+print(set_1 >= set_1)
+
+print(set_1 | set_2 | set_3)
+
+set_1.pop()
+print(set_1)
+set_1.pop()
+print(set_1)
+set_1.pop()
+print(set_1)
+set_2.clear()
+print(set_2)
+set_3.remove(10)
+print(set_3)
 
 print('========\n')
