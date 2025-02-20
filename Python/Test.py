@@ -1,4 +1,5 @@
 # import selenium
+import json
 import package_test.mymodule
 from package_test.mymodule import my_variable_0, my_variable_1
 import package_test.package_subdirectory_0
@@ -453,5 +454,57 @@ set_2.clear()
 print(set_2)
 set_3.remove(10)
 print(set_3)
+
+print('========\n')
+
+sample_dictionary = { 
+    'key0': 'pair0',
+    'key1': 'pair1' 
+}
+print(sample_dictionary['key1'])
+
+del(sample_dictionary['key0'])
+print(sample_dictionary)
+
+print(sample_dictionary.get('key0'))
+
+sample_dictionary['key1'] = 'pairchange'
+print(sample_dictionary['key1'])
+
+another_dictionary = {
+    'sub_dictionary': {'sub_key0': True},
+    'sub_list': [1, 2, 3]
+}
+
+print(another_dictionary)
+
+list_of_keys = ['keya', 'keyb', 'keyc']
+
+dictionary_from_keys = dict.fromkeys(list_of_keys, 'Default')
+print(dictionary_from_keys)
+
+jsonstring = '{ "name": "bob", "age": 50, "married": false}'
+print(json.loads(jsonstring))
+
+print('sub_key0' in another_dictionary)
+print('sub_key0' not in another_dictionary)
+print(len(another_dictionary))
+
+dictionary_keys = another_dictionary.keys()
+dictionary_values = another_dictionary.values()
+another_dictionary['hello'] = 'world'
+print(dictionary_keys)
+print(dictionary_values)
+
+for key in dictionary_keys:
+    print(key)
+
+for key, value in another_dictionary.items():
+    print(key, ':', value)
+
+merged_dictionary = another_dictionary | sample_dictionary
+print(merged_dictionary)
+
+print(merged_dictionary == another_dictionary)
 
 print('========\n')
