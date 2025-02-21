@@ -5,6 +5,7 @@ from package_test.mymodule import my_variable_0, my_variable_1
 import package_test.package_subdirectory_0
 import random
 from math import floor, ceil
+import traceback
 
 print('Hello World 123')
 
@@ -506,5 +507,56 @@ merged_dictionary = another_dictionary | sample_dictionary
 print(merged_dictionary)
 
 print(merged_dictionary == another_dictionary)
+
+print('========\n')
+
+try:
+    print(2/0)
+except ZeroDivisionError:
+    print('Cannot divide by zero')
+
+try:
+    with open("nonexistent.txt", 'r') as f:
+        f.write("Hello, World!")
+except IOError as e:
+    print("An error occured:", e)
+
+try:
+    f = open("existent.txt", 'r')
+    f.write("Hello, World!")
+except IOError as e:
+    print("An error occured:", e)
+finally:
+    print("Closing the file")
+    f.close()
+
+sample_user_json = '{"name": "Bob", "age": 21}'
+sample_user = json.loads(sample_user_json)
+
+try:
+    print(sample_user['name'])
+    print(sample_user['age'])
+    print(sample_user['phone number'])
+except KeyError as e:
+    print("There are missing fields in the user object: ", e)
+
+class CustomException(Exception):
+    pass
+
+def fetch(user_id):
+    user = None
+
+    if user == None:
+        raise CustomException(f'{user_id} is not in database')
+    else:
+        return user
+
+custom_users = [321, 456, 987]
+for user_id in custom_users:
+    try:
+        fetch(user_id)
+    except CustomException as e:
+        print("An exception was caught: ", e)
+        traceback.print_exc()
 
 print('========\n')
