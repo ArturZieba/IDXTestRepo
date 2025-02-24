@@ -560,3 +560,27 @@ for user_id in custom_users:
         traceback.print_exc()
 
 print('========\n')
+
+def print_argument(func):
+    def wrapper(a_value):
+        print("Argument for", func.__name__, "is", a_value)
+        return func(a_value)
+    return wrapper
+
+@print_argument
+def add_one(x):
+    return x + 1
+
+print(add_one(3))
+
+add_two = lambda x: x + 2
+
+print(add_two(5))
+
+list_for_lambda = [2, 4, 8, 16]
+multiply_by_two = map(lambda x: x * 2, list_for_lambda)
+print(list(multiply_by_two))
+
+
+
+print('========\n')
