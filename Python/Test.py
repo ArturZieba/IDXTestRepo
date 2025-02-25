@@ -581,6 +581,21 @@ list_for_lambda = [2, 4, 8, 16]
 multiply_by_two = map(lambda x: x * 2, list_for_lambda)
 print(list(multiply_by_two))
 
+print('========\n')
 
+print([x for x in range(1,10) if x % 2 == 0])
+
+print([x + 4 for x in [1, 4, 7, 14, 20]])
+
+def function_for_list_comprehension(i):
+    return (i + 10) / 2
+
+print([function_for_list_comprehension(x) for x in range(8)])
+
+print([[[j for j in range(3)]] for i in range(4)])
+
+print({s for s in range(1,5) if s % 2})
+
+print({x: x * 2 for x in (2, 4, 6)})
 
 print('========\n')
