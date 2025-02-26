@@ -599,3 +599,50 @@ print({s for s in range(1,5) if s % 2})
 print({x: x * 2 for x in (2, 4, 6)})
 
 print('========\n')
+
+some_iterable = range(1, 3)
+some_iterator = some_iterable.__iter__()
+print(some_iterator.__next__())
+print(some_iterator.__next__())
+# print(some_iterator.__next__())
+
+string_a = 'XYZ'
+for letter in string_a:
+    print(letter)
+
+list_a = ['X', 'Y', 'Z']
+for letter in list_a:
+    print(letter)
+
+print([x for x in [4, 3, 2, 1] if x > 2])
+
+dictionary_a = {'name': 'Bob', 'phone number': 123654789, 'mail': 'mymail@mails.com'}
+for key in dictionary_a:
+    print(key)
+
+for value in dictionary_a.values():
+    print(value)
+
+for key, value in dictionary_a.items():
+    print(key, value)
+
+class EvenNumbers:
+    last = 0
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        self.last += 2
+
+        if self.last > 8:
+            raise StopIteration
+
+        return self.last
+
+even_numbers = EvenNumbers()
+
+for num in even_numbers:
+    print(num)
+
+print('========\n')
