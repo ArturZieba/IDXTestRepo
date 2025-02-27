@@ -646,3 +646,38 @@ for num in even_numbers:
     print(num)
 
 print('========\n')
+
+for i in range(5):
+    print(i)
+
+for i in range(3, 6):
+    print(i)
+
+for i in range(2, 32, 4):
+    print(i)
+
+for i in range(3, 0, -1):
+    print(i)
+
+sample_range = range(0, 3)
+sample_iterator = iter(sample_range)
+
+print(next(sample_iterator))
+print(next(sample_iterator))
+print(next(sample_iterator))
+# print(next(sample_iterator))
+
+list_for_range = list(range(2, 5))
+print(list_for_range)
+
+number_to_find = 3
+print(number_to_find in range(0, 6))
+
+print(range(0, 7)[2 : 4])
+print(range(0, 10)[4 : 2 : -1])
+print(range(0, 15)[2 : 8 : 2])
+
+print(range(0, 5) == range(2, 5))
+print(range(0) == range(4, 0))
+
+print('========\n')
