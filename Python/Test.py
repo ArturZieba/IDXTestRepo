@@ -681,3 +681,16 @@ print(range(0, 5) == range(2, 5))
 print(range(0) == range(4, 0))
 
 print('========\n')
+
+class MyDocumentedClass:
+    """This class is documented"""
+
+    def hi(self):
+        """This function is documented"""
+        pass
+
+# help(MyDocumentedClass)
+# help(print)
+# help(str)
+
+print('========\n')
