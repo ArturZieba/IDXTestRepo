@@ -694,3 +694,27 @@ class MyDocumentedClass:
 # help(str)
 
 print('========\n')
+
+# All of these fail to run without pass because they have no other code
+def empty_function():
+    pass 
+
+if True:
+    pass
+else: 
+    pass
+
+try:
+    pass
+except Exception:
+    pass
+
+class EmptyClass:
+    pass
+
+def ellipsis_function():
+    ...
+
+
+
+print('========\n')
