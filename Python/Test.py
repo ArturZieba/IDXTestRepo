@@ -6,6 +6,8 @@ import package_test.package_subdirectory_0
 import random
 from math import floor, ceil
 import traceback
+import os
+import shutil
 
 print('Hello World 123')
 
@@ -715,6 +717,37 @@ class EmptyClass:
 def ellipsis_function():
     ...
 
+print('========\n')
 
+with open('idxtestrepo/Python/test_file.txt', 'w') as test_file:
+    for i in range(1, 5):
+        test_file.write('Number: ' + str(i) + '\n')
+
+with open('idxtestrepo/Python/test_file.txt', 'a') as test_file:
+    for i in range(5, 8):
+        test_file.write('Appended number: ' + str(i) + '\n')
+
+with open('idxtestrepo/Python/test_file.txt', 'r') as test_file:
+    for line in test_file:
+        print(line)
+
+with open('idxtestrepo/Python/test_file.txt', 'r') as test_file:
+    lines_list = test_file.readlines()
+    print(lines_list)
+
+if os.path.isfile('idxtestrepo/Python/test_file.txt'):
+    print("test_file.txt is available")
+
+if os.path.isdir('idxtestrepo/Python/'):
+    print("Python dir is available")
+
+if not os.path.isdir('idxtestrepo/Python/testdir'):
+    os.mkdir('idxtestrepo/Python/testdir')
+
+# os.rename('idxtestrepo/Python/test_file.txt', 'idxtestrepo/Python/test_file_rename.txt')
+# os.remove('idxtestrepo/Python/test_file_rename.txt')
+
+shutil.move('idxtestrepo/Python/test_file.txt', 'idxtestrepo/Python/testdir/test_file.txt')
+shutil.rmtree('idxtestrepo/Python/testdir')
 
 print('========\n')
