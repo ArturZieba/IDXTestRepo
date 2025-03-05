@@ -8,6 +8,7 @@ from math import floor, ceil
 import traceback
 import os
 import shutil
+import subprocess
 
 print('Hello World 123')
 
@@ -749,5 +750,24 @@ if not os.path.isdir('idxtestrepo/Python/testdir'):
 
 shutil.move('idxtestrepo/Python/test_file.txt', 'idxtestrepo/Python/testdir/test_file.txt')
 shutil.rmtree('idxtestrepo/Python/testdir')
+
+print('========\n')
+
+subprocess.run(['ls', '-al'])
+
+code_for_python_command = """
+    for i in range (1, 3):
+        print(f"Hello, World! {i})
+"""
+
+python_version_result = subprocess.run(['python3'], input=code_for_python_command, capture_output=True, encoding='UTF-8')
+print(python_version_result)
+
+shell_command_result = subprocess.run(['ls -al | head -n 1'], shell=True, capture_output=True, encoding='UTF-8')
+print(shell_command_result)
+
+print('========\n')
+
+
 
 print('========\n')
