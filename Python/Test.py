@@ -768,6 +768,9 @@ print(shell_command_result)
 
 print('========\n')
 
-
+# python -m venv idxtestrepo/Python/venv
+# source idxtestrepo/Python/venv/bin/activate
+# deactivate
+# rm -r idxtestrepo/Python/venv
 
 print('========\n')
