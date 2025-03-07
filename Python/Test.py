@@ -774,3 +774,12 @@ print('========\n')
 # rm -r idxtestrepo/Python/venv
 
 print('========\n')
+
+# pip help
+# pip install simplejson
+# pip freeze > idxtestrepo/Python/requirements.txt
+# pip install -r idxtestrepo/Python/requirements.txt
+# pip uninstall simplejson
+# pip uninstall -r idxtestrepo/Python/requirements.txt
+
+print('========\n')
