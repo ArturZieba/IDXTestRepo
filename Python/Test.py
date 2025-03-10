@@ -783,3 +783,6 @@ print('========\n')
 # pip uninstall -r idxtestrepo/Python/requirements.txt
 
 print('========\n')
+
+# poetry --version
+# /home/user/.local/bin/poetry
