@@ -786,3 +786,17 @@ print('========\n')
 
 # poetry --version
 # /home/user/.local/bin/poetry
+
+print('========\n')
+
+def heavy(n, myid):
+  for x in range(1, n):
+    for y in range(1, n):
+      x**y
+  print(myid, "is done")
+
+print('========\n')
+
+
+
+print('========\n')
