@@ -9,6 +9,7 @@ import traceback
 import os
 import shutil
 import subprocess
+import time
 
 print('Hello World 123')
 
@@ -794,6 +795,16 @@ def heavy(n, myid):
     for y in range(1, n):
       x**y
   print(myid, "is done")
+
+def sequential(n):
+    for i in range(n):
+        heavy(500, i)
+
+# if __name__ == "__main__":
+#     start = time.time()
+#     sequential(80)
+#     end = time.time()
+#     print("Took: ", end - start)
 
 print('========\n')
 
