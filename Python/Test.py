@@ -9,6 +9,7 @@ import traceback
 import os
 import shutil
 import subprocess
+import threading
 import time
 
 print('Hello World 123')
@@ -808,6 +809,42 @@ def sequential(n):
 
 print('========\n')
 
+def threaded(n):
+    threads = []
 
+    for i in range(n):
+        t = threading.Thread(target=heavy, args=(500,i,))
+        threads.append(t)
+        t.start()
+    
+    for t in threads:
+        t.join()
+
+# if __name__ == "__main__":
+#     start = time.time()
+#     threaded(80)
+#     end = time.time()
+#     print("Took: ", end - start)
+
+def heavy_other(n, myid):
+    time.sleep(2)
+    print(myid, "is done")
+
+def threaded_other(n):
+    threads = []
+
+    for i in range(n):
+        t = threading.Thread(target=heavy_other, args=(500,i,))
+        threads.append(t)
+        t.start()
+    
+    for t in threads:
+        t.join()
+
+if __name__ == "__main__":
+    start = time.time()
+    threaded_other(80)
+    end = time.time()
+    print("Took: ", end - start)
 
 print('========\n')
