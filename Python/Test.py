@@ -842,11 +842,11 @@ def threaded_other(n):
     for t in threads:
         t.join()
 
-if __name__ == "__main__":
-    start = time.time()
-    threaded_other(80)
-    end = time.time()
-    print("Took: ", end - start)
+# if __name__ == "__main__":
+#     start = time.time()
+#     threaded_other(80)
+#     end = time.time()
+#     print("Took: ", end - start)
 
 print('========\n')
 
@@ -894,6 +894,22 @@ def pooled(n):
 
 print('========\n')
 
+json_sample_string = '{"name": "jason", "age": 45, "married": true}'
+json_person_sample = json.loads(json_sample_string)
 
+print(json_person_sample['name'], 'is', json_person_sample['age'], 'years old')
+print(json_person_sample)
+print(type(json_person_sample))
+
+json_dump_to_string = json.dumps(json_person_sample, indent = 2)
+print(json_dump_to_string)
+print(type(json_dump_to_string))
+
+with open('idxtestrepo/Python/data.json', 'w') as json_file:
+    json.dump(json_person_sample, json_file)
+
+with open('idxtestrepo/Python/data.json') as json_file:
+    data = json.load(json_file)
+    print('Reading', data)
 
 print('========\n')
