@@ -1,4 +1,4 @@
-# import selenium
+import csv
 import json
 import package_test.mymodule
 from package_test.mymodule import my_variable_0, my_variable_1
@@ -911,5 +911,45 @@ with open('idxtestrepo/Python/data.json', 'w') as json_file:
 with open('idxtestrepo/Python/data.json') as json_file:
     data = json.load(json_file)
     print('Reading', data)
+
+print('========\n')
+
+with open('idxtestrepo/Python/persons.csv', newline='') as f:
+    csvfile = csv.reader(f)
+
+    for row in csvfile:
+        print(row)
+
+with open('idxtestrepo/Python/output.csv', 'w') as f:
+    csv_writer = csv.writer(f)
+
+    csv_writer.writerow(["Name", "Age", "Country"])
+    csv_writer.writerow(["Eliza", 25, "UK"])
+    csv_writer.writerow(["Ferdinand", 35, "US"])
+
+with open('idxtestrepo/Python/output.csv', 'a') as f:
+    csv_writer = csv.writer(f)
+
+    csv_writer.writerow(["Gabriel", 45, "FR"])
+    csv_writer.writerow(["Harry", 55, "DK"])
+
+my_dialect = csv.register_dialect("my_dialect",
+    delimiter = ";",
+    quotechar = '"',
+    quoting = csv.QUOTE_MINIMAL
+)
+
+with open("idxtestrepo/Python/custom_dialect.csv", "w") as f:
+    csv_writer = csv.writer(f, dialect = "my_dialect")
+
+    csv_writer.writerow(["Name", "Age", "Country"])
+    csv_writer.writerow(["Eliza", 25, "UK"])
+    csv_writer.writerow(["Ferdinand", 35, "US"])
+
+with open("idxtestrepo/Python/output.csv", "r") as f:
+    csv_reader = csv.reader(f, dialect = "my_dialect")
+
+    for row in csv_reader:
+        print(row)
 
 print('========\n')
