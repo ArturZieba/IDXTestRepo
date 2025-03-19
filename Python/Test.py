@@ -528,7 +528,7 @@ except IOError as e:
     print("An error occured:", e)
 
 try:
-    f = open("existent.txt", 'r')
+    f = open("idxtestrepo/Python/existent.txt", 'r')
     f.write("Hello, World!")
 except IOError as e:
     print("An error occured:", e)
