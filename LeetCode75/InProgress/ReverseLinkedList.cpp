@@ -12,6 +12,7 @@ struct ListNode {
 
 int main()
 {
+    std::cout << "Check compiler 12345\n";
 /*
 Input: head0 = [1,2,3,4,5]
 // Expected Output: [5,4,3,2,1]
