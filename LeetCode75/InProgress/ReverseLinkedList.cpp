@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+// Definition for singly-linked list.
 struct ListNode {
     int val;
     ListNode *next;
@@ -10,17 +11,31 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+ListNode* reverseList(ListNode* head) {
+    ListNode* current = head;
+    ListNode* previous = nullptr; // nullptr is before the head
+
+    while(current)
+    {
+        ListNode* nextCopy = current->next; // Link after the current link
+
+        current->next = previous;
+        previous = current;
+        current = nextCopy;
+    }
+
+    return previous;
+}
+
 int main()
 {
-    std::cout << "Check compiler 12345\n";
-/*
-Input: head0 = [1,2,3,4,5]
+//ListNode* head0();
 // Expected Output: [5,4,3,2,1]
 
-Input: head1 = [1,2]
+//ListNode* head1();
 // Expected Output: [2,1]
 
-Input: head2 = []
+//ListNode* head2();
 // Expected Output: []
-*/
+
 }
