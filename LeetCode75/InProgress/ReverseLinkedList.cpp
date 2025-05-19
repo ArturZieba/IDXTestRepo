@@ -1,6 +1,7 @@
 // Source: https://leetcode.com/problems/reverse-linked-list/?envType=study-plan-v2&envId=leetcode-75
 
 #include <iostream>
+#include <tuple>
 #include <vector>
 
 // Definition for singly-linked list.
@@ -28,26 +29,33 @@ ListNode* reverseList(ListNode* head) {
     return previous;
 }
 
+std::tuple <ListNode*, ListNode*> initializeLinkedList(std::vector<int> values, ListNode* head, ListNode* current)
+{
+    for (int value : values)
+    {
+        if (!head)
+        {
+            head = new ListNode(value);
+            current = head;
+        } 
+        else
+        {
+            current -> next = new ListNode(value);
+            current = current -> next;
+        } 
+    }
+
+    return {head, current};
+}
+
+
 int main()
 {
     std::vector<int> head0Values = {1, 2, 3, 4, 5}; // head = [1,2,3,4,5]
     ListNode* head0 = nullptr;
     ListNode* current0 = nullptr;
 
-    for (int value : head0Values)
-    {
-        if (!head0)
-        {
-            head0 = new ListNode(value);
-            current0 = head0;
-        } 
-        else
-        {
-            current0 -> next = new ListNode(value);
-            current0 = current0 -> next;
-        } 
-    }
-
+    initializeLinkedList(head0Values, head0, current0);
     reverseList(head0);
 
     std::cout << "[";
