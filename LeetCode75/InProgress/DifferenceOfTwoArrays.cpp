@@ -5,7 +5,26 @@
 
 std::vector<std::vector<int>> findDifference(std::vector<int>& nums1, std::vector<int>& nums2)
 {
-    return { nums1, nums2 };
+    std::vector<std::vector<int>> answer = {};
+    std::vector<int> nums1Distinct = {};
+    std::vector<int> nums2Distinct = {};
+
+    for (int i = 0; i < nums1.size(); i++)
+    {
+        for (int j = 0; j < nums2.size(); j++)
+        {
+            if (nums1[i] != nums2[j])
+            {
+                nums1Distinct.push_back(nums1[i]);
+                nums2Distinct.push_back(nums2[i]);
+            }
+        }
+    }
+
+    answer.push_back(nums1Distinct);
+    answer.push_back(nums2Distinct);
+
+    return answer;
 }
 
 int main()
