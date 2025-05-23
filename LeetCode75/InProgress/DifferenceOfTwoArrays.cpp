@@ -35,22 +35,22 @@ int main()
     std::vector<int> nums12 = { 1, 1, 2, 2 };
 
     // Expected output: [[1,3],[4,6]]
-    for(auto element : findDifference(nums01, nums02))
+    for(auto vectorElement : findDifference(nums01, nums02))
     {
-        for(int i; i < element.size(); i++)
+        for(auto intElement : vectorElement)
         {
-            std::cout << element[i];
+                std::cout << intElement;
         }
     }
 
     std::cout << '\n';
 
     // Expected output: [[3],[]]
-    for(auto element : findDifference(nums11, nums12))
+    for(auto vectorElement : findDifference(nums11, nums12))
     {
-        for(int i; i < element.size(); i++)
+        for(auto intElement : vectorElement)
         {
-            std::cout << element[i];
+                std::cout << intElement;
         }
     }
 }
