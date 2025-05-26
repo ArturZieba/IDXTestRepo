@@ -1,28 +1,30 @@
 // Source: https://leetcode.com/problems/find-the-difference-of-two-arrays/description/?envType=study-plan-v2&envId=leetcode-75
 
 #include <iostream>
+#include <unordered_set>
 #include <vector>
 
 std::vector<std::vector<int>> findDifference(std::vector<int>& nums1, std::vector<int>& nums2)
 {
-    std::vector<std::vector<int>> answer = {};
-    std::vector<int> nums1Distinct = {};
-    std::vector<int> nums2Distinct = {};
+    std::unordered_set<int> nums1Distinct(nums1.begin(), nums1.end());
+    std::unordered_set<int> nums2Distinct(nums2.begin(), nums2.end());
+    std::vector<std::vector<int>> answer(2);
 
-    for (int i = 0; i < nums1.size(); i++)
+    for (int value : nums1Distinct)
     {
-        for (int j = 0; j < nums2.size(); j++)
+        if (nums2Distinct.count(value) == 0)
         {
-            if (nums1[i] != nums2[j])
-            {
-                nums1Distinct.push_back(nums1[i]);
-                nums2Distinct.push_back(nums2[i]);
-            }
+            answer[0].push_back(value);
         }
     }
 
-    answer.push_back(nums1Distinct);
-    answer.push_back(nums2Distinct);
+    for (int value : nums2Distinct)
+    {
+        if (nums1Distinct.count(value) == 0)
+        {
+            answer[1].push_back(value);
+        }
+    }
 
     return answer;
 }
@@ -53,4 +55,6 @@ int main()
                 std::cout << intElement;
         }
     }
+
+    std::cout << '\n';
 }
