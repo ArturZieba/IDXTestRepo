@@ -1,5 +1,6 @@
 // Source: https://leetcode.com/problems/find-the-difference-of-two-arrays/description/?envType=study-plan-v2&envId=leetcode-75
 
+#include <algorithm> // For std::reverse()
 #include <iostream>
 #include <unordered_set>
 #include <vector>
@@ -36,25 +37,29 @@ int main()
     std::vector<int> nums11 = { 1, 2, 3, 3 };
     std::vector<int> nums12 = { 1, 1, 2, 2 };
 
+    std::cout << "[[";
+
     // Expected output: [[1,3],[4,6]]
     for(auto vectorElement : findDifference(nums01, nums02))
     {
+        std::reverse(vectorElement.begin(), vectorElement.end());
         for(auto intElement : vectorElement)
         {
                 std::cout << intElement;
         }
     }
 
-    std::cout << '\n';
+    std::cout << "]\n[";
 
     // Expected output: [[3],[]]
     for(auto vectorElement : findDifference(nums11, nums12))
     {
+        std::reverse(vectorElement.begin(), vectorElement.end());
         for(auto intElement : vectorElement)
         {
                 std::cout << intElement;
         }
     }
 
-    std::cout << '\n';
+    std::cout << "]]\n";
 }
