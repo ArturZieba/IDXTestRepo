@@ -37,15 +37,24 @@ int main()
     std::vector<int> nums11 = { 1, 2, 3, 3 };
     std::vector<int> nums12 = { 1, 1, 2, 2 };
 
-    std::cout << "[[";
+    std::cout << "[";
 
     // Expected output: [[1,3],[4,6]]
     for(auto vectorElement : findDifference(nums01, nums02))
     {
+        bool first = false;
         std::reverse(vectorElement.begin(), vectorElement.end());
         for(auto intElement : vectorElement)
         {
-                std::cout << intElement;
+            if(!first)
+            {
+                std::cout << "[" << intElement << ",";
+                first = true;
+            }
+            else
+            {
+                std::cout << intElement << "],";
+            }
         }
     }
 
@@ -61,5 +70,5 @@ int main()
         }
     }
 
-    std::cout << "]]\n";
+    std::cout << "]\n";
 }
