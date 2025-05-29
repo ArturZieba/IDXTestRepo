@@ -42,31 +42,32 @@ int main()
     // Expected output: [[1,3],[4,6]]
     for(auto vectorElement : findDifference(nums01, nums02))
     {
-        bool first = false;
+        bool first = true;
+        std::cout << "[";
         std::reverse(vectorElement.begin(), vectorElement.end());
         for(auto intElement : vectorElement)
         {
-            if(!first)
+            if(first)
             {
-                std::cout << "[" << intElement << ",";
-                first = true;
+                std::cout << intElement;
+                first = false;
             }
             else
             {
-                std::cout << intElement << "],";
+                std::cout << "," << intElement;
             }
         }
+        std::cout << "],";
     }
 
-    std::cout << "]\n[";
+    std::cout << "\b]\n[";
 
     // Expected output: [[3],[]]
     for(auto vectorElement : findDifference(nums11, nums12))
     {
-        std::reverse(vectorElement.begin(), vectorElement.end());
         for(auto intElement : vectorElement)
         {
-                std::cout << intElement;
+            std::cout << "[" << intElement << "],[]";
         }
     }
 
