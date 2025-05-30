@@ -1,5 +1,6 @@
 // Source: https://leetcode.com/problems/unique-number-of-occurrences/description/?envType=study-plan-v2&envId=leetcode-75
 
+#include <algorithm> // For std::sort
 #include <iostream>
 #include <vector>
 
@@ -16,6 +17,12 @@ void printBool (bool bInput)
 
 bool uniqueOccurences(std::vector<int>& arr)
 {
+    std::sort(arr.begin(), arr.end());
+    for(int element : arr)
+    {
+        std::cout << element;
+    }
+
     return 1;
 }
 
