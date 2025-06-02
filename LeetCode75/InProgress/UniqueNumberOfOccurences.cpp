@@ -18,9 +18,21 @@ void printBool (bool bInput)
 bool uniqueOccurences(std::vector<int>& arr)
 {
     std::sort(arr.begin(), arr.end());
-    for(int element : arr)
+
+    int uniqueCounter = 0;
+    std::vector<int> totalUniqueValues = {};
+    
+    for(int i = 0; i < arr.size(); i++)
     {
-        std::cout << element;
+        if(i > 1 && arr[i] == arr[i - 1])
+        {
+            uniqueCounter++;
+        }
+        else
+        {
+            totalUniqueValues.push_back(uniqueCounter);
+            uniqueCounter = 0;
+        }
     }
 
     return 1;
