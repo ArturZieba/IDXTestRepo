@@ -31,11 +31,19 @@ bool uniqueOccurences(std::vector<int>& arr)
         else
         {
             totalUniqueValues.push_back(uniqueCounter);
-            uniqueCounter = 0;
+            uniqueCounter = 1;
         }
     }
 
-    return 1;
+    for(int j = 0; j < totalUniqueValues.size(); j++)
+    {
+        if(j > 1 && totalUniqueValues[j] == totalUniqueValues[j - 1])
+        {
+            return 1;
+        }
+    }
+
+    return 0;
 }
 
 int main()
