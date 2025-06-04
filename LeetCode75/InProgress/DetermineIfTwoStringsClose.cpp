@@ -16,7 +16,15 @@ void printBool (bool bInput)
 
 bool closeStrings(std::string word1, std::string word2)
 {
-    return 0;
+    // Strings cannot be close if they do not have the same number of characters as per operations
+    if(word1.length() != word2.length())
+    {
+        return 0;
+    }
+
+    // Check if there is the same number of the same characters
+
+    return 1;
 }
 
 int main()
