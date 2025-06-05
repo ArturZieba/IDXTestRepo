@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <unordered_map>
 
 void printBool (bool bInput)
 {
@@ -23,6 +24,12 @@ bool closeStrings(std::string word1, std::string word2)
     }
 
     // Check if there is the same number of the same characters
+    std::unordered_map<int, int> uniqueValuesCount = {{1, 1}, {2, 1}, {3, 1}};
+    
+    for(auto element : uniqueValuesCount)
+    {
+        std::cout << element.first << " " << element.second << "\n";
+    }
 
     return 1;
 }
