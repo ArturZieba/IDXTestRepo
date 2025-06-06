@@ -24,9 +24,21 @@ bool closeStrings(std::string word1, std::string word2)
     }
 
     // Check if there is the same number of the same characters
-    std::unordered_map<int, int> uniqueValuesCount = {{1, 1}, {2, 1}, {3, 1}};
+    std::unordered_map<int, int> uniqueValuesCount0;
+    std::unordered_map<int, int> uniqueValuesCount1;
+
+    for(int i = 0; i < word1.size(); i++)
+    {
+            uniqueValuesCount0[word1[i] - 'a']++; // - 'a' converts the char into int
+            uniqueValuesCount1[word2[i] - 'a']++;
+    }
     
-    for(auto element : uniqueValuesCount)
+    for(auto element : uniqueValuesCount0)
+    {
+        std::cout << element.first << " " << element.second << "\n";
+    }
+
+    for(auto element : uniqueValuesCount1)
     {
         std::cout << element.first << " " << element.second << "\n";
     }
