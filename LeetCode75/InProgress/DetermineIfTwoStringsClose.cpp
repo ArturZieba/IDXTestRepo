@@ -33,6 +33,23 @@ bool closeStrings(std::string word1, std::string word2)
             uniqueValuesCount1[word2[i] - 'a']++;
     }
     
+    for(int i = 0; i < 26; i++) // 26 for all lower case letters as per constraints
+    {
+        if(
+            ((uniqueValuesCount0.find(i) == uniqueValuesCount0.end())
+            && (uniqueValuesCount1.find(i) != uniqueValuesCount1.end())) 
+            || 
+            ((uniqueValuesCount1.find(i) == uniqueValuesCount1.end())
+            && (uniqueValuesCount0.find(i) != uniqueValuesCount0.end()))
+        ) // Check if unordered_map contains the same set of unique characters (converted to int)
+        {
+            return false; // If it does not it cannot match the constraints
+        } /*else if (TBC)
+        {
+           return true; 
+        }*/
+    }
+
     for(auto element : uniqueValuesCount0)
     {
         std::cout << element.first << " " << element.second << "\n";
