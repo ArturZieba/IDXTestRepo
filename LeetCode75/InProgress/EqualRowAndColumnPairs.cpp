@@ -5,6 +5,13 @@
 
 int equalPairs(std::vector<std::vector<int>>& grid)
 {
+    for (auto vectorElement : grid)
+    {
+        for (auto element : vectorElement)
+        {
+            std::cout << element << " ";
+        }
+    }
     return 321;
 }
 
