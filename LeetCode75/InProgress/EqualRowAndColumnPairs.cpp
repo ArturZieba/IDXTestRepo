@@ -30,5 +30,5 @@ int main()
 
     std::cout << equalPairs(grid0) << '\n'; // Expected output: 1
     std::cout << equalPairs(grid1) << '\n'; // Expected output: 3
-    std::cout << "Test";
+    std::cout << "Test1";
 }
