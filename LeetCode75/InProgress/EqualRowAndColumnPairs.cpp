@@ -9,7 +9,10 @@ int equalPairs(std::vector<std::vector<int>>& grid)
     {
         for (auto element : vectorElement)
         {
-            std::cout << element << " ";
+            if (element == vectorElement)
+            {
+                std::cout << element << " ";
+            }
         }
     }
     return 321;
@@ -30,5 +33,4 @@ int main()
 
     std::cout << equalPairs(grid0) << '\n'; // Expected output: 1
     std::cout << equalPairs(grid1) << '\n'; // Expected output: 3
-    std::cout << "Rerun\ny";
 }
