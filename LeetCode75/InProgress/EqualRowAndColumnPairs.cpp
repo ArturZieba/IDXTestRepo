@@ -5,17 +5,19 @@
 
 int equalPairs(std::vector<std::vector<int>>& grid)
 {
-    for (auto vectorElement : grid)
+    int pairCount = 0;
+
+    for (int i = 0; i < grid.size(); ++i)
     {
-        for (auto element : vectorElement)
+        for (int j = 0; j < grid.size(); ++j)
         {
-            if (element == vectorElement)
+            if (grid[i][j] == grid[j][i])
             {
-                std::cout << element << " ";
+                pairCount++;
             }
         }
     }
-    return 321;
+    return pairCount;
 }
 
 int main()
