@@ -11,15 +11,23 @@ int equalPairs(std::vector<std::vector<int>>& grid)
     {
         for (int j = 0; j < grid.size(); ++j)
         {
+            // Used to track if the pair of column and row is matching, set to false in the next loop if elements compared do not match
+            bool matchingPair = true;
+
             for (int k = 0; k < grid.size(); ++k)
             {
                 // k is for "locking in" specific row/column, while i and j parse through all arrays and their elements (equivalent of coordinates in a matrix)
                 if (grid[i][k] != grid[k][j])
                 {
+                    // One of the compared column/row elements does not match, so the pair is not matching
+                    matchingPair = false;
                     break;
                 }
             }
-            pairCount++;
+            if (matchingPair)
+            {
+                pairCount++;
+            }
         }
     }
     return pairCount;
