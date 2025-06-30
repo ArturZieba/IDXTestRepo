@@ -3,11 +3,28 @@
 #include <algorithm> // For std::remove
 #include <iostream>
 #include <string>
+#include <vector>
 
 std::string removeStars(std::string s)
 {
+    std::vector<int> charToRemove = {};
+
+    for (int i = 0; i < s.length(); i++)
+    {
+        if (s[i] == '*')
+        {
+            //charToRemove.insert(i);
+            //charToRemove.push(i);
+        }
+    }
+
+    for (int i = 0; i < charToRemove.size(); i++)
+    {
+        s.erase(i, 2);
+    }
+
     // Remove all * from the string
-    s.erase(std::remove(s.begin(), s.end(), '*'), s.end());
+    //s.erase(std::remove(s.begin(), s.end(), '*'), s.end());
     return s;
 }
 
