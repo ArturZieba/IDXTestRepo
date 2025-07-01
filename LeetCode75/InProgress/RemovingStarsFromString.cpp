@@ -13,14 +13,21 @@ std::string removeStars(std::string s)
     {
         if (s[i] == '*')
         {
-            //charToRemove.insert(i);
-            //charToRemove.push(i);
+            //charToRemove.push_back(i);
+            s.erase(i - 1, 2);
         }
     }
 
+    /*
+    for (auto element : charToRemove)
+    {
+        std::cout << element;
+    }
+    */
+
     for (int i = 0; i < charToRemove.size(); i++)
     {
-        s.erase(i, 2);
+        //s.erase(i, 2);
     }
 
     // Remove all * from the string
