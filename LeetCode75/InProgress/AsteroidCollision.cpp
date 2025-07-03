@@ -5,6 +5,28 @@
 
 std::vector<int> asteroidCollision(std::vector<int>& asteroids)
 {
+    for (int i = 0; i < asteroids.size(); i++)
+    {
+        if (asteroids[i] < 0 && asteroids[i] != 0)
+        {
+            if (asteroids[i - 1] > 0)
+            {
+                if (asteroids[i] > asteroids [i - 1])
+                {
+                    asteroids.erase(asteroids.begin() + (i - 1));
+                } 
+                else if (asteroids[i] == asteroids[i - 1])
+                {
+                    asteroids.erase(asteroids.begin() + (i - 1), asteroids.begin() + i);
+                }
+                else
+                {
+                    asteroids.erase(asteroids.begin() + i);
+                }
+            }
+        }
+    }
+    
     return asteroids;
 } 
 
