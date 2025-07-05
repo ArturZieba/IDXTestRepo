@@ -1,5 +1,6 @@
 // Source: https://leetcode.com/problems/asteroid-collision/description/?envType=study-plan-v2&envId=leetcode-75
 
+#include "/home/user/idxtestrepo/Headers/TemplateFunctions.h" // For printVectorInt
 #include <iostream>
 #include <vector>
 
@@ -26,10 +27,9 @@ std::vector<int> asteroidCollision(std::vector<int>& asteroids)
             }
         }
     }
-    
+    // Move printVectorInt inside this .cpp to make it self-contained?
     return asteroids;
 } 
-
 
 int main()
 {
@@ -37,22 +37,7 @@ int main()
     std::vector<int> asteroids1 = { 8, -8 };
     std::vector<int> asteroids2 = { 10, 2, -5 };
 
-    for (auto element : asteroidCollision(asteroids0)) // Expected output: [5,10]
-    {
-        std::cout << element << ' ';
-    }
-
-    std::cout << '\n';
-
-    for (auto element : asteroidCollision(asteroids1)) // Expected output: []
-    {
-        std::cout << element << ' ';
-    }
-
-    std::cout << '\n';
-
-    for (auto element : asteroidCollision(asteroids2)) // Expected output: [10]
-    {
-        std::cout << element << ' ';
-    }
+    printVectorInt(asteroidCollision(asteroids0)); // Expected output: [5,10]
+    printVectorInt(asteroidCollision(asteroids1)); // Expected output: []
+    printVectorInt(asteroidCollision(asteroids2)); // Expected output: [10]
 }
