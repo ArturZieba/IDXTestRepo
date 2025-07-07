@@ -1,8 +1,24 @@
 // Source: https://leetcode.com/problems/asteroid-collision/description/?envType=study-plan-v2&envId=leetcode-75
 
-#include "/home/user/idxtestrepo/Headers/TemplateFunctions.h" // For printVectorInt
 #include <iostream>
 #include <vector>
+
+// Function used to print contents of int vector containers enclosed in [] (for example [1, 2, 3])
+void printVectorInt (std::vector<int> vInput)
+{
+    std::cout << '[';
+
+    for (int i = 0; i < vInput.size(); i++)
+    {
+        std::cout << vInput[i];
+        if (i != vInput.size() - 1)
+        {
+            std::cout << ',';
+        }
+    }
+
+    std::cout << "]\n";
+}
 
 std::vector<int> asteroidCollision(std::vector<int>& asteroids)
 {
@@ -27,7 +43,7 @@ std::vector<int> asteroidCollision(std::vector<int>& asteroids)
             }
         }
     }
-    // Move printVectorInt inside this .cpp to make it self-contained?
+    
     return asteroids;
 } 
 
