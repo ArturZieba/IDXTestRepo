@@ -24,40 +24,17 @@ std::vector<int> asteroidCollision(std::vector<int>& asteroids)
 {
     for (int i = 0; i < asteroids.size(); i++)
     {
-        if (asteroids[i] <= 0)
+        if (asteroids[i] > 0) // Asteroid is flying right
         {
-            if (asteroids[i - 1] > 0)
+            if (asteroids[i] > asteroids [i + 1] && asteroids [i + 1] < 0) // If asteroid is bigger than the one on the right, and the one on the right is flying left destroy it
             {
-                if (asteroids[i] > asteroids [i - 1])
-                {
-                    asteroids.erase(asteroids.begin() + (i - 1));
-                } 
-                else if (asteroids[i] == asteroids[i - 1])
-                {
-                    asteroids.erase(asteroids.begin() + (i - 1), asteroids.begin() + i);
-                }
-                else
-                {
-                    asteroids.erase(asteroids.begin() + i);
-                }
+                asteroids.erase(asteroids.begin() + (i - 1));
             } 
-        } else {
-            if (asteroids[i + 1] < 0)
+            else if (asteroids[i] == asteroids[i + 1]) // If asteroid is the same size as the one on the right, and the one on the right is flying left destroy both
             {
-                if (asteroids[i] > asteroids [i + 1])
-                {
-                    asteroids.erase(asteroids.begin() + (i + 1));
-                } 
-                else if (asteroids[i] == asteroids[i - 1])
-                {
-                    asteroids.erase(asteroids.begin() + (i + 1), asteroids.begin() + i);
-                }
-                else
-                {
-                    asteroids.erase(asteroids.begin() + i);
-                }
-            } 
-        }
+                asteroids.erase(asteroids.begin() + i, asteroids.begin() + (i + 1));
+            }
+        } 
     }
     
     return asteroids;
