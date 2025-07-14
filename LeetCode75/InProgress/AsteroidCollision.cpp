@@ -22,21 +22,31 @@ void printVectorInt (std::vector<int> vInput)
 
 std::vector<int> asteroidCollision(std::vector<int>& asteroids)
 {
-    for (int i = 0; i < asteroids.size(); i++)
+    std::vector<int> indicesToErase = {}; // Indices marked for remove (destroyed asteroids)
+
+    for (int i = 0; i < (asteroids.size() - 1); i++)
     {
         if (asteroids[i] > 0) // Asteroid is flying right
         {
             if (asteroids[i] > asteroids [i + 1] && asteroids [i + 1] < 0) // If asteroid is bigger than the one on the right, and the one on the right is flying left destroy it
             {
-                asteroids.erase(asteroids.begin() + (i - 1));
+                // Add indices to indicesToErase
             } 
             else if (asteroids[i] == asteroids[i + 1]) // If asteroid is the same size as the one on the right, and the one on the right is flying left destroy both
             {
-                asteroids.erase(asteroids.begin() + i, asteroids.begin() + (i + 1));
+                // Add indices to indicesToErase
             }
         } 
     }
     
+    /*
+    for ()
+    {
+        asteroids.erase(asteroids.begin() + (i - 1));
+        asteroids.erase(asteroids.begin() + i, asteroids.begin() + (i + 1));
+    }
+    */
+
     return asteroids;
 } 
 
