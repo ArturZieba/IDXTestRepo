@@ -24,19 +24,28 @@ std::vector<int> asteroidCollision(std::vector<int>& asteroids)
 {
     std::vector<int> indicesToErase = {}; // Indices marked for remove (destroyed asteroids)
 
-    for (int i = 0; i < (asteroids.size() - 1); i++)
+    for (int i = 0; i < asteroids.size(); i++)
     {
         if (asteroids[i] > 0) // Asteroid is flying right
         {
-            if (asteroids[i] > asteroids [i + 1] && asteroids [i + 1] < 0) // If asteroid is bigger than the one on the right, and the one on the right is flying left destroy it
+            // abs() to get absolute values to compare asteroid sizes
+            if (abs(asteroids[i]) > abs(asteroids [i + 1]) && asteroids [i + 1] < 0) // If asteroid is bigger than the one on the right, and the one on the right is flying left destroy it
             {
-                // Add indices to indicesToErase
+                indicesToErase.push_back(i);
             } 
-            else if (asteroids[i] == asteroids[i + 1]) // If asteroid is the same size as the one on the right, and the one on the right is flying left destroy both
+            else if (abs(asteroids[i]) == abs(asteroids[i + 1]) && asteroids [i + 1] < 0) // If asteroid is the same size as the one on the right, and the one on the right is flying left destroy both
             {
-                // Add indices to indicesToErase
+                indicesToErase.push_back(i);
+                indicesToErase.push_back(i + 1);
+                i++;
+            }
+            else // If asteroid to the right goes flying right
+            {
+                break;
             }
         } 
+
+        printVectorInt(indicesToErase);
     }
     
     /*
@@ -56,7 +65,14 @@ int main()
     std::vector<int> asteroids1 = { 8, -8 };
     std::vector<int> asteroids2 = { 10, 2, -5 };
 
-    printVectorInt(asteroidCollision(asteroids0)); // Expected output: [5,10]
-    printVectorInt(asteroidCollision(asteroids1)); // Expected output: []
-    printVectorInt(asteroidCollision(asteroids2)); // Expected output: [10]
+    std::cout << "0:\n";
+    asteroidCollision(asteroids0);
+    std::cout << "1:\n";
+    asteroidCollision(asteroids1);
+    std::cout << "2:\n";
+    asteroidCollision(asteroids2);
+
+    //printVectorInt(asteroidCollision(asteroids0)); // Expected output: [5,10]
+    //printVectorInt(asteroidCollision(asteroids1)); // Expected output: []
+    //printVectorInt(asteroidCollision(asteroids2)); // Expected output: [10]
 }
