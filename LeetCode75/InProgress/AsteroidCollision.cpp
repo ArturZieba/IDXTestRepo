@@ -26,19 +26,23 @@ std::vector<int> asteroidCollision(std::vector<int>& asteroids)
 
     for (int i = 0; i < asteroids.size(); i++)
     {
-        if (asteroid[i] > 0)
+        if (asteroids[i] > 0)
         {
-            indicesToErase.push_back(asteroid[i]);
+            indicesToErase.push_back(asteroids[i]);
         }
         else
         {
-            while (!indicesToErase.empty() && indicesToErase.back() > 0 && indicesToErase.back() < abs(asteroid[i]))
+            while (!indicesToErase.empty() && indicesToErase.back() > 0 && indicesToErase.back() < abs(asteroids[i]))
             {
                 indicesToErase.pop_back();
             }
-            if (!indicesToErase.empty() && indices.back() < 0)
+            if (!indicesToErase.empty() && abs(indicesToErase.back()) == abs(asteroids[i]))
             {
-                
+                indicesToErase.pop_back();
+            } 
+            else if (indicesToErase.empty() || indicesToErase.back() < 0) 
+            {
+                indicesToErase.push_back(asteroids[i]);
             }
         }
 
@@ -69,7 +73,7 @@ std::vector<int> asteroidCollision(std::vector<int>& asteroids)
         //printVectorInt(indicesToErase);
     }
 
-    return asteroids;
+    return indicesToErase;
 } 
 
 int main()
