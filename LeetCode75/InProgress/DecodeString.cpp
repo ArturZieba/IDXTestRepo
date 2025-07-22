@@ -5,7 +5,14 @@
 
 std::string decodeString (std::string s)
 {
-    return s;
+    std::string decodedString = "";
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        decodedString.push_back(s[i]);
+    }
+
+    return decodedString;
 }
 
 int main()
