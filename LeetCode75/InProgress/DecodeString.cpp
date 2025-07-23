@@ -9,7 +9,10 @@ std::string decodeString (std::string s)
 
     for (int i = 0; i < s.size(); i++)
     {
-        decodedString.push_back(s[i]);
+        if(((s[i] - '0') >= 0) && ((s[i] - '0') <= 10))
+        {
+            decodedString.push_back(s[i]);
+        }
     }
 
     return decodedString;
