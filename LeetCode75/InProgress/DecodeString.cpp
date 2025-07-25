@@ -10,17 +10,21 @@ std::string decodeString (std::string s)
 
     for (int i = 0; i < s.size(); i++)
     {
+        if(s[i] >= 'a' && s[i] <= 'z')
+        {
+            decodedString.push_back(s[i]);
+        }
         if(s[i] == '[')
         {
             repetition = s[i - 1] - '0'; // char - '0' returns an int
         }
         else if(s[i] == ']')
         {
-            while(repetition > 0)
+            /*while(repetition > 0)
             {
-                decodedString.push_back(s[i]);
+                decodedString.push_back(s[i + repetition]);
                 repetition--;
-            }
+            }*/
         }
     }
 
