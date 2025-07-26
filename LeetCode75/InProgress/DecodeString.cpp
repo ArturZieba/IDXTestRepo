@@ -7,6 +7,7 @@ std::string decodeString (std::string s)
 {
     std::string decodedString = "";
     int repetition = 0; // Integer before []
+    int nestedBracket = 0; // Number of [] sets 
 
     for (int i = 0; i < s.size(); i++)
     {
@@ -16,15 +17,23 @@ std::string decodeString (std::string s)
         }
         if(s[i] == '[')
         {
-            repetition = s[i - 1] - '0'; // char - '0' returns an int
+            nestedBracket++;
+            if(nestedBracket == 1)
+            {
+                repetition = s[i - 1] - '0'; // char - '0' returns an int
+            }
         }
         else if(s[i] == ']')
         {
-            /*while(repetition > 0)
+            nestedBracket--;
+            if(nestedBracket == 0)
             {
-                decodedString.push_back(s[i + repetition]);
-                repetition--;
-            }*/
+                while(repetition > 0)
+                {
+                    decodedString.push_back(s[i - 1]);
+                    repetition--;
+                }
+            }
         }
     }
 
