@@ -10,11 +10,18 @@ public:
     {
     }
 
+    std::vector<int> recentPings = {};
+
     int ping(int t)
     {
-        int Counter = 0;
-        std::vector<int> recentPings = {};
         recentPings.push_back(t);
+
+        // If there is a recent ping and the front ping is smaller than the difference between current ping and 3000ms (more then 3000ms difference)
+        while(!recentPings.empty() && recentPings.front() < t - 3000)
+        {
+            // Remove the front ping
+            recentPings.erase(recentPings.begin());
+        }
 
         return recentPings.size();
     }
@@ -22,8 +29,7 @@ public:
 
 int main()
 {
-    // Expected output: [null, 1, 2, 3, 3]
-    RecentCounter* recentCounter = new RecentCounter(); // Expected output: null
+    RecentCounter* recentCounter = new RecentCounter();
     std::cout << recentCounter->ping(1) << '\n'; // Expected output: 1
     std::cout << recentCounter->ping(100) << '\n'; // Expected output: 2
     std::cout << recentCounter->ping(3001) << '\n'; // Expected output: 3
