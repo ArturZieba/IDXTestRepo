@@ -2,10 +2,11 @@
 
 #include <iostream>
 #include <string>
+#include <queue>
 
 std::string predictPartyVictory(std::string senate)
 {
-    while (!senate.find("R") || !senate.find("D"))
+    /*while (senate.find("R") || senate.find("D"))
     {
         for (int i = 0; i < senate.size(); i++)
         {
@@ -19,16 +20,21 @@ std::string predictPartyVictory(std::string senate)
             }
             else if(senate[i] - '0' == 'R')
             {
-                //senate.pop_back(senate.find("D"));
+                senate.erase(senate.find("D"));
             }
             else if(senate[i] - '0' == 'D')
             {
-                //senate.pop_back(senate.find("R"));
+                senate.erase(senate.find("R"));
             }
         }
-    }
+    }*/
 
-    return senate;
+    std::queue<int> test;
+    test.push(1);
+    test.push(2);
+    test.push(3); 
+
+    return std::to_string(test.back());
 }
 
 int main()
