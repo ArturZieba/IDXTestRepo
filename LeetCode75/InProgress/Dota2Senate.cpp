@@ -6,6 +6,21 @@
 
 std::string predictPartyVictory(std::string senate)
 {
+    std::queue<int> radiantSenators;
+    std::queue<int> direSenators;
+
+    for (int i = 0; i < senate.size(); i++)
+    {
+        if(senate[i] == 'R')
+        {
+            radiantSenators.push(i);
+        }
+        else if(senate[i] == 'D')
+        {
+            direSenators.push(i);
+        }
+    }
+
     /*while (senate.find("R") || senate.find("D"))
     {
         for (int i = 0; i < senate.size(); i++)
@@ -29,12 +44,7 @@ std::string predictPartyVictory(std::string senate)
         }
     }*/
 
-    std::queue<int> test;
-    test.push(1);
-    test.push(2);
-    test.push(3); 
-
-    return std::to_string(test.back());
+    return std::to_string(direSenators.back());
 }
 
 int main()
