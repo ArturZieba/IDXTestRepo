@@ -21,28 +21,11 @@ std::string predictPartyVictory(std::string senate)
         }
     }
 
-    /*while (senate.find("R") || senate.find("D"))
+    while (!radiantSenators.empty() && !direSenators.empty())
     {
-        for (int i = 0; i < senate.size(); i++)
-        {
-            if(senate[i] - '0' == 'R' && !senate.find("D"))
-            {
-                return "Radiant";
-            }
-            else if(senate[i] - '0' == 'D' && !senate.find("R"))
-            {
-                return "Dire";
-            }
-            else if(senate[i] - '0' == 'R')
-            {
-                senate.erase(senate.find("D"));
-            }
-            else if(senate[i] - '0' == 'D')
-            {
-                senate.erase(senate.find("R"));
-            }
-        }
-    }*/
+        radiantSenators.pop();
+        direSenators.pop();
+    }
 
     return std::to_string(direSenators.back());
 }
