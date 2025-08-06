@@ -25,9 +25,18 @@ std::string predictPartyVictory(std::string senate)
     {
         radiantSenators.pop();
         direSenators.pop();
+
+        if (radiantSenators.front() < direSenators.front())
+        {
+            radiantSenators.push(radiantSenators.front() + senate.size());
+        }
+        else
+        {
+            direSenators.push(direSenators.front() + senate.size());
+        }
     }
 
-    return std::to_string(direSenators.back());
+    return radiantSenators.empty() ? "Dire" : "Radiant";
 }
 
 int main()
