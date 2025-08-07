@@ -23,16 +23,19 @@ std::string predictPartyVictory(std::string senate)
 
     while (!radiantSenators.empty() && !direSenators.empty())
     {
+        int radiantFrontIndex = radiantSenators.front();
+        int direFrontIndex = direSenators.front();
+
         radiantSenators.pop();
         direSenators.pop();
 
         if (radiantSenators.front() < direSenators.front())
         {
-            radiantSenators.push(radiantSenators.front() + senate.size());
+            radiantSenators.push(radiantFrontIndex + senate.size());
         }
         else
         {
-            direSenators.push(direSenators.front() + senate.size());
+            direSenators.push(direFrontIndex + senate.size());
         }
     }
 
