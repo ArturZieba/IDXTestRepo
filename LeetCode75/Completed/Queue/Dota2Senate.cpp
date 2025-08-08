@@ -29,12 +29,15 @@ std::string predictPartyVictory(std::string senate)
         radiantSenators.pop();
         direSenators.pop();
 
-        if (radiantSenators.front() < direSenators.front())
+        // If radiant senator is in front of the dire senator in queue
+        if (radiantFrontIndex < direFrontIndex)
         {
+            // Radiant senator wins (bans dire senator) and gets back at the end of the queue
             radiantSenators.push(radiantFrontIndex + senate.size());
         }
-        else
+        else // If dire senator is in front of the radiant senator in queue
         {
+            // Dire senator wins (bans radiant senator) and gets back at the end of the queue
             direSenators.push(direFrontIndex + senate.size());
         }
     }
@@ -47,6 +50,6 @@ int main()
     std::string senate0 = "RD";
     std::string senate1 = "RDD"; 
 
-    std::cout << predictPartyVictory(senate0); // Expected output: "Radiant"
-    std::cout << predictPartyVictory(senate1); // Expected output: "Dire"
+    std::cout << predictPartyVictory(senate0) << '\n'; // Expected output: "Radiant"
+    std::cout << predictPartyVictory(senate1) << '\n'; // Expected output: "Dire"
 }
