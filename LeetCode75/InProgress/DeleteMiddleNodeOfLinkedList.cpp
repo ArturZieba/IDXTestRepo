@@ -6,7 +6,6 @@
 
 struct ListNode
 {
-    
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
@@ -52,7 +51,6 @@ std::tuple <ListNode*, ListNode*> initializeLinkedList(std::vector<int> values, 
 
 int main()
 {   
-    // Move reusable code from LinkedList/ReverseLinkedList.cpp to Headers
     std::vector<int> head0Values = {1, 3, 4, 7, 1, 2, 6}; // head0 = [1,3,4,7,1,2,6]
     ListNode* head0 = nullptr;
     ListNode* current0 = nullptr;
