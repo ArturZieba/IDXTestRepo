@@ -80,6 +80,7 @@ std::tuple <ListNode*, ListNode*> initializeLinkedList(std::vector<int> values, 
     return {head, current};
 }
 
+// Print linked list contents
 void printLinkedList(ListNode* current)
 {
     std::cout << "[";
@@ -99,7 +100,7 @@ void printLinkedList(ListNode* current)
 }
 
 /*
-// Initialize linked list and print them
+    // Initialize linked list and print it
     std::vector<int> head0Values = {1, 2, 3, 4, 5}; // head = [1,2,3,4,5]
     ListNode* head0 = nullptr;
     ListNode* current0 = nullptr;
