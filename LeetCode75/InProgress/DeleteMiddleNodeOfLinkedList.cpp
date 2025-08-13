@@ -15,26 +15,30 @@ struct ListNode
 
 ListNode* deleteMiddle(ListNode* head)
 {
-    ListNode* placeholderNode = new ListNode(0, head);
-
-    ListNode* singlePointer = placeholderNode;
-    ListNode* doublePointer = head;
-
-    while(doublePointer && doublePointer->next)
+    if (head->next == nullptr)
     {
-        singlePointer = singlePointer->next;
-        doublePointer = doublePointer->next->next;
+        return nullptr;
     }
 
-    ListNode* pointerDelete = singlePointer->next;
-    singlePointer->next = singlePointer->next->next;
+    int count = 0;
+    ListNode *n1 = head, *n2 = head;
 
-    delete pointerDelete;
+    while (n1 != nullptr)
+    {
+        count++;
+        n1 = n1->next;
+    }
 
-    ListNode* updatedHead = placeholderNode->next;
-    delete placeholderNode;
+    int middleIndex = count / 2;
 
-    return updatedHead;
+    for (int i = 0; i < middleIndex - 1; ++i)
+    {
+        n2 = n2->next;
+    }
+
+    n2->next = n2->next->next;
+
+    return head;
 }
 
 std::tuple <ListNode*, ListNode*> initializeLinkedList(std::vector<int> values, ListNode* head, ListNode* current)
@@ -82,11 +86,11 @@ int main()
     ListNode* head0 = nullptr;
     ListNode* current0 = nullptr;
 
-    std::tuple initializedLinkedList0 = initializeLinkedList(head0Values, head0, current0);
-    head0 = std::get<0>(initializedLinkedList0);
-    current0 = std::get<1>(initializedLinkedList0);
+    //std::tuple initializedLinkedList0 = initializeLinkedList(head0Values, head0, current0);
+    //head0 = std::get<0>(initializedLinkedList0);
+    //current0 = std::get<1>(initializedLinkedList0);
     deleteMiddle(head0);
-    printLinkedList(current0); // Expected Output: [1,3,4,1,2,6]
+    printLinkedList(head0); // Expected Output: [1,3,4,1,2,6]
 
 /*
 head0 = [1,3,4,7,1,2,6]
