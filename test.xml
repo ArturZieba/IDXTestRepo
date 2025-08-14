@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weapon>
+    <name>"Broken Labrys"</name>
+    <rarity>Common</rarity>
+    <properties>
+    <hands>2</hands>
+    <type>Axe</type>
+        <damage>
+            <physical>"1 - 3"</physical>
+        </damage>
+        <attackspersecond>"1"</attackspersecond>
+        <criticalstrikechance>"0.1"</criticalstrikechance>
+        <criticalstrikemultiplier>"2"</criticalstrikemultiplier>
+    </properties>
+    <requirements>
+        <level>"1"</level>
+        <strength>"10"</strength>
+    </requirements>
+    <mods></mods>
+</weapon>
