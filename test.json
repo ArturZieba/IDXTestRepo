@@ -1,10 +1,8 @@
 {
     "name": "Broken Labrys",
     "rarity": "Common",
+    "type": "Two Handed Axe",
     "properties": [
-        {
-            "type": "Two Handed Axe"
-        },
         {
             "name": "Physical Damage",
             "values": "1 - 3",
