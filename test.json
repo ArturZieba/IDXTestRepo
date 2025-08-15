@@ -1,0 +1,39 @@
+{
+    "name": "Broken Labrys",
+    "rarity": "Common",
+    "properties": [
+        {
+            "type": "Two Handed Axe"
+        },
+        {
+            "name": "Physical Damage",
+            "values": "1 - 3",
+            "_commentValueMin": "1",
+            "_commentValueMax": "3"
+        },
+        {
+            "name": "Attacks Per Second",
+            "values": "1"
+        },
+        {
+            "name": "Critical Strike Chance",
+            "values": "0.1"
+        },
+        {
+            "name": "Critical Strike Multiplier",
+            "values": "2"
+        }
+    ],
+    "requirements": [
+        {
+            "name": "Level",
+            "values": "1"
+        },
+        {
+            "name": "Strength",
+            "values": "10"
+        }
+    ],
+    "mods":
+    []
+}
