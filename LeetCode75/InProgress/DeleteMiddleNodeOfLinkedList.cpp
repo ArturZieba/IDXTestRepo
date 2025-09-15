@@ -3,7 +3,7 @@
 #include <iostream>
 #include <tuple>
 #include <vector>
-
+/*
 struct ListNode
 {
     int val;
@@ -78,10 +78,13 @@ void printLinkedList(ListNode* current)
     
     std::cout << "]\n";
 }
-
+*/
 int main()
-{   
-// Initialize linked list and print it
+{ 
+    std::cout << "Test";
+
+    /*
+    // Initialize linked list and print it
     std::vector<int> head0Values = {1, 3, 4, 7, 1, 2, 6}; // head0 = [1,3,4,7,1,2,6]
     ListNode* head0 = nullptr;
     ListNode* current0 = nullptr;
@@ -91,7 +94,7 @@ int main()
     //current0 = std::get<1>(initializedLinkedList0);
     deleteMiddle(head0);
     printLinkedList(head0); // Expected Output: [1,3,4,1,2,6]
-
+    */
 /*
 head0 = [1,3,4,7,1,2,6]
 // Expected output: [1,3,4,1,2,6]
