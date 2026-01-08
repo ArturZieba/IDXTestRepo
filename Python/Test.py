@@ -68,6 +68,7 @@ print(tab_string)
 print('========\n')
 
 modified_string = 'Hello World\t 123'
+print(modified_string)
 print(modified_string.lower())
 print(modified_string.upper())
 print(len(modified_string))
