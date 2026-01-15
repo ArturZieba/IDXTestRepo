@@ -1,14 +1,21 @@
+import random # For def randominteger
+
+# Roll a random integer in min/max range
+def randominteger(min, max):
+    generatedinteger = random.randint(min, max)
+    return generatedinteger
+
 class Player:
-    Health = 20
-    Damage = 3 # Make random
+    health = 20
+    damage = randominteger(2, 5)
 
 class Enemy:
-    Health = 10
-    Damage = 2 # Make random
+    health = 10
+    damage = randominteger(1, 3)
 
 # Spawn random objects (enemies)
 
-print(Player.Health)
-print(Player.Damage)
-print(Enemy.Health)
-print(Enemy.Damage)
+print(Player.health)
+print(Player.damage)
+print(Enemy.health)
+print(Enemy.damage)
