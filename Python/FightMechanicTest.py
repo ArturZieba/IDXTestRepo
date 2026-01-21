@@ -11,6 +11,9 @@ class Player:
     damage = randominteger(2, 5)
     attackspeed = 1.5
 
+    def attack(damage):
+        Enemy.receivedamage(damage)
+
 class Enemy:
     health = 10
     damage = randominteger(1, 3)
@@ -28,12 +31,16 @@ class Enemy:
 # Spawn random objects (enemies)
 
 timestart = time.time()
-print(Player.health)
-print(Player.damage)
-print(Player.attackspeed)
-print(Enemy.health)
-print(Enemy.damage)
-print(Enemy.attackspeed)
-Enemy.receivedamage(111)
-print(Enemy.health)
+#print(Player.health)
+#print(Player.damage)
+#print(Player.attackspeed)
+
+#print(Enemy.health)
+#print(Enemy.damage)
+#print(Enemy.attackspeed)
+
+while (Enemy.health > 0):
+    Player.attack(Player.damage)
+    print(Enemy.health)
+
 print(time.time() - timestart)
