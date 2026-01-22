@@ -14,19 +14,31 @@ class Player:
     def attack(damage):
         Enemy.receivedamage(damage)
 
+    def receivedamage(damage):
+        Player.health -= damage
+        
+        if (Player.health <= 0):
+            Player.death()
+
+    def death():
+        print("Player dead")
+
 class Enemy:
     health = 10
     damage = randominteger(1, 3)
     attackspeed = 1
 
-    def death():
-        print("Enemy dead")
+    def attack(damage):
+        Player.receivedamage(damage)
 
     def receivedamage(damage):
         Enemy.health -= damage
         
         if (Enemy.health <= 0):
             Enemy.death()
+
+    def death():
+        print("Enemy dead")
 
 # Spawn random objects (enemies)
 
@@ -38,6 +50,10 @@ timestart = time.time()
 #print(Enemy.health)
 #print(Enemy.damage)
 #print(Enemy.attackspeed)
+
+while (Player.health > 0):
+    Enemy.attack(Enemy.damage)
+    print(Player.health)
 
 while (Enemy.health > 0):
     Player.attack(Player.damage)
