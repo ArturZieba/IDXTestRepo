@@ -51,12 +51,12 @@ timestart = time.time()
 #print(Enemy.damage)
 #print(Enemy.attackspeed)
 
-while (Player.health > 0):
-    Enemy.attack(Enemy.damage)
-    print(Player.health)
+# Game loop
+while (True):
+    print("Ping")
+    #if(time.time() - timestart == Player.attackspeed):
+    #    Player.attack(Player.damage)
+    #elif(time.time() - timestart == Enemy.attackspeed):
+    #    Enemy.attack(Enemy.damage)
 
-while (Enemy.health > 0):
-    Player.attack(Player.damage)
-    print(Enemy.health)
-
-print(time.time() - timestart)
+#print(time.time() - timestart)
