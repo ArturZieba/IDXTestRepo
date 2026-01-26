@@ -51,9 +51,13 @@ timestart = time.time()
 #print(Enemy.damage)
 #print(Enemy.attackspeed)
 
+starttime = time.monotonic()
+
 # Game loop
 while (True):
     print("Ping")
+
+    time.sleep(1.0 - ((time.monotonic() - starttime) % 1.0))
     #if(time.time() - timestart == Player.attackspeed):
     #    Player.attack(Player.damage)
     #elif(time.time() - timestart == Enemy.attackspeed):
