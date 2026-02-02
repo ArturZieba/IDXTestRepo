@@ -14,6 +14,13 @@ def player_thread_function():
         time.sleep(Player.attackspeed)
         #Check for enemy death
 
+def enemy_thread_function():
+    while True:
+        print("Enemy attacking")
+        Enemy.attack(Enemy.damage)
+        time.sleep(Enemy.attackspeed)
+        #Check for enemy death
+
 class Player:
     health = 20
     damage = randominteger(2, 5)
@@ -50,7 +57,10 @@ class Enemy:
 
 if __name__ == "__main__":
     x = threading.Thread(target=player_thread_function)
+    y = threading.Thread(target=enemy_thread_function)
     x.start()
+    y.start()
+    #Add console close without ctrl+c
  
 # Spawn random objects (enemies)
 
