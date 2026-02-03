@@ -8,14 +8,14 @@ def randominteger(min, max):
     return generatedinteger
 
 def player_thread_function():
-    while True:
+    while Player.isalive == True:
         print("Player attacking")
         Player.attack(Player.damage)
         time.sleep(Player.attackspeed)
         #Check for enemy death
 
 def enemy_thread_function():
-    while True:
+    while Enemy.isalive == True:
         print("Enemy attacking")
         Enemy.attack(Enemy.damage)
         time.sleep(Enemy.attackspeed)
@@ -25,6 +25,7 @@ class Player:
     health = 20
     damage = randominteger(2, 5)
     attackspeed = 1.5
+    isalive = True
 
     def attack(damage):
         Enemy.receivedamage(damage)
@@ -37,11 +38,13 @@ class Player:
 
     def death():
         print("Player dead")
+        Player.isalive = False
 
 class Enemy:
     health = 10
     damage = randominteger(1, 3)
     attackspeed = 1
+    isalive = True
 
     def attack(damage):
         Player.receivedamage(damage)
@@ -54,12 +57,14 @@ class Enemy:
 
     def death():
         print("Enemy dead")
+        Enemy.isalive = False
+        
 
 if __name__ == "__main__":
-    x = threading.Thread(target=player_thread_function)
-    y = threading.Thread(target=enemy_thread_function)
-    x.start()
-    y.start()
+    player_thread = threading.Thread(target=player_thread_function)
+    enemy_thread = threading.Thread(target=enemy_thread_function)
+    player_thread.start()
+    enemy_thread.start()
     #Add console close without ctrl+c
  
 # Spawn random objects (enemies)
