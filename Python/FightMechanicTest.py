@@ -8,14 +8,14 @@ def randominteger(min, max):
     return generatedinteger
 
 def player_thread_function():
-    while Player.isalive == True:
+    while Player.isalive == True and Enemy.isalive == True:
         print("Player attacking")
         Player.attack(Player.damage)
         time.sleep(Player.attackspeed)
         #Check for enemy death
 
 def enemy_thread_function():
-    while Enemy.isalive == True:
+    while Enemy.isalive == True and Player.isalive == True:
         print("Enemy attacking")
         Enemy.attack(Enemy.damage)
         time.sleep(Enemy.attackspeed)
