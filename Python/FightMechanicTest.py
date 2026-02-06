@@ -12,28 +12,29 @@ def player_thread_function():
         print("Player attacking")
         Player.attack(Player.damage)
         time.sleep(Player.attackspeed)
-        #Check for enemy death
 
 def enemy_thread_function():
     while Enemy.isalive == True and Player.isalive == True:
         print("Enemy attacking")
         Enemy.attack(Enemy.damage)
         time.sleep(Enemy.attackspeed)
-        #Check for enemy death
 
 class Player:
-    health = 20
+    maximumhealth = 20
+    currenthealth = maximumhealth
     damage = randominteger(2, 5)
     attackspeed = 1.5
     isalive = True
 
     def attack(damage):
         Enemy.receivedamage(damage)
+        # Print damage
 
     def receivedamage(damage):
-        Player.health -= damage
+        Player.currenthealth -= damage
+        print(f"Player health: {Player.currenthealth} / {Player.maximumhealth}")
         
-        if (Player.health <= 0):
+        if (Player.currenthealth <= 0):
             Player.death()
 
     def death():
@@ -41,7 +42,8 @@ class Player:
         Player.isalive = False
 
 class Enemy:
-    health = 10
+    maximumhealth = 10
+    currenthealth = maximumhealth
     damage = randominteger(1, 3)
     attackspeed = 1
     isalive = True
@@ -49,10 +51,13 @@ class Enemy:
     def attack(damage):
         Player.receivedamage(damage)
 
+        # Print damage
+
     def receivedamage(damage):
-        Enemy.health -= damage
+        Enemy.currenthealth -= damage
+        print(f"Enemy health: {Enemy.currenthealth} / {Enemy.maximumhealth}")
         
-        if (Enemy.health <= 0):
+        if (Enemy.currenthealth <= 0):
             Enemy.death()
 
     def death():
