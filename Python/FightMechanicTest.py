@@ -28,7 +28,7 @@ class Player:
 
     def attack(damage):
         Enemy.receivedamage(damage)
-        # Print damage
+        print(f"Player damage dealt: {Player.damage}")
 
     def receivedamage(damage):
         Player.currenthealth -= damage
@@ -50,8 +50,7 @@ class Enemy:
 
     def attack(damage):
         Player.receivedamage(damage)
-
-        # Print damage
+        print(f"Enemy damage dealt: {Enemy.damage}")
 
     def receivedamage(damage):
         Enemy.currenthealth -= damage
