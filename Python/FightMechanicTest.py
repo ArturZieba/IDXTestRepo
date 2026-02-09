@@ -1,5 +1,5 @@
 import random # For def randominteger
-import threading
+import threading # For threading.Thread()
 import time # For time()
 
 # Roll a random integer in min/max range
@@ -23,7 +23,7 @@ class Player:
     maximumhealth = 20
     currenthealth = maximumhealth
     damage = randominteger(2, 5)
-    attackspeed = 1.5
+    attackspeed = 0.5
     isalive = True
 
     def attack(damage):
@@ -63,27 +63,9 @@ class Enemy:
         print("Enemy dead")
         Enemy.isalive = False
         
-
 if __name__ == "__main__":
     player_thread = threading.Thread(target=player_thread_function)
     enemy_thread = threading.Thread(target=enemy_thread_function)
     player_thread.start()
     enemy_thread.start()
     #Add console close without ctrl+c
- 
-# Spawn random objects (enemies)
-
-#timestart = time.time()
-#starttime = time.monotonic()
-
-# Game loop
-#while (True):
-    #print("Ping")
-
-    #time.sleep(Player.attackspeed - ((time.monotonic() - starttime) % Player.attackspeed))
-    #if(time.time() - timestart == Player.attackspeed):
-    #    Player.attack(Player.damage)
-    #elif(time.time() - timestart == Enemy.attackspeed):
-    #    Enemy.attack(Enemy.damage)
-
-#print(time.time() - timestart)
