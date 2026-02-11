@@ -30,26 +30,30 @@ class Player:
         Player.isalive = False
 
 class Enemy:
-    maximumhealth = 10
-    currenthealth = maximumhealth
-    damage = randominteger(1, 3)
-    attackspeed = 1
-    isalive = True
+    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
+        self.name, self.maximumhealth, self.currenthealth, self. damage, self.attackspeed, self.isalive = name, maximumhealth, currenthealth, damage, attackspeed, isalive
 
-    def attack(damage):
-        Player.receivedamage(damage)
-        print(f"Enemy damage dealt: {Enemy.damage}")
+    #def attack(damage):
+    #    Player.receivedamage(damage)
+    #    print(f"Enemy damage dealt: {Enemy.damage}")
 
-    def receivedamage(damage):
-        Enemy.currenthealth -= damage
-        print(f"Enemy health: {Enemy.currenthealth} / {Enemy.maximumhealth}")
+    #def receivedamage(damage):
+    #    Enemy.currenthealth -= damage
+    #    print(f"Enemy health: {Enemy.currenthealth} / {Enemy.maximumhealth}")
         
-        if (Enemy.currenthealth <= 0):
-            Enemy.death()
+    #   if (Enemy.currenthealth <= 0):
+    #        Enemy.death()
 
-    def death():
-        print("Enemy dead")
-        Enemy.isalive = False
+    #def death():
+    #    print("Enemy dead")
+    #    Enemy.isalive = False
+
+enemyinstance = Enemy()
 
 print(Player.maximumhealth)
-print(Enemy.maximumhealth)
+print(enemyinstance.name)
+print(enemyinstance.maximumhealth)
+print(enemyinstance.currenthealth)
+print(enemyinstance.damage)
+print(enemyinstance.attackspeed)
+print(enemyinstance.isalive)
