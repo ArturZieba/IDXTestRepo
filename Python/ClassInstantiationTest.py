@@ -8,31 +8,28 @@ def randominteger(min, max):
     return generatedinteger
 
 class Player:
-    maximumhealth = 20
-    currenthealth = maximumhealth
-    damage = randominteger(2, 5)
-    attackspeed = 0.5
-    isalive = True
+    def __init__(self, maximumhealth = 10, currenthealth = 10, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
+        self.maximumhealth, self.currenthealth, self. damage, self.attackspeed, self.isalive = maximumhealth, currenthealth, damage, attackspeed, isalive
+#split
+    #def attack(damage):
+    #    Enemy.receivedamage(damage)
+    #    print(f"Player damage dealt: {Player.damage}")
 
-    def attack(damage):
-        Enemy.receivedamage(damage)
-        print(f"Player damage dealt: {Player.damage}")
-
-    def receivedamage(damage):
-        Player.currenthealth -= damage
-        print(f"Player health: {Player.currenthealth} / {Player.maximumhealth}")
+    #def receivedamage(damage):
+    #    Player.currenthealth -= damage
+    #    print(f"Player health: {Player.currenthealth} / {Player.maximumhealth}")
         
-        if (Player.currenthealth <= 0):
-            Player.death()
+    #    if (Player.currenthealth <= 0):
+    #        Player.death()
 
-    def death():
-        print("Player dead")
-        Player.isalive = False
+    #def death():
+    #    print("Player dead")
+    #    Player.isalive = False
 
 class Enemy:
     def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
         self.name, self.maximumhealth, self.currenthealth, self. damage, self.attackspeed, self.isalive = name, maximumhealth, currenthealth, damage, attackspeed, isalive
-
+#split
     #def attack(damage):
     #    Player.receivedamage(damage)
     #    print(f"Enemy damage dealt: {Enemy.damage}")
@@ -48,9 +45,17 @@ class Enemy:
     #    print("Enemy dead")
     #    Enemy.isalive = False
 
+playerinstance = Player()
 enemyinstance = Enemy()
 
-print(Player.maximumhealth)
+print("Player: ")
+print(playerinstance.maximumhealth)
+print(playerinstance.currenthealth)
+print(playerinstance.damage)
+print(playerinstance.attackspeed)
+print(playerinstance.isalive)
+
+print("Enemy: ")
 print(enemyinstance.name)
 print(enemyinstance.maximumhealth)
 print(enemyinstance.currenthealth)
