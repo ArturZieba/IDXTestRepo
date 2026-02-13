@@ -8,9 +8,13 @@ def randominteger(min, max):
     return generatedinteger
 
 class Player:
-    def __init__(self, maximumhealth = 10, currenthealth = 10, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
-        self.maximumhealth, self.currenthealth, self. damage, self.attackspeed, self.isalive = maximumhealth, currenthealth, damage, attackspeed, isalive
-#split
+    def __init__(self, maximumhealth = 10, currenthealth = 10, damage = randominteger(1, 3), attackspeed = 1, isalive = True): 
+        self.maximumhealth = maximumhealth
+        self.currenthealth = currenthealth
+        self. damage = damage
+        self.attackspeed = attackspeed
+        self.isalive = isalive
+
     #def attack(damage):
     #    Enemy.receivedamage(damage)
     #    print(f"Player damage dealt: {Player.damage}")
@@ -28,8 +32,13 @@ class Player:
 
 class Enemy:
     def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
-        self.name, self.maximumhealth, self.currenthealth, self. damage, self.attackspeed, self.isalive = name, maximumhealth, currenthealth, damage, attackspeed, isalive
-#split
+        self.name = name
+        self.maximumhealth = maximumhealth
+        self.currenthealth = currenthealth
+        self. damage = damage
+        self.attackspeed = attackspeed
+        self.isalive = isalive
+
     #def attack(damage):
     #    Player.receivedamage(damage)
     #    print(f"Enemy damage dealt: {Enemy.damage}")
