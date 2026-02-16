@@ -26,9 +26,9 @@ class Player:
     #    if (Player.currenthealth <= 0):
     #        Player.death()
 
-    #def death():
-    #    print("Player dead")
-    #    Player.isalive = False
+    def death(self):
+        print("Player dead")
+        self.isalive = False
 
 class Enemy:
     def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
@@ -50,9 +50,9 @@ class Enemy:
     #   if (Enemy.currenthealth <= 0):
     #        Enemy.death()
 
-    #def death():
-    #    print("Enemy dead")
-    #    Enemy.isalive = False
+    def death(self):
+        print("Enemy dead")
+        self.isalive = False
 
 playerinstance = Player()
 enemyinstance = Enemy()
@@ -63,6 +63,11 @@ print(playerinstance.currenthealth)
 print(playerinstance.damage)
 print(playerinstance.attackspeed)
 print(playerinstance.isalive)
+playerinstance.death()
+
+print(" ")
+print("=======")
+print(" ")
 
 print("Enemy: ")
 print(enemyinstance.name)
@@ -71,3 +76,4 @@ print(enemyinstance.currenthealth)
 print(enemyinstance.damage)
 print(enemyinstance.attackspeed)
 print(enemyinstance.isalive)
+enemyinstance.death()
