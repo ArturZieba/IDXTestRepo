@@ -19,12 +19,12 @@ class Player:
     #    Enemy.receivedamage(damage)
     #    print(f"Player damage dealt: {Player.damage}")
 
-    #def receivedamage(damage):
-    #    Player.currenthealth -= damage
-    #    print(f"Player health: {Player.currenthealth} / {Player.maximumhealth}")
+    def receivedamage(self, damage):
+        self.currenthealth -= damage
+        print(f"Player health: {self.currenthealth} / {self.maximumhealth}")
         
-    #    if (Player.currenthealth <= 0):
-    #        Player.death()
+        if (self.currenthealth <= 0):
+            self.death()
 
     def death(self):
         print("Player dead")
@@ -39,9 +39,9 @@ class Enemy:
         self.attackspeed = attackspeed
         self.isalive = isalive
 
-    #def attack(damage):
-    #    Player.receivedamage(damage)
-    #    print(f"Enemy damage dealt: {Enemy.damage}")
+    def attack(self, target):
+        target.receivedamage(self.damage)
+        print(f"{self.name} damage dealt: {self.damage}")
 
     #def receivedamage(damage):
     #    Enemy.currenthealth -= damage
@@ -76,4 +76,5 @@ print(enemyinstance.currenthealth)
 print(enemyinstance.damage)
 print(enemyinstance.attackspeed)
 print(enemyinstance.isalive)
+enemyinstance.attack(playerinstance)
 enemyinstance.death()
