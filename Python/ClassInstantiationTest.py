@@ -15,9 +15,9 @@ class Player:
         self.attackspeed = attackspeed
         self.isalive = isalive
 
-    #def attack(damage):
-    #    Enemy.receivedamage(damage)
-    #    print(f"Player damage dealt: {Player.damage}")
+    def attack(self, target):
+        target.receivedamage(self.damage)
+        print(f"Player damage dealt: {self.damage}")
 
     def receivedamage(self, damage):
         self.currenthealth -= damage
@@ -43,16 +43,18 @@ class Enemy:
         target.receivedamage(self.damage)
         print(f"{self.name} damage dealt: {self.damage}")
 
-    #def receivedamage(damage):
-    #    Enemy.currenthealth -= damage
-    #    print(f"Enemy health: {Enemy.currenthealth} / {Enemy.maximumhealth}")
+    def receivedamage(self, damage):
+        self.currenthealth -= damage
+        print(f"{self.name} health: {self.currenthealth} / {self.maximumhealth}")
         
-    #   if (Enemy.currenthealth <= 0):
-    #        Enemy.death()
+        if (self.currenthealth <= 0):
+            self.death()
 
     def death(self):
         print("Enemy dead")
         self.isalive = False
+
+# Check random rolls
 
 playerinstance = Player()
 enemyinstance = Enemy()
@@ -63,6 +65,7 @@ print(playerinstance.currenthealth)
 print(playerinstance.damage)
 print(playerinstance.attackspeed)
 print(playerinstance.isalive)
+playerinstance.attack(enemyinstance)
 playerinstance.death()
 
 print(" ")
