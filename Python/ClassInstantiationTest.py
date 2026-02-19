@@ -18,6 +18,7 @@ class Player:
     def attack(self, target):
         target.receivedamage(self.damage)
         print(f"Player damage dealt: {self.damage}")
+        self.damage = randominteger(1, 3)
 
     def receivedamage(self, damage):
         self.currenthealth -= damage
@@ -42,6 +43,7 @@ class Enemy:
     def attack(self, target):
         target.receivedamage(self.damage)
         print(f"{self.name} damage dealt: {self.damage}")
+        self.damage = randominteger(1, 3)
 
     def receivedamage(self, damage):
         self.currenthealth -= damage
@@ -54,7 +56,7 @@ class Enemy:
         print("Enemy dead")
         self.isalive = False
 
-# Check random rolls
+# Move random damage roll into it's own variable/def?
 
 playerinstance = Player()
 enemyinstance = Enemy()
@@ -66,7 +68,7 @@ print(playerinstance.damage)
 print(playerinstance.attackspeed)
 print(playerinstance.isalive)
 playerinstance.attack(enemyinstance)
-playerinstance.death()
+
 
 print(" ")
 print("=======")
@@ -80,4 +82,3 @@ print(enemyinstance.damage)
 print(enemyinstance.attackspeed)
 print(enemyinstance.isalive)
 enemyinstance.attack(playerinstance)
-enemyinstance.death()
