@@ -32,18 +32,20 @@ class Player:
         self.isalive = False
 
 class Enemy:
-    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
+    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
         self.name = name
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
-        self. damage = damage
+        self.damagemin = damagemin
+        self.damagemax = damagemax
+        self.damage = damage
         self.attackspeed = attackspeed
         self.isalive = isalive
 
     def attack(self, target):
         target.receivedamage(self.damage)
         print(f"{self.name} damage dealt: {self.damage}")
-        self.damage = randominteger(1, 3)
+        self.damage = randominteger(self.damagemin, self.damagemax)
 
     def receivedamage(self, damage):
         self.currenthealth -= damage
@@ -69,7 +71,6 @@ print(playerinstance.attackspeed)
 print(playerinstance.isalive)
 playerinstance.attack(enemyinstance)
 
-
 print(" ")
 print("=======")
 print(" ")
@@ -81,4 +82,9 @@ print(enemyinstance.currenthealth)
 print(enemyinstance.damage)
 print(enemyinstance.attackspeed)
 print(enemyinstance.isalive)
+enemyinstance.attack(playerinstance)
+enemyinstance.attack(playerinstance)
+enemyinstance.attack(playerinstance)
+enemyinstance.attack(playerinstance)
+enemyinstance.attack(playerinstance)
 enemyinstance.attack(playerinstance)
