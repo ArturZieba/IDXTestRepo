@@ -60,8 +60,6 @@ class Enemy:
         print("Enemy dead")
         self.isalive = False
 
-# Move random damage roll into it's own variable/def?
-
 playerinstance = Player()
 enemyinstance = Enemy()
 

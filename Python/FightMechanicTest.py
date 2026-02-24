@@ -20,52 +20,90 @@ def enemy_thread_function():
         time.sleep(Enemy.attackspeed)
 
 class Player:
-    maximumhealth = 20
-    currenthealth = maximumhealth
-    damage = randominteger(2, 5)
-    attackspeed = 0.5
-    isalive = True
+    def __init__(self, maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, damage = randominteger(1, 3), attackspeed = 1, isalive = True): 
+        self.maximumhealth = maximumhealth
+        self.currenthealth = currenthealth
+        self.damagemin = damagemin
+        self.damagemax = damagemax
+        self.damage = damage
+        self.attackspeed = attackspeed
+        self.isalive = isalive
 
-    def attack(damage):
-        Enemy.receivedamage(damage)
-        print(f"Player damage dealt: {Player.damage}")
+    def attack(self, target):
+        target.receivedamage(self.damage)
+        print(f"Player damage dealt: {self.damage}")
+        self.damage = randominteger(self.damagemin, self.damagemax)
 
-    def receivedamage(damage):
-        Player.currenthealth -= damage
-        print(f"Player health: {Player.currenthealth} / {Player.maximumhealth}")
+    def receivedamage(self, damage):
+        self.currenthealth -= damage
+        print(f"Player health: {self.currenthealth} / {self.maximumhealth}")
         
-        if (Player.currenthealth <= 0):
-            Player.death()
+        if (self.currenthealth <= 0):
+            self.death()
 
-    def death():
+    def death(self):
         print("Player dead")
-        Player.isalive = False
+        self.isalive = False
 
 class Enemy:
-    maximumhealth = 10
-    currenthealth = maximumhealth
-    damage = randominteger(1, 3)
-    attackspeed = 1
-    isalive = True
+    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
+        self.name = name
+        self.maximumhealth = maximumhealth
+        self.currenthealth = currenthealth
+        self.damagemin = damagemin
+        self.damagemax = damagemax
+        self.damage = damage
+        self.attackspeed = attackspeed
+        self.isalive = isalive
 
-    def attack(damage):
-        Player.receivedamage(damage)
-        print(f"Enemy damage dealt: {Enemy.damage}")
+    def attack(self, target):
+        target.receivedamage(self.damage)
+        print(f"{self.name} damage dealt: {self.damage}")
+        self.damage = randominteger(self.damagemin, self.damagemax)
 
-    def receivedamage(damage):
-        Enemy.currenthealth -= damage
-        print(f"Enemy health: {Enemy.currenthealth} / {Enemy.maximumhealth}")
+    def receivedamage(self, damage):
+        self.currenthealth -= damage
+        print(f"{self.name} health: {self.currenthealth} / {self.maximumhealth}")
         
-        if (Enemy.currenthealth <= 0):
-            Enemy.death()
+        if (self.currenthealth <= 0):
+            self.death()
 
-    def death():
+    def death(self):
         print("Enemy dead")
-        Enemy.isalive = False
+        self.isalive = False
+
+playerinstance = Player()
+enemyinstance = Enemy()
+
+print("Player: ")
+print(playerinstance.maximumhealth)
+print(playerinstance.currenthealth)
+print(playerinstance.damage)
+print(playerinstance.attackspeed)
+print(playerinstance.isalive)
+playerinstance.attack(enemyinstance)
+playerinstance.attack(enemyinstance)
+playerinstance.attack(enemyinstance)
+playerinstance.attack(enemyinstance)
+playerinstance.attack(enemyinstance)
+playerinstance.attack(enemyinstance)
+
+print(" ")
+print("!=======!")
+print(" ")
+
+print("Enemy: ")
+print(enemyinstance.name)
+print(enemyinstance.maximumhealth)
+print(enemyinstance.currenthealth)
+print(enemyinstance.damage)
+print(enemyinstance.attackspeed)
+print(enemyinstance.isalive)
+enemyinstance.attack(playerinstance)
         
-if __name__ == "__main__":
-    player_thread = threading.Thread(target=player_thread_function)
-    enemy_thread = threading.Thread(target=enemy_thread_function)
-    player_thread.start()
-    enemy_thread.start()
-    #Add console close without ctrl+c
+#if __name__ == "__main__":
+#    player_thread = threading.Thread(target=player_thread_function)
+#    enemy_thread = threading.Thread(target=enemy_thread_function)
+#    player_thread.start()
+#    enemy_thread.start()
+#    #Add console close without ctrl+c
