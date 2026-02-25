@@ -7,17 +7,7 @@ def randominteger(min, max):
     generatedinteger = random.randint(min, max)
     return generatedinteger
 
-def player_thread_function():
-    while Player.isalive == True and Enemy.isalive == True:
-        print("Player attacking")
-        Player.attack(Player.damage)
-        time.sleep(Player.attackspeed)
 
-def enemy_thread_function():
-    while Enemy.isalive == True and Player.isalive == True:
-        print("Enemy attacking")
-        Enemy.attack(Enemy.damage)
-        time.sleep(Enemy.attackspeed)
 
 class Player:
     def __init__(self, maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, damage = randominteger(1, 3), attackspeed = 1, isalive = True): 
@@ -74,36 +64,29 @@ class Enemy:
 
 playerinstance = Player()
 enemyinstance = Enemy()
-
-print("Player: ")
-print(playerinstance.maximumhealth)
-print(playerinstance.currenthealth)
-print(playerinstance.damage)
-print(playerinstance.attackspeed)
-print(playerinstance.isalive)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-
-print(" ")
-print("!=======!")
-print(" ")
-
-print("Enemy: ")
-print(enemyinstance.name)
-print(enemyinstance.maximumhealth)
-print(enemyinstance.currenthealth)
-print(enemyinstance.damage)
-print(enemyinstance.attackspeed)
-print(enemyinstance.isalive)
-enemyinstance.attack(playerinstance)
         
+def player_thread_function(player, enemy):
+    while player.isalive == True and enemy.isalive == True:
+        print("Player attacking")
+        player.attack(player.damage)
+        time.sleep(player.attackspeed)
+
+    if player.isalive == False:
+        player = Enemy(15, 15, 2, 4, randominteger(2, 4), 2)
+
+def enemy_thread_function(enemy, player):
+    while enemy.isalive == True and player.isalive == True:
+        print("Enemy attacking")
+        enemy.attack(enemy.damage)
+        time.sleep(enemy.attackspeed)
+    
+    if enemyinstance.isalive == False:
+        enemyinstance = Enemy("Resurrected", 15, 15, 2, 4, randominteger(2, 4), 2)
+
 #if __name__ == "__main__":
-#    player_thread = threading.Thread(target=player_thread_function)
-#    enemy_thread = threading.Thread(target=enemy_thread_function)
-#    player_thread.start()
-#    enemy_thread.start()
-#    #Add console close without ctrl+c
+#   player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
+#   enemy_thread = threading.Thread(target=enemy_thread_function(enemyinstance, playerinstance))
+#   player_thread.start()
+#   enemy_thread.start()
+    #Add console close without ctrl+c
+    #Go back to separate file to test respawning?
