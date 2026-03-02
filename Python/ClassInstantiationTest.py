@@ -59,7 +59,7 @@ class Enemy:
     def death(self):
         print("Enemy dead")
         self.isalive = False
-        self.__init__()
+        self.__init__("Respawned", 15, 15, 2, 4, randominteger(2, 4), 2, True)
 
 playerinstance = Player()
 enemyinstance = Enemy()
@@ -82,16 +82,16 @@ playerinstance.attack(enemyinstance)
 playerinstance.attack(enemyinstance)
 playerinstance.attack(enemyinstance)
 
-#print(" ")
-#print("=======")
-#print(" ")
+print(" ")
+print("=======")
+print(" ")
 
-#print("Enemy: ")
-#print(enemyinstance.name)
-#print(enemyinstance.maximumhealth)
-#print(enemyinstance.currenthealth)
-#print(enemyinstance.damage)
-#print(enemyinstance.attackspeed)
-#print(enemyinstance.isalive)
+print("Enemy: ")
+print(enemyinstance.name)
+print(enemyinstance.maximumhealth)
+print(enemyinstance.currenthealth)
+print(enemyinstance.damage)
+print(enemyinstance.attackspeed)
+print(enemyinstance.isalive)
 #enemyinstance.attack(playerinstance)
 
