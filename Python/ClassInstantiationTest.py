@@ -59,7 +59,8 @@ class Enemy:
     def death(self):
         print("Enemy dead")
         self.isalive = False
-        self.__init__("Respawned", 15, 15, 2, 4, randominteger(2, 4), 2, True)
+        self.__init__("Respawned", randominteger(10, 100), randominteger(10, 100), randominteger(2, 10), randominteger(12, 20), randominteger(2, 4), 2, True)
+        # Change to premade sets of values that are randomly chosen
 
 playerinstance = Player()
 enemyinstance = Enemy()
@@ -94,4 +95,3 @@ print(enemyinstance.damage)
 print(enemyinstance.attackspeed)
 print(enemyinstance.isalive)
 #enemyinstance.attack(playerinstance)
-
