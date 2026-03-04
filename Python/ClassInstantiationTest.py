@@ -7,13 +7,24 @@ def randominteger(min, max):
     generatedinteger = random.randint(min, max)
     return generatedinteger
 
+def randomenemy():
+    name = "Respawned" 
+    maximumhealth = randominteger(10, 100) 
+    currenthealth = maximumhealth
+    damagemin = randominteger(2, 10)
+    damagemax = randominteger(12, 20)
+    attackspeed = 2
+    isalive = True
+
+    return name, maximumhealth, currenthealth, damagemin, damagemax, attackspeed, isalive
+
 class Player:
-    def __init__(self, maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, damage = randominteger(1, 3), attackspeed = 1, isalive = True): 
+    def __init__(self, maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True): 
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
         self.damagemin = damagemin
         self.damagemax = damagemax
-        self.damage = damage
+        self.damage = randominteger(damagemin, damagemax)
         self.attackspeed = attackspeed
         self.isalive = isalive
 
@@ -34,13 +45,13 @@ class Player:
         self.isalive = False
 
 class Enemy:
-    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, damage = randominteger(1, 3), attackspeed = 1, isalive = True):
+    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True):
         self.name = name
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
         self.damagemin = damagemin
         self.damagemax = damagemax
-        self.damage = damage
+        self.damage = randominteger(damagemin, damagemax)
         self.attackspeed = attackspeed
         self.isalive = isalive
 
@@ -59,8 +70,9 @@ class Enemy:
     def death(self):
         print("Enemy dead")
         self.isalive = False
-        self.__init__("Respawned", randominteger(10, 100), randominteger(10, 100), randominteger(2, 10), randominteger(12, 20), randominteger(2, 4), 2, True)
+        self.__init__(randomenemy())
         # Change to premade sets of values that are randomly chosen
+        # Def for returning base stats of Enemy/Player objects
 
 playerinstance = Player()
 enemyinstance = Enemy()
