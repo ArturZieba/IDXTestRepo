@@ -57,15 +57,17 @@ class Enemy:
             self.death()
 
     def randomenemy(self):
-        name = "Respawned" 
-        maximumhealth = randominteger(10, 100) 
-        currenthealth = maximumhealth
-        damagemin = randominteger(2, 10)
-        damagemax = randominteger(12, 20)
-        attackspeed = 2
-        isalive = True
+        goblindict = {
+            "name": "Goblin", 
+            "maximumhealth": 10, 
+            "currenthealth": 10,
+            "damagemin": 1,
+            "damagemax": 2,
+            "attackspeed": 2,
+            "isalive": True
+        }
 
-        return Enemy(name, maximumhealth, currenthealth, damagemin, damagemax, attackspeed, isalive)
+        return Enemy(goblindict["name"], goblindict["maximumhealth"], goblindict["currenthealth"], goblindict["damagemin"], goblindict["damagemax"], goblindict["attackspeed"], goblindict["isalive"])
 
     def death(self):
         print("Enemy dead")
