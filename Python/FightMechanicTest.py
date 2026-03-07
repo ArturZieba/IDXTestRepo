@@ -7,8 +7,6 @@ def randominteger(min, max):
     generatedinteger = random.randint(min, max)
     return generatedinteger
 
-
-
 class Player:
     def __init__(self, maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, damage = randominteger(1, 3), attackspeed = 1, isalive = True): 
         self.maximumhealth = maximumhealth
