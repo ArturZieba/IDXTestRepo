@@ -17,6 +17,17 @@ class Player:
         self.attackspeed = attackspeed
         self.isalive = isalive
 
+    def playerinfo(self):
+        print(f"""Player info:
+        Maximum health: {self.maximumhealth}
+        Current health: {self.currenthealth}
+        Damage minimum: {self.damagemin}
+        Damage maximum: {self.damagemax}
+        Damage current roll: {self.damage}
+        Attack speed: {self.attackspeed}
+        Alive: {self.isalive}
+        """)
+
     def attack(self, target):
         target.receivedamage(self.damage)
         print(f"Player damage dealt: {self.damage}")
@@ -79,12 +90,7 @@ class Enemy:
 playerinstance = Player()
 enemyinstance = Enemy()
 
-#print("Player: ")
-#print(playerinstance.maximumhealth)
-#print(playerinstance.currenthealth)
-#print(playerinstance.damage)
-#print(playerinstance.attackspeed)
-#print(playerinstance.isalive)
+playerinstance.playerinfo()
 playerinstance.attack(enemyinstance)
 playerinstance.attack(enemyinstance)
 playerinstance.attack(enemyinstance)
@@ -109,4 +115,3 @@ print(enemyinstance.damage)
 print(enemyinstance.attackspeed)
 print(enemyinstance.isalive)
 #enemyinstance.attack(playerinstance)
-#Remote control git push
