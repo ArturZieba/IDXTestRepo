@@ -17,7 +17,7 @@ class Player:
         self.attackspeed = attackspeed
         self.isalive = isalive
 
-    def playerinfo(self):
+    def info(self):
         print(f"""Player info:
         Maximum health: {self.maximumhealth}
         Current health: {self.currenthealth}
@@ -27,6 +27,7 @@ class Player:
         Attack speed: {self.attackspeed}
         Alive: {self.isalive}
         """)
+        print("=====")
 
     def attack(self, target):
         target.receivedamage(self.damage)
@@ -54,6 +55,19 @@ class Enemy:
         self.damage = randominteger(damagemin, damagemax)
         self.attackspeed = attackspeed
         self.isalive = isalive
+
+    def info(self):
+        print(f"""Enemy info:
+        Name: {self.name}
+        Maximum health: {self.maximumhealth}
+        Current health: {self.currenthealth}
+        Damage minimum: {self.damagemin}
+        Damage maximum: {self.damagemax}
+        Damage current roll: {self.damage}
+        Attack speed: {self.attackspeed}
+        Alive: {self.isalive}
+        """)
+        print("=====")
 
     def attack(self, target):
         target.receivedamage(self.damage)
@@ -90,7 +104,7 @@ class Enemy:
 playerinstance = Player()
 enemyinstance = Enemy()
 
-playerinstance.playerinfo()
+playerinstance.info()
 playerinstance.attack(enemyinstance)
 playerinstance.attack(enemyinstance)
 playerinstance.attack(enemyinstance)
@@ -103,15 +117,5 @@ playerinstance.attack(enemyinstance)
 playerinstance.attack(enemyinstance)
 playerinstance.attack(enemyinstance)
 
-print(" ")
-print("=======")
-print(" ")
-
-print("Enemy: ")
-print(enemyinstance.name)
-print(enemyinstance.maximumhealth)
-print(enemyinstance.currenthealth)
-print(enemyinstance.damage)
-print(enemyinstance.attackspeed)
-print(enemyinstance.isalive)
+enemyinstance.info()
 #enemyinstance.attack(playerinstance)
