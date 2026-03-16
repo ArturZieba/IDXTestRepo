@@ -92,7 +92,22 @@ class Enemy:
             "isalive": True
         }
 
-        return Enemy(goblindict["name"], goblindict["maximumhealth"], goblindict["currenthealth"], goblindict["damagemin"], goblindict["damagemax"], goblindict["attackspeed"], goblindict["isalive"])
+        ogredict = {
+            "name": "Ogre", 
+            "maximumhealth": 20, 
+            "currenthealth": 20,
+            "damagemin": 2,
+            "damagemax": 4,
+            "attackspeed": 1,
+            "isalive": True
+        }
+
+        enemyroster = [goblindict, ogredict]
+
+        # Make sure returned dicts are using premade variables and not randomizing different ones
+        chosenenemy = random.choice(enemyroster)
+
+        return Enemy(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"])
 
     def death(self):
         print("Enemy dead")
@@ -100,22 +115,14 @@ class Enemy:
         self.__init__(self.randomenemy().name, self.randomenemy().maximumhealth, self.randomenemy().currenthealth, self.randomenemy().damagemin, self.randomenemy().damagemax, self.randomenemy().attackspeed, self.randomenemy().isalive)
         # Change to premade sets of values that are randomly chosen
         # Def for returning base stats of Enemy/Player objects
+        
 
 playerinstance = Player()
 enemyinstance = Enemy()
 
 playerinstance.info()
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
-playerinstance.attack(enemyinstance)
+enemyinstance.info()
+
+enemyinstance.death()
 
 enemyinstance.info()
-#enemyinstance.attack(playerinstance)
