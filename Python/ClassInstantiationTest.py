@@ -81,7 +81,7 @@ class Enemy:
         if (self.currenthealth <= 0):
             self.death()
 
-    def randomenemy(self):
+    def spawnrandomenemy(self):
         goblindict = {
             "name": "Goblin", 
             "maximumhealth": 10, 
@@ -104,19 +104,18 @@ class Enemy:
 
         enemyroster = [goblindict, ogredict]
 
-        # Make sure returned dicts are using premade variables and not randomizing different ones
         chosenenemy = random.choice(enemyroster)
 
-        return Enemy(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"])
+        # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
+        self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"])
 
     def death(self):
         print("Enemy dead")
         self.isalive = False
-        self.__init__(self.randomenemy().name, self.randomenemy().maximumhealth, self.randomenemy().currenthealth, self.randomenemy().damagemin, self.randomenemy().damagemax, self.randomenemy().attackspeed, self.randomenemy().isalive)
+        self.spawnrandomenemy()
         # Change to premade sets of values that are randomly chosen
         # Def for returning base stats of Enemy/Player objects
         
-
 playerinstance = Player()
 enemyinstance = Enemy()
 
@@ -124,5 +123,4 @@ playerinstance.info()
 enemyinstance.info()
 
 enemyinstance.death()
-
 enemyinstance.info()
