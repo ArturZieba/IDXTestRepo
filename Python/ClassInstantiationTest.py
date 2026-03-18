@@ -82,7 +82,7 @@ class Enemy:
             self.death()
 
     def spawnrandomenemy(self):
-        goblindict = {
+        enemy_goblin = {
             "name": "Goblin", 
             "maximumhealth": 10, 
             "currenthealth": 10,
@@ -92,7 +92,7 @@ class Enemy:
             "isalive": True
         }
 
-        ogredict = {
+        enemy_ogre = {
             "name": "Ogre", 
             "maximumhealth": 20, 
             "currenthealth": 20,
@@ -102,7 +102,17 @@ class Enemy:
             "isalive": True
         }
 
-        enemyroster = [goblindict, ogredict]
+        enemy_dragon = {
+            "name": "Dragon", 
+            "maximumhealth": 100, 
+            "currenthealth": 100,
+            "damagemin": 10,
+            "damagemax": 50,
+            "attackspeed": 1.5,
+            "isalive": True
+        }
+
+        enemyroster = [enemy_goblin, enemy_ogre, enemy_dragon]
 
         chosenenemy = random.choice(enemyroster)
 
@@ -113,7 +123,7 @@ class Enemy:
         print("Enemy dead")
         self.isalive = False
         self.spawnrandomenemy()
-        # Change to premade sets of values that are randomly chosen
+        # Add weight to spawned enemies? Additional key in each dict?
         # Def for returning base stats of Enemy/Player objects
         
 playerinstance = Player()
