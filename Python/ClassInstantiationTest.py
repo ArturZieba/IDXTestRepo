@@ -46,7 +46,7 @@ class Player:
         self.isalive = False
 
 class Enemy:
-    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True):
+    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0):
         self.name = name
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
@@ -55,6 +55,7 @@ class Enemy:
         self.damage = randominteger(damagemin, damagemax)
         self.attackspeed = attackspeed
         self.isalive = isalive
+        self.spawnweight = spawnweight
 
     def info(self):
         print(f"""Enemy info:
@@ -66,6 +67,7 @@ class Enemy:
         Damage current roll: {self.damage}
         Attack speed: {self.attackspeed}
         Alive: {self.isalive}
+        Spawn weight: {self.spawnweight}
         """)
         print("=====")
 
@@ -89,7 +91,8 @@ class Enemy:
             "damagemin": 1,
             "damagemax": 2,
             "attackspeed": 2,
-            "isalive": True
+            "isalive": True,
+            "spawnweight": 5
         }
 
         enemy_ogre = {
@@ -99,7 +102,8 @@ class Enemy:
             "damagemin": 2,
             "damagemax": 4,
             "attackspeed": 1,
-            "isalive": True
+            "isalive": True,
+            "spawnweight": 2
         }
 
         enemy_dragon = {
@@ -109,7 +113,8 @@ class Enemy:
             "damagemin": 10,
             "damagemax": 50,
             "attackspeed": 1.5,
-            "isalive": True
+            "isalive": True,
+            "spawnweight": 1
         }
 
         enemyroster = [enemy_goblin, enemy_ogre, enemy_dragon]
@@ -117,7 +122,7 @@ class Enemy:
         chosenenemy = random.choice(enemyroster)
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
-        self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"])
+        self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"])
 
     def death(self):
         print("Enemy dead")
