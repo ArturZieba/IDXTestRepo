@@ -119,6 +119,9 @@ class Enemy:
 
         enemyroster = [enemy_goblin, enemy_ogre, enemy_dragon]
 
+        for element in enemyroster:
+            print (element["spawnweight"])
+
         chosenenemy = random.choice(enemyroster)
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
