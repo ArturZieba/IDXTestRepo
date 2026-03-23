@@ -117,10 +117,15 @@ class Enemy:
             "spawnweight": 1
         }
 
+        # Move this outside the def?
         enemyroster = [enemy_goblin, enemy_ogre, enemy_dragon]
+        totalspawnweight = 0
 
         for element in enemyroster:
-            print (element["spawnweight"])
+            totalspawnweight += element["spawnweight"]
+        
+        print(totalspawnweight)
+        # spawnweight/totalspawnweight will be enemy spawn chance
 
         chosenenemy = random.choice(enemyroster)
 
