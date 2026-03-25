@@ -126,11 +126,12 @@ class Enemy:
         for element in enemyroster:
             for i in range(element["spawnweight"]):
                 enemyrosterweighted.append(element)
-        
-        for element in enemyrosterweighted:
-            print(element["name"])
 
-        # Check random distribution
+        # Move outside this def?
+        # Check random distribution with a loop
+        for i in range(100):
+            print(random.choice(enemyrosterweighted))
+
         chosenenemy = random.choice(enemyrosterweighted)
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
@@ -140,8 +141,6 @@ class Enemy:
         print("Enemy dead")
         self.isalive = False
         self.spawnrandomenemy()
-        # Add weight to spawned enemies? Additional key in each dict?
-        # Def for returning base stats of Enemy/Player objects
         
 playerinstance = Player()
 enemyinstance = Enemy()
