@@ -7,6 +7,40 @@ def randominteger(min, max):
     generatedinteger = random.randint(min, max)
     return generatedinteger
 
+class EnemyRoster():
+    enemy_goblin = {
+            "name": "Goblin", 
+            "maximumhealth": 10, 
+            "currenthealth": 10,
+            "damagemin": 1,
+            "damagemax": 2,
+            "attackspeed": 2,
+            "isalive": True,
+            "spawnweight": 5
+        }
+
+    enemy_ogre = {
+            "name": "Ogre", 
+            "maximumhealth": 20, 
+            "currenthealth": 20,
+            "damagemin": 2,
+            "damagemax": 4,
+            "attackspeed": 1,
+            "isalive": True,
+            "spawnweight": 2
+        }
+
+    enemy_dragon = {
+            "name": "Dragon", 
+            "maximumhealth": 100, 
+            "currenthealth": 100,
+            "damagemin": 10,
+            "damagemax": 50,
+            "attackspeed": 1.5,
+            "isalive": True,
+            "spawnweight": 1
+        }
+
 class Player:
     def __init__(self, maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True): 
         self.maximumhealth = maximumhealth
@@ -118,7 +152,7 @@ class Enemy:
         }
 
         # Move this outside the def?
-        enemyroster = [enemy_goblin, enemy_ogre, enemy_dragon]
+        enemyroster = [EnemyRoster.enemy_goblin, EnemyRoster.enemy_ogre, EnemyRoster.enemy_dragon]
         
         # List that is populated with the same dicts as enemyroster, but each dict has as many entries as specified in spawnweight variable
         enemyrosterweighted = []
