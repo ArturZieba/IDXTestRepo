@@ -41,6 +41,20 @@ class EnemyRoster():
             "spawnweight": 1
         }
 
+    # Move this outside the def?
+    enemyroster = [enemy_goblin, enemy_ogre, enemy_dragon]
+        
+    # List that is populated with the same dicts as enemyroster, but each dict has as many entries as specified in spawnweight variable
+    enemyrosterweighted = []
+
+    for element in enemyroster:
+        for i in range(element["spawnweight"]):
+            enemyrosterweighted.append(element)
+
+    # Check random distribution with a loop
+        #for i in range(100):
+        #    print(random.choice(enemyrosterweighted))
+
 class Player:
     def __init__(self, maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True): 
         self.maximumhealth = maximumhealth
@@ -118,55 +132,7 @@ class Enemy:
             self.death()
 
     def spawnrandomenemy(self):
-        enemy_goblin = {
-            "name": "Goblin", 
-            "maximumhealth": 10, 
-            "currenthealth": 10,
-            "damagemin": 1,
-            "damagemax": 2,
-            "attackspeed": 2,
-            "isalive": True,
-            "spawnweight": 5
-        }
-
-        enemy_ogre = {
-            "name": "Ogre", 
-            "maximumhealth": 20, 
-            "currenthealth": 20,
-            "damagemin": 2,
-            "damagemax": 4,
-            "attackspeed": 1,
-            "isalive": True,
-            "spawnweight": 2
-        }
-
-        enemy_dragon = {
-            "name": "Dragon", 
-            "maximumhealth": 100, 
-            "currenthealth": 100,
-            "damagemin": 10,
-            "damagemax": 50,
-            "attackspeed": 1.5,
-            "isalive": True,
-            "spawnweight": 1
-        }
-
-        # Move this outside the def?
-        enemyroster = [EnemyRoster.enemy_goblin, EnemyRoster.enemy_ogre, EnemyRoster.enemy_dragon]
-        
-        # List that is populated with the same dicts as enemyroster, but each dict has as many entries as specified in spawnweight variable
-        enemyrosterweighted = []
-
-        for element in enemyroster:
-            for i in range(element["spawnweight"]):
-                enemyrosterweighted.append(element)
-
-        # Move outside this def?
-        # Check random distribution with a loop
-        for i in range(100):
-            print(random.choice(enemyrosterweighted))
-
-        chosenenemy = random.choice(enemyrosterweighted)
+        chosenenemy = random.choice(EnemyRoster.enemyrosterweighted)
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
         self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"])
@@ -184,3 +150,5 @@ enemyinstance.info()
 
 enemyinstance.death()
 enemyinstance.info()
+
+#print(EnemyRoster.enemyroster)
