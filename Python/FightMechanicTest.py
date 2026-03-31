@@ -143,22 +143,16 @@ class Enemy:
         self.spawnrandomenemy()
         
 def player_thread_function(player, enemy):
-    while player.isalive == True and enemy.isalive == True:
+    while True: #player.isalive == True and enemy.isalive == True:
         print("Player attacking")
-        player.attack(player.damage)
-        time.sleep(player.attackspeed)
-
-    if player.isalive == False:
-        player = Enemy(15, 15, 2, 4, randominteger(2, 4), 2)
+        player.attack(enemy)
+        time.sleep(player.attackspeed) # Better way of doing attacks per time interval?
 
 def enemy_thread_function(enemy, player):
-    while enemy.isalive == True and player.isalive == True:
+    while True: #enemy.isalive == True and player.isalive == True:
         print("Enemy attacking")
-        enemy.attack(enemy.damage)
-        time.sleep(enemy.attackspeed)
-    
-    if enemyinstance.isalive == False:
-        enemyinstance = Enemy("Resurrected", 15, 15, 2, 4, randominteger(2, 4), 2)
+        enemy.attack(player)
+        time.sleep(enemy.attackspeed) # Better way of doing attacks per time interval?
 
 playerinstance = Player()
 enemyinstance = Enemy()
@@ -170,12 +164,11 @@ enemyinstance.death()
 enemyinstance.info()
 
 print(EnemyRoster.enemyroster)
-print("Test")
 
-#if __name__ == "__main__":
-#   player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
-#   enemy_thread = threading.Thread(target=enemy_thread_function(enemyinstance, playerinstance))
-#   player_thread.start()
-#   enemy_thread.start()
-    #Add console close without ctrl+c
-    #Go back to separate file to test respawning?
+if __name__ == "__main__":
+   player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
+   enemy_thread = threading.Thread(target=enemy_thread_function(enemyinstance, playerinstance))
+   player_thread.start()
+   enemy_thread.start()
+   #Add console close without ctrl+c
+   #Go back to separate file to test respawning?
