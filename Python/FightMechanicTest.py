@@ -1,3 +1,4 @@
+import asyncio # For async defs/threading
 import random # For def randominteger
 import threading # For threading.Thread()
 import time # For time()
@@ -142,24 +143,32 @@ class Enemy:
         self.isalive = False
         self.spawnrandomenemy()
         
-def player_thread_function(player, enemy):
+async def player_thread_function(player, enemy):
     while player.isalive == True: #player.isalive == True and enemy.isalive == True:
         print("Player attacking")
         player.attack(enemy)
         time.sleep(player.attackspeed) # Better way of doing attacks per time interval?
 
-def enemy_thread_function(enemy, player):
+async def enemy_thread_function(enemy, player):
     while enemy.isalive == True: #enemy.isalive == True and player.isalive == True:
         print("Enemy attacking")
         enemy.attack(player)
         time.sleep(enemy.attackspeed) # Better way of doing attacks per time interval?
 
+async def run_threads():
+    await asyncio.gather(player_thread_function(playerinstance, enemyinstance), enemy_thread_function(enemyinstance, playerinstance))
+
 playerinstance = Player()
 enemyinstance = Enemy()
 
 if __name__ == "__main__":
-   player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
-   enemy_thread = threading.Thread(target=enemy_thread_function(enemyinstance, playerinstance))
+    asyncio.run(run_threads())
+
+   #player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
+   #enemy_thread = threading.Thread(target=enemy_thread_function(enemyinstance, playerinstance))
    #player_thread.start()
    #enemy_thread.start()
+   #player_thread.join()
+   #enemy_thread.join()
    #Add console close without ctrl+c
+   #Check async thread running
