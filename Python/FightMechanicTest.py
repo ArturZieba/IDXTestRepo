@@ -162,7 +162,7 @@ playerinstance = Player()
 enemyinstance = Enemy()
 
 if __name__ == "__main__":
-    asyncio.run(run_threads())
+   asyncio.run(run_threads())
 
    #player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
    #enemy_thread = threading.Thread(target=enemy_thread_function(enemyinstance, playerinstance))
