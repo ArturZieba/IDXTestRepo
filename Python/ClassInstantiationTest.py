@@ -159,6 +159,3 @@ enemyinstance.info()
 
 #print(EnemyRoster.enemyroster)
 
-#Add levels/experience to the Player
-#Add a way to get rewarded experience from beating enemies
-#Add experience granted variable to enemies

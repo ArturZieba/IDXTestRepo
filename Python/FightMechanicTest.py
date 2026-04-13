@@ -57,9 +57,12 @@ class EnemyRoster():
         #    print(random.choice(enemyrosterweighted))
 
 class Player:
-    def __init__(self, maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True): 
+    def __init__(self, maximumhealth = 10, currenthealth = 10, level = 0, experience = 0, experiencerequired = 100, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True): 
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
+        self.level = level
+        self.experience = experience
+        self.experiencerequired = experiencerequired
         self.damagemin = damagemin
         self.damagemax = damagemax
         self.damage = randominteger(damagemin, damagemax)
@@ -70,6 +73,9 @@ class Player:
         print(f"""Player info:
         Maximum health: {self.maximumhealth}
         Current health: {self.currenthealth}
+        Level: {self.level}
+        Experience: {self.experience}
+        Required Experience: {self.experiencerequired}
         Damage minimum: {self.damagemin}
         Damage maximum: {self.damagemax}
         Damage current roll: {self.damage}
@@ -162,7 +168,12 @@ playerinstance = Player()
 enemyinstance = Enemy()
 
 if __name__ == "__main__":
-   asyncio.run(run_threads())
+   playerinstance.info()
+   enemyinstance.info()
+
+   enemyinstance.death()
+   enemyinstance.info()
+   #asyncio.run(run_threads())
 
    #player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
    #enemy_thread = threading.Thread(target=enemy_thread_function(enemyinstance, playerinstance))
@@ -170,5 +181,9 @@ if __name__ == "__main__":
    #enemy_thread.start()
    #player_thread.join()
    #enemy_thread.join()
+
    #Add console close without ctrl+c
    #Check async thread running
+   #Add levels/experience to the Player
+   #Add a way to get rewarded experience from beating enemies
+   #Add experience granted variable to enemies
