@@ -99,6 +99,9 @@ class Player:
         if (self.currenthealth <= 0):
             self.death()
 
+    def receiverewards(experience):
+        print(experience)
+
     def death(self):
         print("Player dead")
         self.isalive = False
@@ -149,7 +152,11 @@ class Enemy:
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
         self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["experiencegranted"])
 
-    def death(self):
+    def grantrewards(self, target):
+        target.receiverewards(self.experiencegranted)
+
+    def death(self, target):
+        self.grantrewards(target)
         print("Enemy dead")
         self.isalive = False
         self.spawnrandomenemy()
@@ -176,7 +183,7 @@ if __name__ == "__main__":
    playerinstance.info()
    enemyinstance.info()
 
-   enemyinstance.death()
+   enemyinstance.death(playerinstance)
    enemyinstance.info()
    #asyncio.run(run_threads())
 
