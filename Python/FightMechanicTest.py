@@ -100,7 +100,7 @@ class Player:
             self.death()
 
     def receiverewards(self, experience):
-        print(f"Received {experience} experience")
+        self.experience += experience
 
     def death(self):
         print("Player dead")
@@ -186,6 +186,7 @@ if __name__ == "__main__":
    enemyinstance.death(playerinstance)
    enemyinstance.info()
    enemyinstance.death(playerinstance)
+   playerinstance.info()
    #asyncio.run(run_threads())
 
    #player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
