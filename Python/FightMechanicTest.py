@@ -60,7 +60,7 @@ class EnemyRoster():
         #    print(random.choice(enemyrosterweighted))
 
 class Player:
-    def __init__(self, maximumhealth = 10, currenthealth = 10, level = 0, experience = 0, experiencerequired = 100, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True): 
+    def __init__(self, maximumhealth = 10, currenthealth = 10, level = 0, experience = 0, experiencerequired = 40, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True): 
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
         self.level = level
@@ -101,6 +101,11 @@ class Player:
 
     def receiverewards(self, experience):
         self.experience += experience
+
+        if self.experience >= self.experiencerequired:
+            self.experience -= self.experiencerequired
+            self.experiencerequired = self.experiencerequired * 2
+            self.level += 1
 
     def death(self):
         print("Player dead")
