@@ -1,4 +1,5 @@
 import asyncio # For async defs/threading
+import math # For math.floor()
 import random # For def randominteger
 import threading # For threading.Thread()
 import time # For time()
@@ -104,7 +105,7 @@ class Player:
 
         if self.experience >= self.experiencerequired:
             self.experience -= self.experiencerequired
-            self.experiencerequired = self.experiencerequired * 2
+            self.experiencerequired = math.floor(self.experiencerequired + (self.experiencerequired / 4))
             self.level += 1
 
     def death(self):
