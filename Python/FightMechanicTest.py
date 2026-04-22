@@ -88,6 +88,12 @@ class Player:
         """)
         print("=====")
 
+    def levelup(self):
+        if self.experience >= self.experiencerequired:
+           self.experience -= self.experiencerequired
+           self.experiencerequired = math.floor(self.experiencerequired + (self.experiencerequired / 4))
+           self.level += 1
+
     def attack(self, target):
         target.receivedamage(self.damage)
         print(f"Player damage dealt: {self.damage}")
@@ -102,11 +108,7 @@ class Player:
 
     def receiverewards(self, experience):
         self.experience += experience
-
-        if self.experience >= self.experiencerequired:
-            self.experience -= self.experiencerequired
-            self.experiencerequired = math.floor(self.experiencerequired + (self.experiencerequired / 4))
-            self.level += 1
+        self.levelup()
 
     def death(self):
         print("Player dead")
