@@ -28,7 +28,15 @@ async def thread_test_two(attackspeed):
 async def run_test_threads():
     attackspeedone = 2
     attackspeedtwo = 1
-    await asyncio.gather(thread_test_one(attackspeedone), thread_test_two(attackspeedtwo)) # Make threads loop?
+    if attackspeedone > attackspeedtwo:
+        await asyncio.gather(thread_test_one(attackspeedone), thread_test_two(attackspeedtwo))
+        attackspeedone -= 1.5
+        print(attackspeedone)
+    if attackspeedtwo > attackspeedone:
+        await asyncio.gather(thread_test_two(attackspeedtwo), thread_test_one(attackspeedone))
+        attackspeedone += 1.5
+        print(attackspeedone)
+    # if attackspeedone == attackspeedtwo ?
 
 
 
