@@ -30,15 +30,16 @@ async def run_test_threads():
     attackspeedtwo = 1
     if attackspeedone > attackspeedtwo:
         await asyncio.gather(thread_test_one(attackspeedone), thread_test_two(attackspeedtwo))
-        attackspeedone -= 1.5
-        print(attackspeedone)
+        attackspeedone -= 1
+        print(f"Bigger: {attackspeedone}")
     if attackspeedtwo > attackspeedone:
         await asyncio.gather(thread_test_two(attackspeedtwo), thread_test_one(attackspeedone))
-        attackspeedone += 1.5
-        print(attackspeedone)
-    # if attackspeedone == attackspeedtwo ?
-
-
+        attackspeedone += 1
+        print(f"Lesser: {attackspeedone}")
+    if attackspeedone == attackspeedtwo:
+        print("Both deal and take damage at the same time")
+        attackspeedone += 1
+        print(f"Equal: {attackspeedone}")
 
 print("Test")
 #thread1 = Thread(target = thread_test_one())
