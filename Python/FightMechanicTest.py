@@ -1,7 +1,6 @@
 import asyncio # For async defs/threading
 import math # For math.floor()
 import random # For def randominteger
-import threading # For threading.Thread()
 import time # For time()
 
 # Roll a random integer in min/max range
@@ -170,19 +169,29 @@ class Enemy:
         self.spawnrandomenemy()
         
 async def player_thread_function(player, enemy):
-    while player.isalive == True: #player.isalive == True and enemy.isalive == True:
+    #while player.isalive == True: #player.isalive == True and enemy.isalive == True:
         print("Player attacking")
         player.attack(enemy)
         time.sleep(player.attackspeed) # Better way of doing attacks per time interval?
 
 async def enemy_thread_function(enemy, player):
-    while enemy.isalive == True: #enemy.isalive == True and player.isalive == True:
+    #while enemy.isalive == True: #enemy.isalive == True and player.isalive == True:
         print("Enemy attacking")
         enemy.attack(player)
         time.sleep(enemy.attackspeed) # Better way of doing attacks per time interval?
 
 async def run_threads():
     await asyncio.gather(player_thread_function(playerinstance, enemyinstance), enemy_thread_function(enemyinstance, playerinstance))
+    if playerinstance.attackspeed > enemyinstance.attackspeed:
+        await asyncio.gather(player_thread_function(playerinstance, enemyinstance), enemy_thread_function(enemyinstance, playerinstance))
+        print(f"Bigger: {playerinstance.attackspeed}")
+    if playerinstance.attackspeed < enemyinstance.attackspeed:
+        await asyncio.gather(player_thread_function(playerinstance, enemyinstance), enemy_thread_function(enemyinstance, playerinstance))
+        print(f"Lesser: {playerinstance.attackspeed}")
+    if playerinstance.attackspeed == enemyinstance.attackspeed:
+        time.sleep(playerinstance.attackspeed)
+        print("Both deal and take damage at the same time")
+        print(f"Equal: {playerinstance.attackspeed}")
 
 playerinstance = Player()
 enemyinstance = Enemy()
@@ -195,6 +204,7 @@ if __name__ == "__main__":
    enemyinstance.info()
    enemyinstance.death(playerinstance)
    playerinstance.info()
+   
    #asyncio.run(run_threads())
 
    #player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
@@ -204,6 +214,7 @@ if __name__ == "__main__":
    #player_thread.join()
    #enemy_thread.join()
 
+   #Add comments to the async code here and in the test file
    #Add console close without ctrl+c
    #Check async thread running
    #Add levels/experience to the Player

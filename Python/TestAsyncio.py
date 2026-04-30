@@ -15,7 +15,7 @@ async def run_test_threads():
     if attackspeedone > attackspeedtwo:
         await asyncio.gather(thread_test_one(attackspeedone), thread_test_two(attackspeedtwo))
         print(f"Bigger: {attackspeedone}")
-    if attackspeedtwo > attackspeedone:
+    if attackspeedone < attackspeedtwo:
         await asyncio.gather(thread_test_two(attackspeedtwo), thread_test_one(attackspeedone))
         print(f"Lesser: {attackspeedone}")
     if attackspeedone == attackspeedtwo:
