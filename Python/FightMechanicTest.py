@@ -168,25 +168,24 @@ class Enemy:
         self.isalive = False
         self.spawnrandomenemy()
         
-async def player_thread_function(player, enemy):
+async def player_thread(player, enemy):
     #while player.isalive == True: #player.isalive == True and enemy.isalive == True:
         print("Player attacking")
         player.attack(enemy)
         time.sleep(player.attackspeed) # Better way of doing attacks per time interval?
 
-async def enemy_thread_function(enemy, player):
+async def enemy_thread(enemy, player):
     #while enemy.isalive == True: #enemy.isalive == True and player.isalive == True:
         print("Enemy attacking")
         enemy.attack(player)
         time.sleep(enemy.attackspeed) # Better way of doing attacks per time interval?
 
 async def run_threads():
-    await asyncio.gather(player_thread_function(playerinstance, enemyinstance), enemy_thread_function(enemyinstance, playerinstance))
     if playerinstance.attackspeed > enemyinstance.attackspeed:
-        await asyncio.gather(player_thread_function(playerinstance, enemyinstance), enemy_thread_function(enemyinstance, playerinstance))
+        await asyncio.gather(player_thread(playerinstance, enemyinstance), enemy_thread(enemyinstance, playerinstance))
         print(f"Bigger: {playerinstance.attackspeed}")
     if playerinstance.attackspeed < enemyinstance.attackspeed:
-        await asyncio.gather(player_thread_function(playerinstance, enemyinstance), enemy_thread_function(enemyinstance, playerinstance))
+        await asyncio.gather(player_thread(playerinstance, enemyinstance), enemy_thread(enemyinstance, playerinstance))
         print(f"Lesser: {playerinstance.attackspeed}")
     if playerinstance.attackspeed == enemyinstance.attackspeed:
         time.sleep(playerinstance.attackspeed)
@@ -205,10 +204,11 @@ if __name__ == "__main__":
    enemyinstance.death(playerinstance)
    playerinstance.info()
    
-   #asyncio.run(run_threads())
+   # Run "gameplay loop" - player and enemy attacking based on their attack speed
+   asyncio.run(run_threads())
 
-   #player_thread = threading.Thread(target=player_thread_function(playerinstance, enemyinstance))
-   #enemy_thread = threading.Thread(target=enemy_thread_function(enemyinstance, playerinstance))
+   #player_thread = threading.Thread(target=player_thread(playerinstance, enemyinstance))
+   #enemy_thread = threading.Thread(target=enemy_thread(enemyinstance, playerinstance))
    #player_thread.start()
    #enemy_thread.start()
    #player_thread.join()
