@@ -39,7 +39,7 @@ class EnemyRoster():
             "currenthealth": 100,
             "damagemin": 10,
             "damagemax": 50,
-            "attackspeed": 1.5,
+            "attackspeed": 3,
             "isalive": True,
             "spawnweight": 1,
             "experiencegranted": 50
@@ -60,7 +60,7 @@ class EnemyRoster():
         #    print(random.choice(enemyrosterweighted))
 
 class Player:
-    def __init__(self, maximumhealth = 10, currenthealth = 10, level = 0, experience = 0, experiencerequired = 40, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True): 
+    def __init__(self, maximumhealth = 10, currenthealth = 10, level = 0, experience = 0, experiencerequired = 40, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True): 
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
         self.level = level
@@ -181,13 +181,17 @@ async def enemy_thread(enemy, player):
         time.sleep(enemy.attackspeed) # Better way of doing attacks per time interval?
 
 async def run_threads():
+    # If player is faster than enemy, the threads execute player -> enemy
     if playerinstance.attackspeed > enemyinstance.attackspeed:
         await asyncio.gather(player_thread(playerinstance, enemyinstance), enemy_thread(enemyinstance, playerinstance))
         print(f"Bigger: {playerinstance.attackspeed}")
+    # If player is slower than enemy, the threads execute enemy -> player
     if playerinstance.attackspeed < enemyinstance.attackspeed:
-        await asyncio.gather(player_thread(playerinstance, enemyinstance), enemy_thread(enemyinstance, playerinstance))
+        await asyncio.gather(enemy_thread(enemyinstance, playerinstance), player_thread(playerinstance, enemyinstance))
         print(f"Lesser: {playerinstance.attackspeed}")
+    # If player and enemy have the same attackspeed, both get to attack
     if playerinstance.attackspeed == enemyinstance.attackspeed:
+        # Trigger attack from both player and enemy? Adjust the threads in some way?
         time.sleep(playerinstance.attackspeed)
         print("Both deal and take damage at the same time")
         print(f"Equal: {playerinstance.attackspeed}")
@@ -214,9 +218,9 @@ if __name__ == "__main__":
    #player_thread.join()
    #enemy_thread.join()
 
+   #Change attackspeed so that higher == faster -> formula with division for time.sleep? adjust attackspeed itself?
    #Add comments to the async code here and in the test file
    #Add console close without ctrl+c
-   #Check async thread running
    #Add levels/experience to the Player
    #Add a way to get rewarded experience from beating enemies
    #Add experience granted variable to enemies
