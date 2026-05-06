@@ -180,6 +180,12 @@ async def enemy_thread(enemy, player):
         enemy.attack(player)
         time.sleep(enemy.attackspeed) # Better way of doing attacks per time interval?
 
+def both_attack(player, enemy):
+    print("Both attacking")
+    player.attack(enemy)
+    enemy.attack(player)
+    time.sleep(player.attackspeed)
+
 async def run_threads():
     # If player is faster than enemy, the threads execute player -> enemy
     if playerinstance.attackspeed > enemyinstance.attackspeed:
@@ -191,9 +197,7 @@ async def run_threads():
         print(f"Lesser: {playerinstance.attackspeed}")
     # If player and enemy have the same attackspeed, both get to attack
     if playerinstance.attackspeed == enemyinstance.attackspeed:
-        # Trigger attack from both player and enemy? Adjust the threads in some way?
-        time.sleep(playerinstance.attackspeed)
-        print("Both deal and take damage at the same time")
+        both_attack(playerinstance, enemyinstance)
         print(f"Equal: {playerinstance.attackspeed}")
 
 playerinstance = Player()
@@ -218,6 +222,7 @@ if __name__ == "__main__":
    #player_thread.join()
    #enemy_thread.join()
 
+   #Are threads even necessary in the current setup?
    #Change attackspeed so that higher == faster -> formula with division for time.sleep? adjust attackspeed itself?
    #Add comments to the async code here and in the test file
    #Add console close without ctrl+c
