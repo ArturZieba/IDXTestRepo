@@ -60,7 +60,7 @@ class EnemyRoster():
         #    print(random.choice(enemyrosterweighted))
 
 class Player:
-    def __init__(self, maximumhealth = 10, currenthealth = 10, level = 0, experience = 0, experiencerequired = 40, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True): 
+    def __init__(self, maximumhealth = 10, currenthealth = 10, level = 0, experience = 0, experiencerequired = 40, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
         self.level = level
@@ -71,6 +71,7 @@ class Player:
         self.damage = randominteger(damagemin, damagemax)
         self.attackspeed = attackspeed
         self.isalive = isalive
+        #self.target = target
 
     def info(self):
         print(f"""Player info:
@@ -114,7 +115,7 @@ class Player:
         self.isalive = False
 
 class Enemy:
-    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, experiencegranted = 1):
+    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, experiencegranted = 1):#, target = Player()):
         self.name = name
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
@@ -125,6 +126,7 @@ class Enemy:
         self.isalive = isalive
         self.spawnweight = spawnweight
         self.experiencegranted = experiencegranted
+        #self.target = target
 
     def info(self):
         print(f"""Enemy info:
@@ -187,30 +189,31 @@ def both_attack(player, enemy):
     time.sleep(player.attackspeed)
 
 async def run_threads():
-    # If player is faster than enemy, the threads execute player -> enemy
-    if playerinstance.attackspeed > enemyinstance.attackspeed:
-        await asyncio.gather(player_thread(playerinstance, enemyinstance), enemy_thread(enemyinstance, playerinstance))
-        print(f"Bigger: {playerinstance.attackspeed}")
-    # If player is slower than enemy, the threads execute enemy -> player
-    if playerinstance.attackspeed < enemyinstance.attackspeed:
-        await asyncio.gather(enemy_thread(enemyinstance, playerinstance), player_thread(playerinstance, enemyinstance))
-        print(f"Lesser: {playerinstance.attackspeed}")
-    # If player and enemy have the same attackspeed, both get to attack
-    if playerinstance.attackspeed == enemyinstance.attackspeed:
-        both_attack(playerinstance, enemyinstance)
-        print(f"Equal: {playerinstance.attackspeed}")
+    while True:
+       # If player is faster than enemy, the threads execute player -> enemy
+       if playerinstance.attackspeed > enemyinstance.attackspeed:
+           await asyncio.gather(player_thread(playerinstance, enemyinstance), enemy_thread(enemyinstance, playerinstance))
+           print(f"Bigger: {playerinstance.attackspeed}")
+       # If player is slower than enemy, the threads execute enemy -> player
+       if playerinstance.attackspeed < enemyinstance.attackspeed:
+           await asyncio.gather(enemy_thread(enemyinstance, playerinstance), player_thread(playerinstance, enemyinstance))
+           print(f"Lesser: {playerinstance.attackspeed}")
+       # If player and enemy have the same attackspeed, both get to attack
+       if playerinstance.attackspeed == enemyinstance.attackspeed:
+           both_attack(playerinstance, enemyinstance)
+           print(f"Equal: {playerinstance.attackspeed}")
 
-playerinstance = Player()
-enemyinstance = Enemy()
+playerinstance = Player()#(10, 10, 0, 0, 40, 1, 3, 2, True, enemyinstance)
+enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
 
 if __name__ == "__main__":
    playerinstance.info()
    enemyinstance.info()
 
-   enemyinstance.death(playerinstance)
-   enemyinstance.info()
-   enemyinstance.death(playerinstance)
-   playerinstance.info()
+   #enemyinstance.death(playerinstance)
+   #enemyinstance.info()
+   #enemyinstance.death(playerinstance)
+   #playerinstance.info()
    
    # Run "gameplay loop" - player and enemy attacking based on their attack speed
    asyncio.run(run_threads())
@@ -222,6 +225,7 @@ if __name__ == "__main__":
    #player_thread.join()
    #enemy_thread.join()
 
+   #Adjust death() defs
    #Are threads even necessary in the current setup?
    #Change attackspeed so that higher == faster -> formula with division for time.sleep? adjust attackspeed itself?
    #Add comments to the async code here and in the test file
