@@ -203,6 +203,36 @@ async def run_threads():
            both_attack(playerinstance, enemyinstance)
            print(f"Equal: {playerinstance.attackspeed}")
 
+def player_turn(player, enemy):
+    time.sleep(1/player.attackspeed)
+    print("Player attacking")
+    player.attack(enemy)
+    
+def enemy_turn(enemy, player):
+    time.sleep(1/enemy.attackspeed)
+    print("Enemy attacking")
+    enemy.attack(player)
+
+def both_turn(player, enemy):
+    time.sleep(1/player.attackspeed)
+    print("Both attacking")
+    player.attack(enemy)
+    enemy.attack(player)
+    
+def run_turns():
+    while True:
+        if playerinstance.attackspeed > enemyinstance.attackspeed:
+            player_turn(playerinstance, enemyinstance)
+            enemy_turn(enemyinstance, playerinstance)
+            print(f"Bigger: {playerinstance.attackspeed}")
+        if playerinstance.attackspeed < enemyinstance.attackspeed:
+            enemy_turn(enemyinstance, playerinstance)
+            player_turn(playerinstance, enemyinstance)
+            print(f"Lesser: {playerinstance.attackspeed}")
+        if playerinstance.attackspeed == enemyinstance.attackspeed:
+            both_turn(playerinstance, enemyinstance)
+            print(f"Equal: {playerinstance.attackspeed}")
+
 playerinstance = Player()#(10, 10, 0, 0, 40, 1, 3, 2, True, enemyinstance)
 enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
 
@@ -216,7 +246,9 @@ if __name__ == "__main__":
    #playerinstance.info()
    
    # Run "gameplay loop" - player and enemy attacking based on their attack speed
-   asyncio.run(run_threads())
+   #asyncio.run(run_threads())
+
+   run_turns()
 
    #player_thread = threading.Thread(target=player_thread(playerinstance, enemyinstance))
    #enemy_thread = threading.Thread(target=enemy_thread(enemyinstance, playerinstance))
