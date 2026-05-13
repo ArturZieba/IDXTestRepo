@@ -1,4 +1,4 @@
-import asyncio # For async defs/threading
+#import asyncio # For async defs/threading
 import math # For math.floor()
 import random # For def randominteger
 import time # For time()
@@ -170,38 +170,38 @@ class Enemy:
         self.isalive = False
         self.spawnrandomenemy()
         
-async def player_thread(player, enemy):
-    #while player.isalive == True: #player.isalive == True and enemy.isalive == True:
-        print("Player attacking")
-        player.attack(enemy)
-        time.sleep(player.attackspeed) # Better way of doing attacks per time interval?
+#async def player_thread(player, enemy):
+#    #while player.isalive == True: #player.isalive == True and enemy.isalive == True:
+#        print("Player attacking")
+#        player.attack(enemy)
+#        time.sleep(player.attackspeed) # Better way of doing attacks per time interval?
 
-async def enemy_thread(enemy, player):
-    #while enemy.isalive == True: #enemy.isalive == True and player.isalive == True:
-        print("Enemy attacking")
-        enemy.attack(player)
-        time.sleep(enemy.attackspeed) # Better way of doing attacks per time interval?
+#async def enemy_thread(enemy, player):
+#    #while enemy.isalive == True: #enemy.isalive == True and player.isalive == True:
+#        print("Enemy attacking")
+#        enemy.attack(player)
+#        time.sleep(enemy.attackspeed) # Better way of doing attacks per time interval?
 
-def both_attack(player, enemy):
-    print("Both attacking")
-    player.attack(enemy)
-    enemy.attack(player)
-    time.sleep(player.attackspeed)
+#def both_attack(player, enemy):
+#    print("Both attacking")
+#    player.attack(enemy)
+#    enemy.attack(player)
+#    time.sleep(player.attackspeed)
 
-async def run_threads():
-    while True:
-       # If player is faster than enemy, the threads execute player -> enemy
-       if playerinstance.attackspeed > enemyinstance.attackspeed:
-           await asyncio.gather(player_thread(playerinstance, enemyinstance), enemy_thread(enemyinstance, playerinstance))
-           print(f"Bigger: {playerinstance.attackspeed}")
-       # If player is slower than enemy, the threads execute enemy -> player
-       if playerinstance.attackspeed < enemyinstance.attackspeed:
-           await asyncio.gather(enemy_thread(enemyinstance, playerinstance), player_thread(playerinstance, enemyinstance))
-           print(f"Lesser: {playerinstance.attackspeed}")
-       # If player and enemy have the same attackspeed, both get to attack
-       if playerinstance.attackspeed == enemyinstance.attackspeed:
-           both_attack(playerinstance, enemyinstance)
-           print(f"Equal: {playerinstance.attackspeed}")
+#async def run_threads():
+#    while True:
+#       # If player is faster than enemy, the threads execute player -> enemy
+#       if playerinstance.attackspeed > enemyinstance.attackspeed:
+#           await asyncio.gather(player_thread(playerinstance, enemyinstance), enemy_thread(enemyinstance, playerinstance))
+#           print(f"Bigger: {playerinstance.attackspeed}")
+#       # If player is slower than enemy, the threads execute enemy -> player
+#       if playerinstance.attackspeed < enemyinstance.attackspeed:
+#           await asyncio.gather(enemy_thread(enemyinstance, playerinstance), player_thread(playerinstance, enemyinstance))
+#           print(f"Lesser: {playerinstance.attackspeed}")
+#       # If player and enemy have the same attackspeed, both get to attack
+#       if playerinstance.attackspeed == enemyinstance.attackspeed:
+#           both_attack(playerinstance, enemyinstance)
+#           print(f"Equal: {playerinstance.attackspeed}")
 
 def player_turn(player, enemy):
     time.sleep(1/player.attackspeed)
@@ -239,11 +239,6 @@ enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
 if __name__ == "__main__":
    playerinstance.info()
    enemyinstance.info()
-
-   #enemyinstance.death(playerinstance)
-   #enemyinstance.info()
-   #enemyinstance.death(playerinstance)
-   #playerinstance.info()
    
    # Run "gameplay loop" - player and enemy attacking based on their attack speed
    #asyncio.run(run_threads())
@@ -257,11 +252,8 @@ if __name__ == "__main__":
    #player_thread.join()
    #enemy_thread.join()
 
+   #Subtract time it took for one entity to attack from another's attack (so if attack times are e.g. 1s and 1.5s then it takes 1.5s per both turns total not 2.5s from waiting 1s and 1.5s for another)
    #Adjust death() defs
    #Are threads even necessary in the current setup?
-   #Change attackspeed so that higher == faster -> formula with division for time.sleep? adjust attackspeed itself?
-   #Add comments to the async code here and in the test file
+   #Add comments to the async/turn code here and in the test file
    #Add console close without ctrl+c
-   #Add levels/experience to the Player
-   #Add a way to get rewarded experience from beating enemies
-   #Add experience granted variable to enemies
