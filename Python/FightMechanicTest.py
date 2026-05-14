@@ -111,8 +111,8 @@ class Player:
         self.levelup()
 
     def death(self):
-        print("Player dead")
         self.isalive = False
+        print("Player dead")
 
 class Enemy:
     def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, experiencegranted = 1):#, target = Player()):
@@ -164,10 +164,10 @@ class Enemy:
     def grantrewards(self, target):
         target.receiverewards(self.experiencegranted)
 
-    def death(self, target):
-        self.grantrewards(target)
-        print("Enemy dead")
+    def death(self):#, target):
+        #self.grantrewards(target)
         self.isalive = False
+        print("Enemy dead")
         self.spawnrandomenemy()
         
 #async def player_thread(player, enemy):
