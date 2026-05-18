@@ -24,11 +24,11 @@ async def run_test_threads():
         print(f"Equal: {attackspeedone}")
 
 def player_turn(attackspeed):
-    time.sleep(1/attackspeed)
+    #time.sleep(1/attackspeed)
     print("Player attacks")
     
 def enemy_turn(attackspeed):
-    time.sleep(1/attackspeed)
+    #time.sleep(1/attackspeed)
     print("Enemy attacks")
 
 def run_turns():
@@ -43,12 +43,15 @@ def run_turns():
         player_turn(attackspeedplayer)
         print(f"Lesser: {attackspeedplayer}")
     if attackspeedplayer == attackspeedenemy:
-        time.sleep(1/attackspeedplayer) # 1/attackspeed -> 1/1 = 1 (1s sleep); 1/0.5 = 2 (2s sleep); 1/2 = 0.5 (0.5s sleep) - higher value == higher attack speed == shorter sleep
+        #time.sleep(1/attackspeedplayer) # 1/attackspeed -> 1/1 = 1 (1s sleep); 1/0.5 = 2 (2s sleep); 1/2 = 0.5 (0.5s sleep) - higher value == higher attack speed == shorter sleep
         print("Both deal and take damage at the same time")
         print(f"Equal: {attackspeedplayer}")
 
 while True:
+    turnlength = 0.5
+    time.sleep(turnlength)
+    print("test")
     #asyncio.run(run_test_threads())
-    run_turns()
+    #run_turns()
 
 

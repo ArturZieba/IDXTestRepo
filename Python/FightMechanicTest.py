@@ -252,7 +252,7 @@ if __name__ == "__main__":
    #player_thread.join()
    #enemy_thread.join()
 
-   #Subtract time it took for one entity to attack from another's attack (so if attack times are e.g. 1s and 1.5s then it takes 1.5s per both turns total not 2.5s from waiting 1s and 1.5s for another)
+   #Change time.sleep() to constant value that can be regulated manually and make attackspeed just a value to be compared against each other
    #Adjust death() defs
    #Are threads even necessary in the current setup?
    #Add comments to the async/turn code here and in the test file
