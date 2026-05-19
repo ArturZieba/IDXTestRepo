@@ -47,10 +47,23 @@ def run_turns():
         print("Both deal and take damage at the same time")
         print(f"Equal: {attackspeedplayer}")
 
+def player_attack():
+    print("Player attacks")
+
+def enemy_attack():
+    print("Enemy attacks")
+
+def both_attack():
+    print("Both attack")
+
 while True:
     turnlength = 0.5
     time.sleep(turnlength)
-    print("test")
+    
+    player_attack()
+    #enemy_attack()
+    #both_attack()
+    
     #asyncio.run(run_test_threads())
     #run_turns()
 
