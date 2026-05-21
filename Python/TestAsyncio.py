@@ -55,22 +55,20 @@ def enemy_attack():
 
 def both_attack():
     print("Both attack")
+    
 
-def run_turns_newas():
-    turnlength = 0.5
-
-    attackspeedplayer = 3
-    attackspeedenemy = 2
-
+def run_turns_newas(turnlength, attackspeedplayer, attackspeedenemy):
     while True:
         if attackspeedplayer > attackspeedenemy:
             time.sleep(turnlength)
             player_attack()
             enemy_attack()
+            print(" ")
         if attackspeedplayer < attackspeedenemy:
             time.sleep(turnlength)
             enemy_attack()
             player_attack()
+            print(" ")
         if attackspeedplayer == attackspeedenemy:
             time.sleep(turnlength)
             both_attack()
@@ -79,7 +77,12 @@ while True:
     #player_attack()
     #enemy_attack()
     #both_attack()
-    run_turns_newas()
+    
+    turnlength = 0.5
+    attackspeedplayer = 2
+    attackspeedenemy = 1
+
+    run_turns_newas(turnlength, attackspeedplayer, attackspeedenemy)
 
     #asyncio.run(run_test_threads())
     #run_turns()
