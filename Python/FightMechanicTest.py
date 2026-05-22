@@ -3,6 +3,8 @@ import math # For math.floor()
 import random # For def randominteger
 import time # For time()
 
+turnlength = 1 # Constant variable used to adjust time between attack turns
+
 # Roll a random integer in min/max range
 def randominteger(min, max):
     generatedinteger = random.randint(min, max)
@@ -233,6 +235,31 @@ def run_turns():
             both_turn(playerinstance, enemyinstance)
             print(f"Equal: {playerinstance.attackspeed}")
 
+def player_attack():
+    print("Player attacks")
+
+def enemy_attack():
+    print("Enemy attacks")
+
+def both_attack():
+    print("Both attack")
+
+def run_turns_newas(turnlength, attackspeedplayer, attackspeedenemy):
+    while True:
+        if attackspeedplayer > attackspeedenemy:
+            time.sleep(turnlength)
+            player_attack()
+            enemy_attack()
+            print(" ")
+        if attackspeedplayer < attackspeedenemy:
+            time.sleep(turnlength)
+            enemy_attack()
+            player_attack()
+            print(" ")
+        if attackspeedplayer == attackspeedenemy:
+            time.sleep(turnlength)
+            both_attack()
+
 playerinstance = Player()#(10, 10, 0, 0, 40, 1, 3, 2, True, enemyinstance)
 enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
 
@@ -243,7 +270,8 @@ if __name__ == "__main__":
    # Run "gameplay loop" - player and enemy attacking based on their attack speed
    #asyncio.run(run_threads())
 
-   run_turns()
+   #run_turns()
+   run_turns_newas(turnlength, playerinstance.attackspeed, enemyinstance.attackspeed)
 
    #player_thread = threading.Thread(target=player_thread(playerinstance, enemyinstance))
    #enemy_thread = threading.Thread(target=enemy_thread(enemyinstance, playerinstance))
