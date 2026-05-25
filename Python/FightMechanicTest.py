@@ -205,21 +205,21 @@ class Enemy:
 #           both_attack(playerinstance, enemyinstance)
 #           print(f"Equal: {playerinstance.attackspeed}")
 
-def player_turn(player, enemy):
-    time.sleep(1/player.attackspeed)
-    print("Player attacking")
-    player.attack(enemy)
+#def player_turn(player, enemy):
+#    time.sleep(1/player.attackspeed)
+#    print("Player attacking")
+#    player.attack(enemy)
     
-def enemy_turn(enemy, player):
-    time.sleep(1/enemy.attackspeed)
-    print("Enemy attacking")
-    enemy.attack(player)
+#def enemy_turn(enemy, player):
+#    time.sleep(1/enemy.attackspeed)
+#    print("Enemy attacking")
+#    enemy.attack(player)
 
-def both_turn(player, enemy):
-    time.sleep(1/player.attackspeed)
-    print("Both attacking")
-    player.attack(enemy)
-    enemy.attack(player)
+#def both_turn(player, enemy):
+#    time.sleep(1/player.attackspeed)
+#    print("Both attacking")
+#    player.attack(enemy)
+#    enemy.attack(player)
     
 def run_turns():
     while True:
@@ -235,30 +235,31 @@ def run_turns():
             both_turn(playerinstance, enemyinstance)
             print(f"Equal: {playerinstance.attackspeed}")
 
-def player_attack():
+def player_turn():
     print("Player attacks")
 
-def enemy_attack():
+def enemy_turn():
     print("Enemy attacks")
 
-def both_attack():
+def both_turn():
     print("Both attack")
 
-def run_turns_newas(turnlength, attackspeedplayer, attackspeedenemy):
+def run_turns_newas(turnlength, player, enemy):
     while True:
-        if attackspeedplayer > attackspeedenemy:
+        if player.attackspeed > enemy.attackspeed:
             time.sleep(turnlength)
-            player_attack()
-            enemy_attack()
+            player.attack(enemy)
+            enemy.attack(player)
             print(" ")
-        if attackspeedplayer < attackspeedenemy:
+        if player.attackspeed < enemy.attackspeed:
             time.sleep(turnlength)
-            enemy_attack()
-            player_attack()
+            enemy.attack(player)
+            player.attack(enemy)
             print(" ")
-        if attackspeedplayer == attackspeedenemy:
+        if player.attackspeed == enemy.attackspeed:
             time.sleep(turnlength)
-            both_attack()
+            player.attack(enemy)
+            enemy.attack(player)
 
 playerinstance = Player()#(10, 10, 0, 0, 40, 1, 3, 2, True, enemyinstance)
 enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
@@ -271,7 +272,7 @@ if __name__ == "__main__":
    #asyncio.run(run_threads())
 
    #run_turns()
-   run_turns_newas(turnlength, playerinstance.attackspeed, enemyinstance.attackspeed)
+   run_turns_newas(turnlength, playerinstance, enemyinstance)
 
    #player_thread = threading.Thread(target=player_thread(playerinstance, enemyinstance))
    #enemy_thread = threading.Thread(target=enemy_thread(enemyinstance, playerinstance))
@@ -280,6 +281,8 @@ if __name__ == "__main__":
    #player_thread.join()
    #enemy_thread.join()
 
+   #Move new as turn conditions to separate defs
+   #Cleanup
    #Change time.sleep() to constant value that can be regulated manually and make attackspeed just a value to be compared against each other
    #Adjust death() defs
    #Are threads even necessary in the current setup?
