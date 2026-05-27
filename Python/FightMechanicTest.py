@@ -1,4 +1,3 @@
-#import asyncio # For async defs/threading
 import math # For math.floor()
 import random # For def randominteger
 import time # For time()
@@ -10,6 +9,7 @@ def randominteger(min, max):
     generatedinteger = random.randint(min, max)
     return generatedinteger
 
+# Class containing different enemies and their stats as well as initialization for the weighted spawn list
 class EnemyRoster():
     enemy_goblin = {
             "name": "Goblin", 
@@ -53,13 +53,10 @@ class EnemyRoster():
     # List that is populated with the same dicts as enemyroster, but each dict has as many entries as specified in spawnweight variable
     enemyrosterweighted = []
 
+    # Add as many elements of enemy type to the enemyrosterweighted as high is the spawnweight value
     for element in enemyroster:
         for i in range(element["spawnweight"]):
             enemyrosterweighted.append(element)
-
-    # Check random distribution with a loop
-        #for i in range(100):
-        #    print(random.choice(enemyrosterweighted))
 
 class Player:
     def __init__(self, maximumhealth = 10, currenthealth = 10, level = 0, experience = 0, experiencerequired = 40, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
@@ -222,6 +219,7 @@ if __name__ == "__main__":
    # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
    run_turns_newas(turnlength, playerinstance, enemyinstance)
 
+   #Separate the EnemyRoster() class into a class with enemy stats and a separate def with spawn list?
    #Move new as turn conditions to separate defs
    #Cleanup
    #Change time.sleep() to constant value that can be regulated manually and make attackspeed just a value to be compared against each other
