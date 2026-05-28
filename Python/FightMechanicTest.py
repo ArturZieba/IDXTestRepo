@@ -9,7 +9,7 @@ def randominteger(min, max):
     generatedinteger = random.randint(min, max)
     return generatedinteger
 
-# Class containing different enemies and their stats as well as initialization for the weighted spawn list
+# Class containing all of the different enemies with their stats
 class EnemyRoster():
     enemy_goblin = {
             "name": "Goblin", 
@@ -47,8 +47,10 @@ class EnemyRoster():
             "experiencegranted": 50
         }
 
-    # Move this outside the def?
-    enemyroster = [enemy_goblin, enemy_ogre, enemy_dragon]
+# Class containing enemy weighted spawn list initialization
+class EnemyWeightedListInit():
+    # List of all monsters available to spawn
+    enemyroster = [EnemyRoster.enemy_goblin, EnemyRoster.enemy_ogre, EnemyRoster.enemy_dragon]
         
     # List that is populated with the same dicts as enemyroster, but each dict has as many entries as specified in spawnweight variable
     enemyrosterweighted = []
@@ -155,7 +157,7 @@ class Enemy:
             self.death()
 
     def spawnrandomenemy(self):
-        chosenenemy = random.choice(EnemyRoster.enemyrosterweighted)
+        chosenenemy = random.choice(EnemyWeightedListInit.enemyrosterweighted)
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
         self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["experiencegranted"])
@@ -219,7 +221,7 @@ if __name__ == "__main__":
    # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
    run_turns_newas(turnlength, playerinstance, enemyinstance)
 
-   #Separate the EnemyRoster() class into a class with enemy stats and a separate def with spawn list?
+   #Separate the EnemyWeightedListInit() class into a class with enemy stats and a separate def with spawn list?
    #Move new as turn conditions to separate defs
    #Cleanup
    #Change time.sleep() to constant value that can be regulated manually and make attackspeed just a value to be compared against each other

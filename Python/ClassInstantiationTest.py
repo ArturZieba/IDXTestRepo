@@ -7,7 +7,7 @@ def randominteger(min, max):
     generatedinteger = random.randint(min, max)
     return generatedinteger
 
-class EnemyRoster():
+class EnemyWeightedListInit():
     enemy_goblin = {
             "name": "Goblin", 
             "maximumhealth": 10, 
@@ -138,7 +138,7 @@ class Enemy:
             self.death()
 
     def spawnrandomenemy(self):
-        chosenenemy = random.choice(EnemyRoster.enemyrosterweighted)
+        chosenenemy = random.choice(EnemyWeightedListInit.enemyrosterweighted)
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
         self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"])
@@ -157,5 +157,5 @@ enemyinstance.info()
 enemyinstance.death()
 enemyinstance.info()
 
-#print(EnemyRoster.enemyroster)
+#print(EnemyWeightedListInit.enemyroster)
 
