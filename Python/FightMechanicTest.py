@@ -202,15 +202,13 @@ playerinstance = Player()#(10, 10, 0, 0, 40, 1, 3, 2, True, enemyinstance)
 enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
 
 if __name__ == "__main__":
-   playerinstance.info()
-   enemyinstance.info()
+    playerinstance.info()
+    enemyinstance.info()
    
-   # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
-   run_turns(turnlength, playerinstance, enemyinstance)
+    # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
+    run_turns(turnlength, playerinstance, enemyinstance)
 
-   #Cleanup
-   #Change time.sleep() to constant value that can be regulated manually and make attackspeed just a value to be compared against each other
-   #Adjust death() defs
-   #Are threads even necessary in the current setup?
-   #Add comments to the async/turn code here and in the test file
-   #Add console close without ctrl+c
+    #Change time.sleep() to constant value that can be regulated manually and make attackspeed just a value to be compared against each other
+    #Adjust death() defs
+    #Add comments to the async/turn code here and in the test file
+    #Add console close without ctrl+c
