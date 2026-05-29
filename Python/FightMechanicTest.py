@@ -185,32 +185,33 @@ def run_turns():
             both_turn(playerinstance, enemyinstance)
             print(f"Equal: {playerinstance.attackspeed}")
 
-def player_turn():
-    print("Player attacks")
+def player_turn(turnlength, player, enemy):
+    time.sleep(turnlength)
+    player.attack(enemy)
+    enemy.attack(player)
+    print(" ")
 
-def enemy_turn():
-    print("Enemy attacks")
+def enemy_turn(turnlength, player, enemy):
+    time.sleep(turnlength)
+    enemy.attack(player)
+    player.attack(enemy)
+    print(" ")
 
-def both_turn():
-    print("Both attack")
+def both_turn(turnlength, player, enemy):
+    time.sleep(turnlength)
+    player.attack(enemy)
+    enemy.attack(player)
+    print(" ")
 
 def run_turns_newas(turnlength, player, enemy):
     while True:
         if player.attackspeed > enemy.attackspeed:
-            time.sleep(turnlength)
-            player.attack(enemy)
-            enemy.attack(player)
-            print(" ")
+            player_turn(turnlength, player, enemy)
         if player.attackspeed < enemy.attackspeed:
-            time.sleep(turnlength)
-            enemy.attack(player)
-            player.attack(enemy)
-            print(" ")
+            enemy_turn(turnlength, player, enemy)
         if player.attackspeed == enemy.attackspeed:
-            time.sleep(turnlength)
-            player.attack(enemy)
-            enemy.attack(player)
-
+            both_turn(turnlength, player, enemy)
+            
 playerinstance = Player()#(10, 10, 0, 0, 40, 1, 3, 2, True, enemyinstance)
 enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
 
@@ -221,8 +222,6 @@ if __name__ == "__main__":
    # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
    run_turns_newas(turnlength, playerinstance, enemyinstance)
 
-   #Separate the EnemyWeightedListInit() class into a class with enemy stats and a separate def with spawn list?
-   #Move new as turn conditions to separate defs
    #Cleanup
    #Change time.sleep() to constant value that can be regulated manually and make attackspeed just a value to be compared against each other
    #Adjust death() defs
