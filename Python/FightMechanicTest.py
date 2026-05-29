@@ -170,20 +170,6 @@ class Enemy:
         self.isalive = False
         print("Enemy dead")
         self.spawnrandomenemy()
-        
-def run_turns():
-    while True:
-        if playerinstance.attackspeed > enemyinstance.attackspeed:
-            player_turn(playerinstance, enemyinstance)
-            enemy_turn(enemyinstance, playerinstance)
-            print(f"Bigger: {playerinstance.attackspeed}")
-        if playerinstance.attackspeed < enemyinstance.attackspeed:
-            enemy_turn(enemyinstance, playerinstance)
-            player_turn(playerinstance, enemyinstance)
-            print(f"Lesser: {playerinstance.attackspeed}")
-        if playerinstance.attackspeed == enemyinstance.attackspeed:
-            both_turn(playerinstance, enemyinstance)
-            print(f"Equal: {playerinstance.attackspeed}")
 
 def player_turn(turnlength, player, enemy):
     time.sleep(turnlength)
@@ -203,7 +189,7 @@ def both_turn(turnlength, player, enemy):
     enemy.attack(player)
     print(" ")
 
-def run_turns_newas(turnlength, player, enemy):
+def run_turns(turnlength, player, enemy):
     while True:
         if player.attackspeed > enemy.attackspeed:
             player_turn(turnlength, player, enemy)
@@ -220,7 +206,7 @@ if __name__ == "__main__":
    enemyinstance.info()
    
    # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
-   run_turns_newas(turnlength, playerinstance, enemyinstance)
+   run_turns(turnlength, playerinstance, enemyinstance)
 
    #Cleanup
    #Change time.sleep() to constant value that can be regulated manually and make attackspeed just a value to be compared against each other
