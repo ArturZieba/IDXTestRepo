@@ -61,7 +61,7 @@ class EnemyWeightedListInit():
             enemyrosterweighted.append(element)
 
 class Player:
-    def __init__(self, maximumhealth = 10, currenthealth = 10, level = 0, experience = 0, experiencerequired = 40, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
+    def __init__(self, maximumhealth = 100, currenthealth = 100, level = 0, experience = 0, experiencerequired = 40, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
         self.level = level
@@ -191,12 +191,14 @@ def both_turn(turnlength, player, enemy):
 
 def run_turns(turnlength, player, enemy):
     while True:
-        if player.attackspeed > enemy.attackspeed:
-            player_turn(turnlength, player, enemy)
-        if player.attackspeed < enemy.attackspeed:
-            enemy_turn(turnlength, player, enemy)
-        if player.attackspeed == enemy.attackspeed:
-            both_turn(turnlength, player, enemy)
+        while player.isalive & enemy.isalive:
+            if player.attackspeed > enemy.attackspeed:
+                player_turn(turnlength, player, enemy)
+            if player.attackspeed < enemy.attackspeed:
+                enemy_turn(turnlength, player, enemy)
+            if player.attackspeed == enemy.attackspeed:
+                both_turn(turnlength, player, enemy)
+    
             
 playerinstance = Player()#(10, 10, 0, 0, 40, 1, 3, 2, True, enemyinstance)
 enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
@@ -208,9 +210,6 @@ if __name__ == "__main__":
     # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
     run_turns(turnlength, playerinstance, enemyinstance)
 
-    #Change time.sleep() to constant value that can be regulated manually and make attackspeed just a value to be compared against each other
     #Adjust death() defs
     #Add comments to the async/turn code here and in the test file
     #Add console close without ctrl+c
-
-    #Check 
