@@ -191,20 +191,20 @@ def both_turn(turnlength, player, enemy):
 
 def run_turns(turnlength, player, enemy):
     while True:
-        while player.currenthealth > 0 & enemy.currenthealth > 0:
+        while player.isalive & enemy.isalive:
+            if enemy.currenthealth <= 0:
+                enemy.death()
+                #return
+            if player.currenthealth <= 0:
+                player.death()
+                return
+
             if player.attackspeed > enemy.attackspeed:
                 player_turn(turnlength, player, enemy)
             if player.attackspeed < enemy.attackspeed:
                 enemy_turn(turnlength, player, enemy)
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
-        
-        if enemy.currenthealth <= 0:
-            enemy.death()
-
-        if player.currenthealth <= 0:
-            player.death()
-    
             
 playerinstance = Player()#(10, 10, 0, 0, 40, 1, 3, 2, True, enemyinstance)
 enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
