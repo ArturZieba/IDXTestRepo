@@ -110,6 +110,7 @@ class Player:
     def receiverewards(self, experience):
         self.experience += experience
         self.levelup()
+        print(f"Experience: {self.experience} - Level: {self.level}")
 
     def death(self):
         self.isalive = False
@@ -165,8 +166,8 @@ class Enemy:
     def grantrewards(self, target):
         target.receiverewards(self.experiencegranted)
 
-    def death(self):#, target):
-        #self.grantrewards(target)
+    def death(self, target):
+        self.grantrewards(target)
         self.isalive = False
         print("Enemy dead")
         self.spawnrandomenemy()
@@ -193,7 +194,7 @@ def run_turns(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
             if enemy.currenthealth <= 0:
-                enemy.death()
+                enemy.death(player)
                 #return
             if player.currenthealth <= 0:
                 player.death()
