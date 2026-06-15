@@ -188,7 +188,11 @@ def run_turns(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
             if enemy.currenthealth <= 0:
+<<<<<<<<< Temporary merge branch 1
+                enemy.death()
+=========
                 enemy.death(player)
+>>>>>>>>> Temporary merge branch 2
                 #return
             if player.currenthealth <= 0:
                 player.death()
