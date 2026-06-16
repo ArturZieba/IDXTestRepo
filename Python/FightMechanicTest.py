@@ -72,7 +72,6 @@ class Player:
         self.damage = randominteger(damagemin, damagemax)
         self.attackspeed = attackspeed
         self.isalive = isalive
-        #self.target = target
 
     def info(self):
         print(f"""Player info:
@@ -125,7 +124,6 @@ class Enemy:
         self.isalive = isalive
         self.spawnweight = spawnweight
         self.experiencegranted = experiencegranted
-        #self.target = target
 
     def info(self):
         print(f"""Enemy info:
@@ -188,11 +186,7 @@ def run_turns(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
             if enemy.currenthealth <= 0:
-<<<<<<<<< Temporary merge branch 1
-                enemy.death()
-=========
                 enemy.death(player)
->>>>>>>>> Temporary merge branch 2
                 #return
             if player.currenthealth <= 0:
                 player.death()
@@ -205,8 +199,8 @@ def run_turns(turnlength, player, enemy):
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
             
-playerinstance = Player()#(10, 10, 0, 0, 40, 1, 3, 2, True, enemyinstance)
-enemyinstance = Enemy()#("Enemy", 10, 10, 1, 3, 1, True, 0, 1, playerinstance)
+playerinstance = Player()
+enemyinstance = Enemy()
 
 if __name__ == "__main__":
     playerinstance.info()
@@ -215,6 +209,5 @@ if __name__ == "__main__":
     # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
     run_turns(turnlength, playerinstance, enemyinstance)
 
-    #Adjust death() defs
     #Add comments to the async/turn code here and in the test file
     #Add console close without ctrl+c
