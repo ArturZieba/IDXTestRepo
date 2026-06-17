@@ -61,7 +61,7 @@ class EnemyWeightedListInit():
             enemyrosterweighted.append(element)
 
 class Player:
-    def __init__(self, maximumhealth = 100, currenthealth = 100, level = 0, experience = 0, experiencerequired = 40, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
+    def __init__(self, maximumhealth = 100, currenthealth = 100, level = 0, experience = 0, experiencerequired = 5, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
         self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
         self.level = level
@@ -93,6 +93,11 @@ class Player:
            self.experience -= self.experiencerequired
            self.experiencerequired = math.floor(self.experiencerequired + (self.experiencerequired / 4))
            self.level += 1
+           
+           #PLACEHOLDER Rewards for levelling up
+           self.maximumhealth += 10
+           self.currenthealth = self.maximumhealth
+           self.info()
 
     def attack(self, target):
         target.receivedamage(self.damage)
@@ -210,4 +215,7 @@ if __name__ == "__main__":
     run_turns(turnlength, playerinstance, enemyinstance)
 
     #Add comments to the async/turn code here and in the test file
-    #Add console close without ctrl+c
+    #Don't start with gameloop, add a switch to choose game/exit/whatever
+    #What to do when player dies (-exp?)
+    #Add some rewards for levelup (increase hp?)
+    #Add console close without ctrl+c (see above)
