@@ -1,4 +1,6 @@
+#import keyboard # Does not work, needs sudo
 import math # For math.floor()
+from multiprocessing import Process # For Process
 import random # For def randominteger
 import time # For time()
 
@@ -211,11 +213,20 @@ if __name__ == "__main__":
     playerinstance.info()
     enemyinstance.info()
    
+    #Does not work, keyboard requires root access, maybe a different way of doing this?
+    #process = Process(target=run_turns(turnlength, playerinstance, enemyinstance))
+    #process.start()
+    #while process.is_alive():
+    #    if keyboard.is_pressed('q'):
+    #        process.terminate()
+    #        break
+    
     # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
     run_turns(turnlength, playerinstance, enemyinstance)
 
+    #Add gear/attributes/something to adjust player stats
     #Add comments to the async/turn code here and in the test file
     #Don't start with gameloop, add a switch to choose game/exit/whatever
     #What to do when player dies (-exp?)
     #Add some rewards for levelup (increase hp?)
-    #Add console close without ctrl+c (see above)
+    #Add console close without ctrl+c (workaround keyboard not being accessible without root)
