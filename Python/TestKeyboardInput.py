@@ -1,4 +1,6 @@
-#import keyboard # Does not work, needs sudo
+#import keyboard # Does not work, needs sudo - python -m pip install keyboard
+from multiprocessing import Process # For Process()
+#from pynput.keyboard import Key, Controller # python -m pip install pynput
     
 def test():
     print("TestKeyboardInput")
@@ -10,5 +12,8 @@ def test():
 #    if keyboard.is_pressed('q'):
 #        process.terminate()
 #        break
+
+#keyboard = Controller()
+#keyboard.type('Hello World')
 
 test()

@@ -1,6 +1,6 @@
 #import keyboard # Does not work, needs sudo
 import math # For math.floor()
-from multiprocessing import Process # For Process
+from multiprocessing import Process # For Process()
 import random # For def randominteger
 import time # For time()
 
