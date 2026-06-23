@@ -17,3 +17,5 @@ def test():
 #keyboard.type('Hello World')
 
 test()
+
+input("Test: ")
