@@ -18,4 +18,7 @@ def test():
 
 test()
 
-input("Test: ")
+testinput = input("Test: ")
+
+if testinput == "q":
+    print("q")
