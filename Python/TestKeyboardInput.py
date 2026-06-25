@@ -18,7 +18,23 @@ def test():
 
 test()
 
-testinput = input("Test: ")
+while True:
+    print("1 ABC")
+    print("2 DEF")
+    print("3 GHI")
 
-if testinput == "q":
-    print("q")
+    testinput = input("Test: ")
+
+    if testinput == "1":
+        print("Option 1")
+        break
+    elif testinput == "2":
+        print("Option 2")
+        break
+    elif testinput == "3":
+        print("Option 3")
+        break
+    else:
+        print("No option")
+
+    #print("Test")
