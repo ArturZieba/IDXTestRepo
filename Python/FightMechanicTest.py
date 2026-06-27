@@ -211,10 +211,24 @@ if __name__ == "__main__":
     playerinstance.info()
     enemyinstance.info()
     
-    # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
-    input("Test: ")
-    
-    run_turns(turnlength, playerinstance, enemyinstance)
+    while True:
+        print("1 - Automatic fight loop")
+        print("2 - Fight once")
+        print("3 - Exit")
+
+        testinput = input("Test: ")
+
+        if testinput == "1":
+            # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
+            run_turns(turnlength, playerinstance, enemyinstance)
+        elif testinput == "2":
+            print("Run fight loop once")
+            break
+        elif testinput == "3":
+            print("Exit")
+            break
+        else:
+            print("No option")
 
     #Add gear/attributes/something to adjust player stats
     #Add comments to the async/turn code here and in the test file
