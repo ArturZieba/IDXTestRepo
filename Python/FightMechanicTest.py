@@ -203,6 +203,9 @@ def run_turns(turnlength, player, enemy):
                 enemy_turn(turnlength, player, enemy)
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
+
+def run_turns_once(turnlength, player, enemy):
+    print("Run fight loop once 123")
             
 playerinstance = Player()
 enemyinstance = Enemy()
@@ -222,7 +225,7 @@ if __name__ == "__main__":
             # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
             run_turns(turnlength, playerinstance, enemyinstance)
         elif testinput == "2":
-            print("Run fight loop once")
+            run_turns_once(turnlength, playerinstance, enemyinstance)
             break
         elif testinput == "3":
             print("Exit")
