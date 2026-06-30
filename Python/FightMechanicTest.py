@@ -192,7 +192,6 @@ def run_turns(turnlength, player, enemy):
         while player.isalive & enemy.isalive:
             if enemy.currenthealth <= 0:
                 enemy.death(player)
-                #return
             if player.currenthealth <= 0:
                 player.death()
                 return
@@ -222,16 +221,17 @@ if __name__ == "__main__":
         testinput = input("Test: ")
 
         if testinput == "1":
-            # Run "gameplay loop" - player and enemy attacking based on their attack speed difference
+            # Run "gameplay loop" - player and enemy attacking based on their attack speed difference - ends on player death
             run_turns(turnlength, playerinstance, enemyinstance)
         elif testinput == "2":
+            # Run "gameplay loop" once - player and enemy attacking based on their attack speed difference - ends on player or enemy death
             run_turns_once(turnlength, playerinstance, enemyinstance)
             break
         elif testinput == "3":
             print("Exit")
             break
         else:
-            print("No option")
+            print("No option") 
 
     #Add gear/attributes/something to adjust player stats
     #Add comments to the async/turn code here and in the test file
