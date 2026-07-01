@@ -187,6 +187,7 @@ def both_turn(turnlength, player, enemy):
     enemy.attack(player)
     print(" ")
 
+# Run "gameplay loop" - player and enemy attacking based on their attack speed difference - ends on player death
 def run_turns(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
@@ -203,8 +204,23 @@ def run_turns(turnlength, player, enemy):
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
 
+# Run "gameplay loop" once - player and enemy attacking based on their attack speed difference - ends on player or enemy death
 def run_turns_once(turnlength, player, enemy):
-    print("Run fight loop once 123")
+    while True:
+        while player.isalive & enemy.isalive:
+            if enemy.currenthealth <= 0:
+                enemy.death(player)
+                return
+            if player.currenthealth <= 0:
+                player.death()
+                return
+
+            if player.attackspeed > enemy.attackspeed:
+                player_turn(turnlength, player, enemy)
+            if player.attackspeed < enemy.attackspeed:
+                enemy_turn(turnlength, player, enemy)
+            if player.attackspeed == enemy.attackspeed:
+                both_turn(turnlength, player, enemy)
             
 playerinstance = Player()
 enemyinstance = Enemy()
@@ -221,12 +237,11 @@ if __name__ == "__main__":
         testinput = input("Test: ")
 
         if testinput == "1":
-            # Run "gameplay loop" - player and enemy attacking based on their attack speed difference - ends on player death
             run_turns(turnlength, playerinstance, enemyinstance)
+
         elif testinput == "2":
-            # Run "gameplay loop" once - player and enemy attacking based on their attack speed difference - ends on player or enemy death
             run_turns_once(turnlength, playerinstance, enemyinstance)
-            break
+
         elif testinput == "3":
             print("Exit")
             break
