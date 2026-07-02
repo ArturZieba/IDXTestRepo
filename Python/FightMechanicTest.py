@@ -226,28 +226,36 @@ playerinstance = Player()
 enemyinstance = Enemy()
 
 if __name__ == "__main__":
-    playerinstance.info()
-    enemyinstance.info()
-    
     while True:
         print("1 - Automatic fight loop")
         print("2 - Fight once")
-        print("3 - Exit")
+        print("3 - Player stats")
+        print("4 - Enemy stats")
+        print("5 - Exit")
 
-        testinput = input("Test: ")
+        testinput = input("Input option number: ")
 
         if testinput == "1":
             run_turns(turnlength, playerinstance, enemyinstance)
 
         elif testinput == "2":
             run_turns_once(turnlength, playerinstance, enemyinstance)
-
+        
         elif testinput == "3":
+            playerinstance.info()
+        
+        elif testinput == "4":
+            enemyinstance.info()
+        
+        elif testinput == "5":
             print("Exit")
             break
+
         else:
             print("No option") 
 
+
+    #Main while loop as separate def
     #Add gear/attributes/something to adjust player stats
     #Add comments to the async/turn code here and in the test file
     #What to do when player dies (-exp?)
