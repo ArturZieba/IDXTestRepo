@@ -187,7 +187,7 @@ def both_turn(turnlength, player, enemy):
     enemy.attack(player)
     print(" ")
 
-# Run "gameplay loop" - player and enemy attacking based on their attack speed difference - ends on player death
+# Run "fight loop" continuously - player and enemy attacking based on their attack speed difference - ends on player death
 def run_turns(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
@@ -204,7 +204,7 @@ def run_turns(turnlength, player, enemy):
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
 
-# Run "gameplay loop" once - player and enemy attacking based on their attack speed difference - ends on player or enemy death
+# Run "fight loop" once - player and enemy attacking based on their attack speed difference - ends on player or enemy death
 def run_turns_once(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
@@ -221,11 +221,9 @@ def run_turns_once(turnlength, player, enemy):
                 enemy_turn(turnlength, player, enemy)
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
-            
-playerinstance = Player()
-enemyinstance = Enemy()
 
-if __name__ == "__main__":
+# Main game loop
+def game_loop():
     while True:
         print("1 - Automatic fight loop")
         print("2 - Fight once")
@@ -254,8 +252,14 @@ if __name__ == "__main__":
         else:
             print("No option") 
 
+# Create initial Player and Enemy instances
+playerinstance = Player()
+enemyinstance = Enemy()
 
-    #Main while loop as separate def
+if __name__ == "__main__":
+    game_loop()
+
+    #__name__ needed?
     #Add gear/attributes/something to adjust player stats
     #Add comments to the async/turn code here and in the test file
     #What to do when player dies (-exp?)
