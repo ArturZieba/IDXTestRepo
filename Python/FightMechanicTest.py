@@ -251,18 +251,10 @@ def game_loop():
             break
 
         else:
-            print(f"No {userinput} option, type in one of listed numbers") 
+            print("No option") 
 
-# Create initial Player and Enemy instances
-playerinstance = Player()
-enemyinstance = Enemy()
 
-if __name__ == "__main__":
-    game_loop()
-
-    #Change multi print lines into a single one
-    #Add tabs to input and other prints
-    #__name__ needed?
+    #Main while loop as separate def
     #Add gear/attributes/something to adjust player stats
     #Add comments to the async/turn code here and in the test file
     #What to do when player dies (-exp?)
