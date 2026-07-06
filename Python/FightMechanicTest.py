@@ -225,32 +225,33 @@ def run_turns_once(turnlength, player, enemy):
 # Main game loop
 def game_loop():
     while True:
+        print(" ")
         print("1 - Automatic fight loop")
         print("2 - Fight once")
         print("3 - Player stats")
         print("4 - Enemy stats")
         print("5 - Exit")
 
-        testinput = input("Input option number: ")
+        userinput = input("Input option number: ")
 
-        if testinput == "1":
+        if userinput == "1":
             run_turns(turnlength, playerinstance, enemyinstance)
 
-        elif testinput == "2":
+        elif userinput == "2":
             run_turns_once(turnlength, playerinstance, enemyinstance)
         
-        elif testinput == "3":
+        elif userinput == "3":
             playerinstance.info()
         
-        elif testinput == "4":
+        elif userinput == "4":
             enemyinstance.info()
         
-        elif testinput == "5":
+        elif userinput == "5":
             print("Exit")
             break
 
         else:
-            print("No option") 
+            print(f"No {userinput} option, type in one of listed numbers") 
 
 # Create initial Player and Enemy instances
 playerinstance = Player()
@@ -259,6 +260,8 @@ enemyinstance = Enemy()
 if __name__ == "__main__":
     game_loop()
 
+    #Change multi print lines into a single one
+    #Add tabs to input and other prints
     #__name__ needed?
     #Add gear/attributes/something to adjust player stats
     #Add comments to the async/turn code here and in the test file
