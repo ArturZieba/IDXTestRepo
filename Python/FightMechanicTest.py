@@ -75,18 +75,20 @@ class Player:
 
     def info(self):
         print(f"""Player info:
-        Maximum health: {self.maximumhealth}
-        Current health: {self.currenthealth}
-        Level: {self.level}
-        Experience: {self.experience}
-        Required Experience: {self.experiencerequired}
-        Damage minimum: {self.damagemin}
-        Damage maximum: {self.damagemax}
-        Damage current roll: {self.damage}
-        Attack speed: {self.attackspeed}
-        Alive: {self.isalive}
+
+Maximum health: {self.maximumhealth}
+Current health: {self.currenthealth}
+Level: {self.level}
+Experience: {self.experience}
+Required Experience: {self.experiencerequired}
+Damage minimum: {self.damagemin}
+Damage maximum: {self.damagemax}
+Damage current roll: {self.damage}
+Attack speed: {self.attackspeed}
+Alive: {self.isalive}
+=====
+
         """)
-        print("=====")
 
     def levelup(self):
         if self.experience >= self.experiencerequired:
@@ -132,18 +134,20 @@ class Enemy:
 
     def info(self):
         print(f"""Enemy info:
-        Name: {self.name}
-        Maximum health: {self.maximumhealth}
-        Current health: {self.currenthealth}
-        Damage minimum: {self.damagemin}
-        Damage maximum: {self.damagemax}
-        Damage current roll: {self.damage}
-        Attack speed: {self.attackspeed}
-        Alive: {self.isalive}
-        Spawn weight: {self.spawnweight}
-        Experience granted: {self.experiencegranted}
+
+Name: {self.name}
+Maximum health: {self.maximumhealth}
+Current health: {self.currenthealth}
+Damage minimum: {self.damagemin}
+Damage maximum: {self.damagemax}
+Damage current roll: {self.damage}
+Attack speed: {self.attackspeed}
+Alive: {self.isalive}
+Spawn weight: {self.spawnweight}
+Experience granted: {self.experiencegranted}
+=====
+
         """)
-        print("=====")
 
     def attack(self, target):
         target.receivedamage(self.damage)
@@ -225,14 +229,17 @@ def run_turns_once(turnlength, player, enemy):
 # Main game loop
 def game_loop():
     while True:
-        print(" ")
-        print("1 - Automatic fight loop")
-        print("2 - Fight once")
-        print("3 - Player stats")
-        print("4 - Enemy stats")
-        print("5 - Exit")
+        print("""
+1 - Automatic fight loop
+2 - Fight once
+3 - Player stats
+4 - Enemy stats
+5 - Exit
+=====
+        """)
 
         userinput = input("Input option number: ")
+        print(" ")
 
         if userinput == "1":
             run_turns(turnlength, playerinstance, enemyinstance)
