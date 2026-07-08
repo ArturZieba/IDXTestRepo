@@ -20,7 +20,7 @@ class EnemyRoster():
             "attackspeed": 2,
             "isalive": True,
             "spawnweight": 5,
-            "experiencegranted": 2
+            "currentexperiencegranted": 2
         }
 
     enemy_ogre = {
@@ -32,7 +32,7 @@ class EnemyRoster():
             "attackspeed": 1,
             "isalive": True,
             "spawnweight": 2,
-            "experiencegranted": 10
+            "currentexperiencegranted": 10
         }
 
     enemy_dragon = {
@@ -44,7 +44,7 @@ class EnemyRoster():
             "attackspeed": 3,
             "isalive": True,
             "spawnweight": 1,
-            "experiencegranted": 50
+            "currentexperiencegranted": 50
         }
 
 # Class containing enemy weighted spawn list initialization
@@ -61,12 +61,12 @@ class EnemyWeightedListInit():
             enemyrosterweighted.append(element)
 
 class Player:
-    def __init__(self, maximumhealth = 100, currenthealth = 100, level = 0, experience = 0, experiencerequired = 5, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
-        self.maximumhealth = maximumhealth
+    def __init__(self, currenthealth = 100, maximumhealth = 100, level = 0, currentexperience = 0, currentexperiencerequired = 5, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
         self.currenthealth = currenthealth
+        self.maximumhealth = maximumhealth
         self.level = level
-        self.experience = experience
-        self.experiencerequired = experiencerequired
+        self.currentexperience = currentexperience
+        self.currentexperiencerequired = currentexperiencerequired
         self.damagemin = damagemin
         self.damagemax = damagemax
         self.damage = randominteger(damagemin, damagemax)
@@ -76,24 +76,22 @@ class Player:
     def info(self):
         print(f"""Player info:
 
-Maximum health: {self.maximumhealth}
-Current health: {self.currenthealth}
+Current Health: {self.currenthealth}
+Maximum Health: {self.maximumhealth}
 Level: {self.level}
-Experience: {self.experience}
-Required Experience: {self.experiencerequired}
+Current Experience: {self.currentexperience}
+Required Experience: {self.currentexperiencerequired}
 Damage minimum: {self.damagemin}
 Damage maximum: {self.damagemax}
 Damage current roll: {self.damage}
 Attack speed: {self.attackspeed}
 Alive: {self.isalive}
-=====
-
-        """)
+=====""")
 
     def levelup(self):
-        if self.experience >= self.experiencerequired:
-           self.experience -= self.experiencerequired
-           self.experiencerequired = math.floor(self.experiencerequired + (self.experiencerequired / 4))
+        if self.currentexperience >= self.currentexperiencerequired:
+           self.currentexperience -= self.currentexperiencerequired
+           self.currentexperiencerequired = math.floor(self.currentexperiencerequired + (self.currentexperiencerequired / 4))
            self.level += 1
            
            #PLACEHOLDER Rewards for levelling up
@@ -110,44 +108,42 @@ Alive: {self.isalive}
         self.currenthealth -= damage
         print(f"Player health: {self.currenthealth} / {self.maximumhealth}")
 
-    def receiverewards(self, experience):
-        self.experience += experience
+    def receiverewards(self, currentexperience):
+        self.currentexperience += currentexperience
         self.levelup()
-        print(f"Experience: {self.experience} - Level: {self.level}")
+        print(f"\nExperience: {self.currentexperience} - Level: {self.level}")
 
     def death(self):
         self.isalive = False
-        print("Player dead")
+        print("\nPlayer dead")
 
 class Enemy:
-    def __init__(self, name = "Enemy", maximumhealth = 10, currenthealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, experiencegranted = 1):#, target = Player()):
+    def __init__(self, name = "Enemy", currenthealth = 10, maximumhealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, currentexperiencegranted = 1):#, target = Player()):
         self.name = name
-        self.maximumhealth = maximumhealth
         self.currenthealth = currenthealth
+        self.maximumhealth = maximumhealth
         self.damagemin = damagemin
         self.damagemax = damagemax
         self.damage = randominteger(damagemin, damagemax)
         self.attackspeed = attackspeed
         self.isalive = isalive
         self.spawnweight = spawnweight
-        self.experiencegranted = experiencegranted
+        self.currentexperiencegranted = currentexperiencegranted
 
     def info(self):
         print(f"""Enemy info:
 
 Name: {self.name}
-Maximum health: {self.maximumhealth}
-Current health: {self.currenthealth}
+Current Health: {self.currenthealth}
+Maximum Health: {self.maximumhealth}
 Damage minimum: {self.damagemin}
 Damage maximum: {self.damagemax}
 Damage current roll: {self.damage}
 Attack speed: {self.attackspeed}
 Alive: {self.isalive}
 Spawn weight: {self.spawnweight}
-Experience granted: {self.experiencegranted}
-=====
-
-        """)
+Experience granted: {self.currentexperiencegranted}
+=====""")
 
     def attack(self, target):
         target.receivedamage(self.damage)
@@ -162,15 +158,15 @@ Experience granted: {self.experiencegranted}
         chosenenemy = random.choice(EnemyWeightedListInit.enemyrosterweighted)
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
-        self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["experiencegranted"])
+        self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["currentexperiencegranted"])
 
     def grantrewards(self, target):
-        target.receiverewards(self.experiencegranted)
+        target.receiverewards(self.currentexperiencegranted)
 
     def death(self, target):
         self.grantrewards(target)
         self.isalive = False
-        print("Enemy dead")
+        print("\nEnemy dead")
         self.spawnrandomenemy()
 
 def player_turn(turnlength, player, enemy):
@@ -235,10 +231,9 @@ def game_loop():
 3 - Player stats
 4 - Enemy stats
 5 - Exit
-=====
-        """)
+=====""")
 
-        userinput = input("Input option number: ")
+        userinput = input("\nInput option number: ")
         print(" ")
 
         if userinput == "1":
@@ -254,22 +249,21 @@ def game_loop():
             enemyinstance.info()
         
         elif userinput == "5":
-            print("Exit")
+            print("\nExit")
             break
 
         else:
             print(f"No {userinput} option, type in one of listed numbers") 
 
-# Create initial Player and Enemy instances
-playerinstance = Player()
-enemyinstance = Enemy()
-
 if __name__ == "__main__":
+    # Create initial Player and Enemy instances
+    playerinstance = Player()
+    enemyinstance = Enemy()
+
+    # Start the full game loop
     game_loop()
 
-    #Change multi print lines into a single one
     #Add tabs to input and other prints
-    #__name__ needed?
     #Add gear/attributes/something to adjust player stats
     #Add comments to the async/turn code here and in the test file
     #What to do when player dies (-exp?)
