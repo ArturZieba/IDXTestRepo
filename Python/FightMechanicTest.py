@@ -209,12 +209,15 @@ def both_turn(turnlength, player, enemy):
 def run_turns(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
+            # First check if player or enemy have more than 0 currenthealth
             if enemy.currenthealth <= 0:
                 enemy.death(player)
+                # No return statement here, keeps going on until player's death in the return statement
             if player.currenthealth <= 0:
                 player.death()
-                return
+                return # Exit loop when player dies
 
+            # If both the player and enemy remain alive then run turns based on their attackspeed
             if player.attackspeed > enemy.attackspeed:
                 player_turn(turnlength, player, enemy)
             if player.attackspeed < enemy.attackspeed:
@@ -226,13 +229,15 @@ def run_turns(turnlength, player, enemy):
 def run_turns_once(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
+            # First check if player or enemy have more than 0 currenthealth
             if enemy.currenthealth <= 0:
                 enemy.death(player)
-                return
+                return # Exit loop when enemy dies
             if player.currenthealth <= 0:
                 player.death()
-                return
+                return # Exit loop when player dies
 
+            # If both the player and enemy remain alive then run turns based on their attackspeed
             if player.attackspeed > enemy.attackspeed:
                 player_turn(turnlength, player, enemy)
             if player.attackspeed < enemy.attackspeed:
@@ -253,18 +258,23 @@ def game_loop():
         userinput = input("\nInput option number: ")
         print(" ")
 
+        # 1 - Automatic fight loop
         if userinput == "1":
             run_turns(turnlength, playerinstance, enemyinstance)
 
+        # 2 - Fight once
         elif userinput == "2":
             run_turns_once(turnlength, playerinstance, enemyinstance)
         
+        # 3 - Player stats
         elif userinput == "3":
             playerinstance.info()
         
+        # 4 - Enemy stats
         elif userinput == "4":
             enemyinstance.info()
         
+        # 5 - Exit
         elif userinput == "5":
             print("Exitting script")
             break
@@ -280,11 +290,8 @@ if __name__ == "__main__":
     # Start the full game loop
     game_loop()
 
+    #Separate defs and classes into another file?
     #Add enemy levels to differentiate their power level/reward scaling?
     #Add gear/attributes/something to adjust player stats
-    #Add comments to the async/turn code here and in the test file
     #What to do when player dies (-exp?)
     #Add some rewards for levelup (increase hp?)
-
-    #Don't start with gameloop, add a switch to choose game/exit/whatever
-    #Add console close without ctrl+c (workaround keyboard not being accessible without root)
