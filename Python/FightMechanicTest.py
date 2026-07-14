@@ -87,7 +87,7 @@ Damage maximum: {self.damagemax}
 Damage current roll: {self.damage}
 Attack speed: {self.attackspeed}
 Alive: {self.isalive}
-=====""")
+=====\n""")
 
     # Level up the player once he reaches required experience
     def levelup(self):
@@ -124,7 +124,15 @@ Experience: {self.currentexperience} / {self.experiencerequired}""")
     # Death once currenthealth reaches 0 or less
     def death(self):
         self.isalive = False
-        print("Player dead\n")
+        # If player has any currentexperience, remove a percentage of it 
+        if self.currentexperience > 0:
+            removedexperience = math.floor(self.currentexperience * 0.10) # The multiplier is the percentage of currentexperience removed - for example * 0.10 will remove 10% of current experience rounded down (due to math.floor())
+            self.currentexperience -= removedexperience
+            print(f"""Player dead
+Lost {removedexperience} Experience\n""")
+        
+        else: 
+            print("Player dead\n")
 
 class Enemy:
     def __init__(self, name = "Enemy", currenthealth = 10, maximumhealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, experiencegranted = 1):#, target = Player()):
@@ -153,7 +161,7 @@ Attack speed: {self.attackspeed}
 Alive: {self.isalive}
 Spawn weight: {self.spawnweight}
 Experience granted: {self.experiencegranted}
-=====""")
+=====\n""")
 
     # Attack a target
     def attack(self, target):
@@ -290,6 +298,9 @@ if __name__ == "__main__":
     # Start the full game loop
     game_loop()
 
+
+    #Add legitimate way to revive player
+    #Add debug option to revive player
     #Separate defs and classes into another file?
     #Add enemy levels to differentiate their power level/reward scaling?
     #Add gear/attributes/something to adjust player stats
