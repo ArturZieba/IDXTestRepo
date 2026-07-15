@@ -261,6 +261,9 @@ def game_loop():
 3 - Player stats
 4 - Enemy stats
 5 - Exit
+
+DEBUG
+r - Revive player
 =====""")
 
         userinput = input("\nInput option number: ")
@@ -287,6 +290,12 @@ def game_loop():
             print("Exitting script")
             break
 
+        # r - Revive player
+        elif userinput == "r":
+            playerinstance.currenthealth = playerinstance.maximumhealth
+            playerinstance.isalive = True
+            print("Revived player with current health set to maximum health\n")
+
         else:
             print(f"No {userinput} option, type in one of listed numbers") 
 
@@ -298,9 +307,9 @@ if __name__ == "__main__":
     # Start the full game loop
     game_loop()
 
-
     #Add legitimate way to revive player
-    #Add debug option to revive player
+    #Add debug option to reroll the enemy
+    #Add debug option to make player unkillable
     #Separate defs and classes into another file?
     #Add enemy levels to differentiate their power level/reward scaling?
     #Add gear/attributes/something to adjust player stats
