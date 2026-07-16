@@ -264,8 +264,10 @@ def game_loop():
 
 DEBUG
 r - Revive player
+n - Reroll current enemy
 =====""")
 
+        # Input for the main menu selection
         userinput = input("\nInput option number: ")
         print(" ")
 
@@ -296,6 +298,10 @@ r - Revive player
             playerinstance.isalive = True
             print("Revived player with current health set to maximum health\n")
 
+        # n - Reroll current enemy
+        elif userinput == "n":
+            enemyinstance.spawnrandomenemy()
+
         else:
             print(f"No {userinput} option, type in one of listed numbers") 
 
@@ -308,7 +314,6 @@ if __name__ == "__main__":
     game_loop()
 
     #Add legitimate way to revive player
-    #Add debug option to reroll the enemy
     #Add debug option to make player unkillable
     #Separate defs and classes into another file?
     #Add enemy levels to differentiate their power level/reward scaling?
