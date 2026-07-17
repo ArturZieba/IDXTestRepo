@@ -264,11 +264,12 @@ def game_loop():
 
 DEBUG
 r - Revive player
+g - Set current and maximum player health
 n - Reroll current enemy
 =====""")
 
         # Input for the main menu selection
-        userinput = input("\nInput option number: ")
+        userinput = input("\nInput option chosen: ")
         print(" ")
 
         # 1 - Automatic fight loop
@@ -298,6 +299,13 @@ n - Reroll current enemy
             playerinstance.isalive = True
             print("Revived player with current health set to maximum health\n")
 
+        # g - Set current and maximum player health
+        elif userinput == "g":
+            userinput = input("\nInput desired player maximum health: ")
+            print(" ")
+            playerinstance.maximumhealth = int(userinput) # Change string from input to integer to avoid issues with value comparison
+            playerinstance.currenthealth = playerinstance.maximumhealth
+
         # n - Reroll current enemy
         elif userinput == "n":
             enemyinstance.spawnrandomenemy()
@@ -314,7 +322,7 @@ if __name__ == "__main__":
     game_loop()
 
     #Add legitimate way to revive player
-    #Add debug option to make player unkillable
+    #Update level up functionality when reaching more experience than 1 level up in a single reward
     #Separate defs and classes into another file?
     #Add enemy levels to differentiate their power level/reward scaling?
     #Add gear/attributes/something to adjust player stats
