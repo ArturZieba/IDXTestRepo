@@ -91,7 +91,8 @@ Alive: {self.isalive}
 
     # Level up the player once he reaches required experience
     def levelup(self):
-        if self.currentexperience >= self.experiencerequired:
+        # "while" instead of if "in" case that enough experience is earned for more than one level up in one instance
+        while self.currentexperience >= self.experiencerequired:
            self.currentexperience -= self.experiencerequired
 
            # Raise required experience for the next level based on a formula (TBD)
@@ -102,6 +103,9 @@ Alive: {self.isalive}
            self.maximumhealth += 10
            self.currenthealth = self.maximumhealth
            #self.info()
+
+           print(f"""Player Level: {self.level}
+Experience: {self.currentexperience} / {self.experiencerequired}\n""")
 
     # Attack a target
     def attack(self, target):
@@ -118,8 +122,6 @@ Alive: {self.isalive}
     def receiverewards(self, currentexperience):
         self.currentexperience += currentexperience
         self.levelup()
-        print(f"""Player Level: {self.level}
-Experience: {self.currentexperience} / {self.experiencerequired}""")
 
     # Death once currenthealth reaches 0 or less
     def death(self):
@@ -322,7 +324,7 @@ if __name__ == "__main__":
     game_loop()
 
     #Add legitimate way to revive player
-    #Update level up functionality when reaching more experience than 1 level up in a single reward
+    #Add "experience granted" or similar line to the enemy on death
     #Separate defs and classes into another file?
     #Add enemy levels to differentiate their power level/reward scaling?
     #Add gear/attributes/something to adjust player stats
