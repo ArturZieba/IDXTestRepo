@@ -191,7 +191,8 @@ Experience granted: {self.experiencegranted}
     def death(self, target):
         self.grantrewards(target)
         self.isalive = False
-        print("Enemy dead\n")
+        print("Enemy dead")
+        print(f"Experience granted: {self.experiencegranted}\n")
         self.spawnrandomenemy()
 
 # Turns when player's attackspeed is higher than the enemy's
@@ -324,7 +325,6 @@ if __name__ == "__main__":
     game_loop()
 
     #Add legitimate way to revive player
-    #Add "experience granted" or similar line to the enemy on death
     #Separate defs and classes into another file?
     #Add enemy levels to differentiate their power level/reward scaling?
     #Add gear/attributes/something to adjust player stats
