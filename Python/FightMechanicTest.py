@@ -324,7 +324,7 @@ if __name__ == "__main__":
     # Start the full game loop
     game_loop()
 
-    #Mobile check
+    #Mobile checkMod2
 #Add legitimate way to revive player
     #Separate defs and classes into another file?
     #Add enemy levels to differentiate their power level/reward scaling?
