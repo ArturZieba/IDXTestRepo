@@ -20,6 +20,7 @@ class EnemyRoster():
             "attackspeed": 2,
             "isalive": True,
             "spawnweight": 5,
+            "level": 1,
             "experiencegranted": 2
         }
 
@@ -32,6 +33,7 @@ class EnemyRoster():
             "attackspeed": 1,
             "isalive": True,
             "spawnweight": 2,
+            "level": 2,
             "experiencegranted": 10
         }
 
@@ -44,6 +46,7 @@ class EnemyRoster():
             "attackspeed": 3,
             "isalive": True,
             "spawnweight": 1,
+            "level": 3,
             "experiencegranted": 50
         }
 
@@ -137,7 +140,7 @@ Lost {removedexperience} Experience\n""")
             print("Player dead\n")
 
 class Enemy:
-    def __init__(self, name = "Enemy", currenthealth = 10, maximumhealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, experiencegranted = 1):#, target = Player()):
+    def __init__(self, name = "Enemy", currenthealth = 10, maximumhealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, level = 0, experiencegranted = 1):#, target = Player()):
         self.name = name
         self.currenthealth = currenthealth
         self.maximumhealth = maximumhealth
@@ -147,6 +150,7 @@ class Enemy:
         self.attackspeed = attackspeed
         self.isalive = isalive
         self.spawnweight = spawnweight
+        self.level = level
         self.experiencegranted = experiencegranted
 
     # Print full enemy stats info
@@ -162,6 +166,7 @@ Damage current roll: {self.damage}
 Attack speed: {self.attackspeed}
 Alive: {self.isalive}
 Spawn weight: {self.spawnweight}
+Level: {self.level}
 Experience granted: {self.experiencegranted}
 =====\n""")
 
@@ -324,9 +329,8 @@ if __name__ == "__main__":
     # Start the full game loop
     game_loop()
 
+    #Check enemy level variance
+
     #Add legitimate way to revive player
     #Separate defs and classes into another file?
-    #Add enemy levels to differentiate their power level/reward scaling?
     #Add gear/attributes/something to adjust player stats
-    #What to do when player dies (-exp?)
-    #Add some rewards for levelup (increase hp?)
