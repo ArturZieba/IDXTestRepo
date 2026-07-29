@@ -186,7 +186,7 @@ Experience granted: {self.experiencegranted}
         chosenenemy = random.choice(EnemyWeightedListInit.enemyrosterweighted)
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
-        self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["experiencegranted"])
+        self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["level"], chosenenemy["experiencegranted"])
 
     # Grant rewards to the source that caused death
     def grantrewards(self, target):
@@ -328,8 +328,6 @@ if __name__ == "__main__":
 
     # Start the full game loop
     game_loop()
-
-    #Check enemy level variance
 
     #Add legitimate way to revive player
     #Separate defs and classes into another file?
