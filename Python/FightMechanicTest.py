@@ -274,6 +274,7 @@ DEBUG
 r - Revive player
 g - Set current and maximum player health
 n - Reroll current enemy
+t - Set turn length
 =====""")
 
         # Input for the main menu selection
@@ -318,6 +319,13 @@ n - Reroll current enemy
         elif userinput == "n":
             enemyinstance.spawnrandomenemy()
 
+        # t - Set turn length
+        elif userinput == "t":
+            print(f"\nCurrent turn length is: {turnlength}")
+        #    userinput = input("\nInput desired turn length: ")
+        #    print(" ")
+        #    turnlength = float(userinput) # Change string from input to 
+
         else:
             print(f"No {userinput} option, type in one of listed numbers") 
 
@@ -329,6 +337,7 @@ if __name__ == "__main__":
     # Start the full game loop
     game_loop()
 
+    #Change turnlength value 
     #Add legitimate way to revive player
     #Separate defs and classes into another file?
     #Add gear/attributes/something to adjust player stats
