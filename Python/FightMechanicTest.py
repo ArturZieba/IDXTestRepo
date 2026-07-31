@@ -2,12 +2,18 @@ import math # For math.floor()
 import random # For def randominteger()
 import time # For time()
 
-turnlength = 1 # Constant variable used to adjust time between attack turns
+turnlength = 0.5 # Float variable used to adjust time between attack turns (lower means faster, higher means slower, see turn defs implementation for details)
 
 # Roll a random integer in min/max range
 def randominteger(min, max):
     generatedinteger = random.randint(min, max)
     return generatedinteger
+
+def changeturnlength():
+    print(f"Current turn length is: {turnlength}")
+    userinput = input("\nInput desired turn length: ")
+    print(" ")
+    #turnlength = float(userinput) # Change string from input to 
 
 # Class containing all of the different enemies with their stats
 class EnemyRoster():
@@ -321,10 +327,7 @@ t - Set turn length
 
         # t - Set turn length
         elif userinput == "t":
-            print(f"\nCurrent turn length is: {turnlength}")
-        #    userinput = input("\nInput desired turn length: ")
-        #    print(" ")
-        #    turnlength = float(userinput) # Change string from input to 
+            changeturnlength()
 
         else:
             print(f"No {userinput} option, type in one of listed numbers") 
@@ -337,7 +340,9 @@ if __name__ == "__main__":
     # Start the full game loop
     game_loop()
 
-    #Change turnlength value 
-    #Add legitimate way to revive player
+    #Create new class for gameloop related defs (for example turns, turnlength change etc.)
+    #Move existing gameloop related defs into a new class
     #Separate defs and classes into another file?
+
+    #Add legitimate way to revive player
     #Add gear/attributes/something to adjust player stats
