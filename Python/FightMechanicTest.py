@@ -2,6 +2,8 @@ import math # For math.floor()
 import random # For def randominteger()
 import time # For time()
 
+import FightMechanicTestGameLoop # What does this contain?
+
 turnlength = 0.5 # Float variable used to adjust time between attack turns (lower means faster, higher means slower, see turn defs implementation for details)
 
 # Roll a random integer in min/max range
@@ -333,6 +335,8 @@ t - Set turn length
             print(f"No {userinput} option, type in one of listed numbers") 
 
 if __name__ == "__main__":
+    FightMechanicTestGameLoop.hello()
+
     # Create initial Player and Enemy instances
     playerinstance = Player()
     enemyinstance = Enemy()
