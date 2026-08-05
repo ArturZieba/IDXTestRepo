@@ -2,6 +2,7 @@ import math # For math.floor()
 import random # For def randominteger()
 import time # For time()
 
+import FMTEnemyRoster # What does this conatin?
 import FMTGameLoop # What does this contain?
 
 turnlength = 0.5 # Float variable used to adjust time between attack turns (lower means faster, higher means slower, see turn defs implementation for details)
@@ -16,60 +17,6 @@ def changeturnlength():
     userinput = input("\nInput desired turn length: ")
     print(" ")
     #turnlength = float(userinput) # Change string from input to 
-
-# Class containing all of the different enemies with their stats
-class EnemyRoster():
-    enemy_goblin = {
-            "name": "Goblin",
-            "currenthealth": 10, 
-            "maximumhealth": 10, 
-            "damagemin": 1,
-            "damagemax": 2,
-            "attackspeed": 2,
-            "isalive": True,
-            "spawnweight": 5,
-            "level": 1,
-            "experiencegranted": 2
-        }
-
-    enemy_ogre = {
-            "name": "Ogre",
-            "currenthealth": 20,
-            "maximumhealth": 20, 
-            "damagemin": 2,
-            "damagemax": 4,
-            "attackspeed": 1,
-            "isalive": True,
-            "spawnweight": 2,
-            "level": 2,
-            "experiencegranted": 10
-        }
-
-    enemy_dragon = {
-            "name": "Dragon", 
-            "currenthealth": 100,
-            "maximumhealth": 100, 
-            "damagemin": 10,
-            "damagemax": 50,
-            "attackspeed": 3,
-            "isalive": True,
-            "spawnweight": 1,
-            "level": 3,
-            "experiencegranted": 50
-        }
-
-# Class containing enemy weighted spawn list initialization
-class EnemyWeightedListInit():
-    # List of all monsters available to spawn
-    enemyroster = [EnemyRoster.enemy_goblin, EnemyRoster.enemy_ogre, EnemyRoster.enemy_dragon]
-        
-    # List that is populated with the same dicts as enemyroster, but each dict has as many entries as specified in spawnweight variable
-    enemyrosterweighted = []
-
-    # Add as many elements of enemy type to the enemyrosterweighted as high is the spawnweight value
-    for element in enemyroster:
-        for i in range(element["spawnweight"]):
-            enemyrosterweighted.append(element)
 
 class Player:
     def __init__(self, currenthealth = 100, maximumhealth = 100, level = 0, currentexperience = 0, experiencerequired = 5, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
@@ -191,7 +138,7 @@ Experience granted: {self.experiencegranted}
 
     # Reinitialize the instance with a random chosen enemy type - basically respawn without creating a new instance of the class
     def spawnrandomenemy(self):
-        chosenenemy = random.choice(EnemyWeightedListInit.enemyrosterweighted)
+        chosenenemy = random.choice(FMTEnemyRoster.enemyrosterweighted)
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
         self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["level"], chosenenemy["experiencegranted"])
@@ -335,8 +282,6 @@ t - Set turn length
             print(f"No {userinput} option, type in one of listed numbers") 
 
 if __name__ == "__main__":
-    FMTGameLoop.hello()
-
     # Create initial Player and Enemy instances
     playerinstance = Player()
     enemyinstance = Enemy()
@@ -344,6 +289,7 @@ if __name__ == "__main__":
     # Start the full game loop
     game_loop()
 
+    #Move spawnrandomenemy to FMTEnemyRoster
     #Create new class for gameloop related defs (for example turns, turnlength change etc.)
     #Move existing gameloop related defs into a new class
     #Separate defs and classes into another file?
