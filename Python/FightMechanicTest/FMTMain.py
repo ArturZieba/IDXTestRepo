@@ -138,7 +138,8 @@ Experience granted: {self.experiencegranted}
 
     # Reinitialize the instance with a random chosen enemy type - basically respawn without creating a new instance of the class
     def spawnrandomenemy(self):
-        chosenenemy = random.choice(FMTEnemyRoster.enemyrosterweighted)
+        # Choose a random enemy from a weighted list at random
+        chosenenemy = FMTEnemyRoster.EnemyRoster.chooserandomenemy()
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
         self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["level"], chosenenemy["experiencegranted"])
@@ -289,7 +290,7 @@ if __name__ == "__main__":
     # Start the full game loop
     game_loop()
 
-    #Move spawnrandomenemy to FMTEnemyRoster
+    #Update import comments
     #Create new class for gameloop related defs (for example turns, turnlength change etc.)
     #Move existing gameloop related defs into a new class
     #Separate defs and classes into another file?

@@ -1,3 +1,5 @@
+import random # For def random.choice()
+
 # Class containing all of the different enemies with their stats, as well as initialization of a weighted spawn list of those enemies
 class EnemyRoster():
     enemy_goblin = {
@@ -49,3 +51,7 @@ class EnemyRoster():
     for element in enemyroster:
         for i in range(element["spawnweight"]):
             enemyrosterweighted.append(element)
+
+    def chooserandomenemy():
+        chosenenemy = random.choice(EnemyRoster.enemyrosterweighted)
+        return chosenenemy
