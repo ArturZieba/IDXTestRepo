@@ -4,6 +4,7 @@ import time # For time()
 
 import FMTEnemyRoster # What does this conatin?
 import FMTGameLoop # What does this contain?
+import FMTPlayer # What does this contain?
 
 turnlength = 0.5 # Float variable used to adjust time between attack turns (lower means faster, higher means slower, see turn defs implementation for details)
 
@@ -17,82 +18,6 @@ def changeturnlength():
     userinput = input("\nInput desired turn length: ")
     print(" ")
     #turnlength = float(userinput) # Change string from input to 
-
-class Player:
-    def __init__(self, currenthealth = 100, maximumhealth = 100, level = 0, currentexperience = 0, experiencerequired = 5, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
-        self.currenthealth = currenthealth
-        self.maximumhealth = maximumhealth
-        self.level = level
-        self.currentexperience = currentexperience
-        self.experiencerequired = experiencerequired
-        self.damagemin = damagemin
-        self.damagemax = damagemax
-        self.damage = randominteger(damagemin, damagemax)
-        self.attackspeed = attackspeed
-        self.isalive = isalive
-
-    # Print full player stats info
-    def info(self):
-        print(f"""Player info:
-
-Current Health: {self.currenthealth}
-Maximum Health: {self.maximumhealth}
-Level: {self.level}
-Current Experience: {self.currentexperience}
-Required Experience: {self.experiencerequired}
-Damage minimum: {self.damagemin}
-Damage maximum: {self.damagemax}
-Damage current roll: {self.damage}
-Attack speed: {self.attackspeed}
-Alive: {self.isalive}
-=====\n""")
-
-    # Level up the player once he reaches required experience
-    def levelup(self):
-        # "while" instead of if "in" case that enough experience is earned for more than one level up in one instance
-        while self.currentexperience >= self.experiencerequired:
-           self.currentexperience -= self.experiencerequired
-
-           # Raise required experience for the next level based on a formula (TBD)
-           self.experiencerequired = math.floor(self.experiencerequired + (self.experiencerequired / 4))
-           self.level += 1
-           
-           # PLACEHOLDER Rewards for levelling up
-           self.maximumhealth += 10
-           self.currenthealth = self.maximumhealth
-           #self.info()
-
-           print(f"""Player Level: {self.level}
-Experience: {self.currentexperience} / {self.experiencerequired}\n""")
-
-    # Attack a target
-    def attack(self, target):
-        target.receivedamage(self.damage)
-        print(f"Player damage dealt: {self.damage}")
-        self.damage = randominteger(self.damagemin, self.damagemax)
-
-    # Receive damage from a source
-    def receivedamage(self, damage):
-        self.currenthealth -= damage
-        print(f"Player health: {self.currenthealth} / {self.maximumhealth}")
-
-    # Receive rewards from a source
-    def receiverewards(self, currentexperience):
-        self.currentexperience += currentexperience
-        self.levelup()
-
-    # Death once currenthealth reaches 0 or less
-    def death(self):
-        self.isalive = False
-        # If player has any currentexperience, remove a percentage of it 
-        if self.currentexperience > 0:
-            removedexperience = math.floor(self.currentexperience * 0.10) # The multiplier is the percentage of currentexperience removed - for example * 0.10 will remove 10% of current experience rounded down (due to math.floor())
-            self.currentexperience -= removedexperience
-            print(f"""Player dead
-Lost {removedexperience} Experience\n""")
-        
-        else: 
-            print("Player dead\n")
 
 class Enemy:
     def __init__(self, name = "Enemy", currenthealth = 10, maximumhealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, level = 0, experiencegranted = 1):#, target = Player()):
@@ -284,7 +209,7 @@ t - Set turn length
 
 if __name__ == "__main__":
     # Create initial Player and Enemy instances
-    playerinstance = Player()
+    playerinstance = FMTPlayer.Player()
     enemyinstance = Enemy()
 
     # Start the full game loop
