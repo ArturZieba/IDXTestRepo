@@ -3,11 +3,19 @@ import time # For time()
 import FMTEnemy
 import FMTPlayer
 
+global turnlength
 turnlength = 0.5 # Float variable used to adjust time between attack turns (lower means faster, higher means slower, see turn defs implementation for details)
 
 # Create initial Player and Enemy instances
 playerinstance = FMTPlayer.Player()
 enemyinstance = FMTEnemy.Enemy()
+
+def changeturnlength():
+    global turnlength
+    print(f"Current turn length is: {turnlength}")
+    userinput = input("\nInput desired turn length: ")
+    print(" ")
+    turnlength = float(userinput) # Change string from input to 
 
 # Turns when player's attackspeed is higher than the enemy's
 def player_turn(turnlength, player, enemy):

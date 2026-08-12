@@ -1,3 +1,5 @@
+import math
+
 import FMTTools
 
 class Player:
