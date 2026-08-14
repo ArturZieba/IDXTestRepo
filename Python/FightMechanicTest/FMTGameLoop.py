@@ -1,7 +1,7 @@
 import time # For time()
 
-import FMTEnemy
-import FMTPlayer
+import FMTEnemy # For Enemy() class
+import FMTPlayer #  For Player() class
 
 global turnlength
 turnlength = 0.5 # Float variable used to adjust time between attack turns (lower means faster, higher means slower, see turn defs implementation for details)

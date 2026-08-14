@@ -1,4 +1,4 @@
-import random # For def randominteger()
+import random # For randint() def
 
 def randominteger(min, max):
     generatedinteger = random.randint(min, max)

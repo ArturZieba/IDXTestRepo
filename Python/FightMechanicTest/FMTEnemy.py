@@ -1,5 +1,5 @@
-import FMTEnemyRoster
-import FMTTools
+import FMTEnemyRoster # For EnemyRoster.chooserandomenemy() def
+import FMTTools # For randominteger() def
 
 class Enemy:
     def __init__(self, name = "Enemy", currenthealth = 10, maximumhealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, level = 0, experiencegranted = 1):#, target = Player()):

@@ -1,4 +1,4 @@
-import random # For def random.choice()
+import random # For random.choice() def
 
 # Class containing all of the different enemies with their stats, as well as initialization of a weighted spawn list of those enemies
 class EnemyRoster():

@@ -1,6 +1,6 @@
-import math
+import math # For floor() def
 
-import FMTTools
+import FMTTools # For randominteger() def
 
 class Player:
     def __init__(self, currenthealth = 100, maximumhealth = 100, level = 0, currentexperience = 0, experiencerequired = 5, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
