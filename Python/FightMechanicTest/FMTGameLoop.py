@@ -3,13 +3,14 @@ import time # For time()
 import FMTEnemy # For Enemy() class
 import FMTPlayer #  For Player() class
 
-global turnlength
-turnlength = 0.5 # Float variable used to adjust time between attack turns (lower means faster, higher means slower, see turn defs implementation for details)
+global turnlength # Initialize turnlength as global variable so that it can be used in different defs
+turnlength = 0.5 # Float variable used to adjust time between attack turns (lower means faster, higher means slower - for example 0.5 means it takes 0.5s between turns, while 2.0 means it takes 2s between turns)
 
 # Create initial Player and Enemy instances
 playerinstance = FMTPlayer.Player()
 enemyinstance = FMTEnemy.Enemy()
 
+# Adjust turnlength value while the program is running
 def changeturnlength():
     global turnlength
     print(f"Current turn length is: {turnlength}")
@@ -140,5 +141,6 @@ t - Set turn length
         elif userinput == "t":
             changeturnlength()
 
+        # Input not listed is provided
         else:
             print(f"No {userinput} option, type in one of listed numbers")

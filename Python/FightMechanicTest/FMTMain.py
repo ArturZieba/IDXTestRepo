@@ -6,5 +6,6 @@ if __name__ == "__main__":
 
     #Check and update all comments
 
+    #Is there a way to rework turns to be more streamlined based on the object's attack speed instead of separate turn combinations?
     #Add legitimate way to revive player
     #Add gear/attributes/something to adjust player stats
