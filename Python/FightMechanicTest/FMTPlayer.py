@@ -3,6 +3,7 @@ import math # For floor() def
 import FMTTools # For randominteger() def
 
 class Player:
+    # Player default values initialization
     def __init__(self, currenthealth = 100, maximumhealth = 100, level = 0, currentexperience = 0, experiencerequired = 5, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
         self.currenthealth = currenthealth
         self.maximumhealth = maximumhealth
@@ -31,9 +32,9 @@ Attack speed: {self.attackspeed}
 Alive: {self.isalive}
 =====\n""")
 
-    # Level up the player once he reaches required experience
+    # Level up the player once they reach required experience
     def levelup(self):
-        # "while" instead of if "in" case that enough experience is earned for more than one level up in one instance
+        # "while" instead of "if" in case that enough experience is earned for more than one level up in one instance
         while self.currentexperience >= self.experiencerequired:
            self.currentexperience -= self.experiencerequired
 
@@ -65,15 +66,15 @@ Experience: {self.currentexperience} / {self.experiencerequired}\n""")
         self.currentexperience += currentexperience
         self.levelup()
 
-    # Death once currenthealth reaches 0 or less
+    # Death once currenthealth reaches 0 or less - This is implemented in FMTGameLoop in the turns defs
     def death(self):
         self.isalive = False
         # If player has any currentexperience, remove a percentage of it 
-        if self.currentexperience > 0:
+        if self.currentexperience >= 0:
             removedexperience = math.floor(self.currentexperience * 0.10) # The multiplier is the percentage of currentexperience removed - for example * 0.10 will remove 10% of current experience rounded down (due to math.floor())
             self.currentexperience -= removedexperience
             print(f"""Player dead
 Lost {removedexperience} Experience\n""")
         
-        else: 
-            print("Player dead\n")
+        #else: 
+        #    print("Player dead\n") # Not needed? Worst case the above print will state "Lost 0 Experience"
