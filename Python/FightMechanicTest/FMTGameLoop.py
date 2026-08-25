@@ -18,6 +18,10 @@ def changeturnlength():
     print(" ")
     turnlength = float(userinput) # Change string from input to 
 
+def player_revive():
+    playerinstance.currenthealth = playerinstance.maximumhealth
+    playerinstance.isalive = True
+
 # Turns when player's attackspeed is higher than the enemy's
 def player_turn(turnlength, player, enemy):
     time.sleep(turnlength)
@@ -69,6 +73,8 @@ def run_turns_once(turnlength, player, enemy):
                 return # Exit loop when enemy dies
             if player.currenthealth <= 0:
                 player.death()
+                player_revive()
+                enemyinstance.spawnrandomenemy()
                 return # Exit loop when player dies
 
             # If both the player and enemy remain alive then run turns based on their attackspeed
@@ -122,8 +128,7 @@ t - Set turn length
 
         # r - Revive player
         elif userinput == "r":
-            playerinstance.currenthealth = playerinstance.maximumhealth
-            playerinstance.isalive = True
+            player_revive()
             print("Revived player with current health set to maximum health\n")
 
         # g - Set current and maximum player health

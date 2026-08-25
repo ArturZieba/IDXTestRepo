@@ -4,9 +4,6 @@ if __name__ == "__main__":
     # Start the full game loop
     FMTGameLoop.game_loop()
 
-    #Check and update all comments
-    #Auth test
-
-    #Is there a way to rework turns to be more streamlined based on the object's attack speed instead of separate turn combinations?
     #Add legitimate way to revive player
+    #Add a safeguard for starting the game if player is dead
     #Add gear/attributes/something to adjust player stats
