@@ -72,9 +72,9 @@ def run_turns_once(turnlength, player, enemy):
                 enemy.death(player)
                 return # Exit loop when enemy dies
             if player.currenthealth <= 0:
-                player.death()
-                player_revive()
                 enemyinstance.spawnrandomenemy()
+                player.death()
+                #player_revive()
                 return # Exit loop when player dies
 
             # If both the player and enemy remain alive then run turns based on their attackspeed
@@ -107,7 +107,10 @@ t - Set turn length
 
         # 1 - Automatic fight loop
         if userinput == "1":
-            run_turns(turnlength, playerinstance, enemyinstance)
+            if playerinstance.isalive == True:
+                run_turns(turnlength, playerinstance, enemyinstance)
+            else:
+                print("Player is dead\n")
 
         # 2 - Fight once
         elif userinput == "2":
