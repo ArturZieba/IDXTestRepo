@@ -52,6 +52,8 @@ def run_turns(turnlength, player, enemy):
                 enemy.death(player)
                 # No return statement here, keeps going on until player's death in the return statement
             if player.currenthealth <= 0:
+                enemyinstance.spawnrandomenemy()
+                print("!!!DEBUG!!!")
                 player.death()
                 return # Exit loop when player dies
 
@@ -72,7 +74,8 @@ def run_turns_once(turnlength, player, enemy):
                 enemy.death(player)
                 return # Exit loop when enemy dies
             if player.currenthealth <= 0:
-                enemyinstance.spawnrandomenemy()
+                #enemyinstance.spawnrandomenemy()
+                #print("!!!DEBUG!!!")
                 player.death()
                 #player_revive()
                 return # Exit loop when player dies

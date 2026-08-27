@@ -75,6 +75,5 @@ Experience: {self.currentexperience} / {self.experiencerequired}\n""")
             self.currentexperience -= removedexperience
             print(f"""Player dead
 Lost {removedexperience} Experience\n""")
-        
         #else: 
         #    print("Player dead\n") # Not needed? Worst case the above print will state "Lost 0 Experience"
