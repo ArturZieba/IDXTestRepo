@@ -16,7 +16,8 @@ def changeturnlength():
     print(f"Current turn length is: {turnlength}")
     userinput = input("\nInput desired turn length: ")
     print(" ")
-    turnlength = float(userinput) # Change string from input to 
+    turnlength = float(userinput) # Change string from input to float to make sure it works with other defs using this variable
+    print(f"\nTurn length set to: {turnlength}\n")
 
 def player_revive():
     playerinstance.currenthealth = playerinstance.maximumhealth
@@ -144,10 +145,12 @@ t - Set turn length
             print(" ")
             playerinstance.maximumhealth = int(userinput) # Change string from input to integer to avoid issues with value comparison
             playerinstance.currenthealth = playerinstance.maximumhealth
+            print(f"Maximum health set to {userinput}\n")
 
         # n - Reroll current enemy
         elif userinput == "n":
             enemyinstance.spawnrandomenemy()
+            print(f"Enemy rerolled to {enemyinstance.name}\n")
 
         # t - Set turn length
         elif userinput == "t":
