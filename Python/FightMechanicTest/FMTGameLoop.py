@@ -127,6 +127,14 @@ Reviving with full Health\n""")
                 run_turns_once(turnlength, playerinstance, enemyinstance)
             else:
                 print("Player is dead\n")
+                userinput = input("""\n1 - Revive for X gold with full Health
+2 - Revive for free with half Health                
+Choose a way to revive: """)
+                if userinput == "1":
+                    print("""\nPaid X gold
+Reviving with full Health\n""")
+                elif userinput == "2":
+                    print("\nReviving with half Health\n")
             
         
         # 3 - Player stats
