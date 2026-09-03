@@ -19,7 +19,7 @@ def changeturnlength():
     turnlength = float(userinput) # Change string from input to float to make sure it works with other defs using this variable
     print(f"\nTurn length set to: {turnlength}\n")
 
-def player_revive():
+def playerrevive():
     playerinstance.currenthealth = playerinstance.maximumhealth
     playerinstance.isalive = True
 
@@ -116,9 +116,11 @@ t - Set turn length
 2 - Revive for free with half Health                
 Choose a way to revive: """)
                 if userinput == "1":
+                    playerrevive()
                     print("""\nPaid X gold
 Reviving with full Health\n""")
                 elif userinput == "2":
+                    playerrevive()
                     print("\nReviving with half Health\n")
 
         # 2 - Fight once
@@ -131,9 +133,11 @@ Reviving with full Health\n""")
 2 - Revive for free with half Health                
 Choose a way to revive: """)
                 if userinput == "1":
+                    playerrevive()
                     print("""\nPaid X gold
 Reviving with full Health\n""")
                 elif userinput == "2":
+                    playerrevive()
                     print("\nReviving with half Health\n")
             
         
@@ -152,7 +156,7 @@ Reviving with full Health\n""")
 
         # r - Revive player
         elif userinput == "r":
-            player_revive()
+            playerrevive()
             print("Revived player with current health set to maximum health\n")
 
         # g - Set current and maximum player health
