@@ -1,3 +1,4 @@
+import math # For math.floor()
 import time # For time()
 
 import FMTEnemy # For Enemy() class
@@ -121,6 +122,7 @@ Choose a way to revive: """)
 Reviving with full Health\n""")
                 elif userinput == "2":
                     playerrevive()
+                    playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
                     print("\nReviving with half Health\n")
 
         # 2 - Fight once
@@ -138,6 +140,7 @@ Choose a way to revive: """)
 Reviving with full Health\n""")
                 elif userinput == "2":
                     playerrevive()
+                    playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
                     print("\nReviving with half Health\n")
             
         
