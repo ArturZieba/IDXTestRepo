@@ -90,17 +90,12 @@ def run_turns_once(turnlength, player, enemy):
 # Main game loop
 def game_loop():
     while True:
-        print("""1 - Automatic fight loop
-2 - Fight once
-3 - Player stats
-4 - Enemy stats
+        print("""REGULAR MENU                        DEBUG MENU
+1 - Automatic fight loop            r - Revive player
+2 - Fight once                      g - Set current and maximum player health
+3 - Player stats                    n - Reroll current enemy
+4 - Enemy stats                     t - Set turn length
 5 - Exit
-
-DEBUG
-r - Revive player
-g - Set current and maximum player health
-n - Reroll current enemy
-t - Set turn length
 =====""")
 
         # Input for the main menu selection
