@@ -108,8 +108,9 @@ def game_loop():
                 run_turns(turnlength, playerinstance, enemyinstance)
             else:
                 print("Player is dead\n")
-                userinput = input("""\n1 - Revive for X gold with full Health
-2 - Revive for free with half Health                
+                userinput = input("""1 - Revive for X gold with full Health
+2 - Revive for free with half Health  
+
 Choose a way to revive: """)
                 if userinput == "1":
                     playerrevive()
@@ -126,8 +127,9 @@ Reviving with full Health\n""")
                 run_turns_once(turnlength, playerinstance, enemyinstance)
             else:
                 print("Player is dead\n")
-                userinput = input("""\n1 - Revive for X gold with full Health
-2 - Revive for free with half Health                
+                userinput = input("""1 - Revive for X gold with full Health
+2 - Revive for free with half Health       
+         
 Choose a way to revive: """)
                 if userinput == "1":
                     playerrevive()
