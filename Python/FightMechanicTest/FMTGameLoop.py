@@ -90,12 +90,13 @@ def run_turns_once(turnlength, player, enemy):
 # Main game loop
 def game_loop():
     while True:
-        print("""REGULAR MENU                        DEBUG MENU
-1 - Automatic fight loop            r - Revive player
-2 - Fight once                      g - Set current and maximum player health
-3 - Player stats                    n - Reroll current enemy
-4 - Enemy stats                     t - Set turn length
-5 - Exit
+        print("""REGULAR MENU                           DEBUG MENU
+1 - Automatic fight loop                r - Revive player
+2 - Fight specified number of times     g - Set current and maximum player health
+3 - Fight once                          n - Reroll current enemy
+4 - Player stats                        t - Set turn length
+5 - Enemy stats
+6 - Exit
 =====""")
 
         # Input for the main menu selection
@@ -121,8 +122,12 @@ Reviving with full Health\n""")
                     playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
                     print("\nReviving with half Health\n")
 
-        # 2 - Fight once
+        # 2 - Fight specified number of times
         elif userinput == "2":
+            print("Fight specified number of times")
+
+        # 3 - Fight once
+        elif userinput == "3":
             if playerinstance.isalive == True:
                 run_turns_once(turnlength, playerinstance, enemyinstance)
             else:
@@ -139,18 +144,17 @@ Reviving with full Health\n""")
                     playerrevive()
                     playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
                     print("\nReviving with half Health\n")
-            
         
-        # 3 - Player stats
-        elif userinput == "3":
+        # 4 - Player stats
+        elif userinput == "4":
             playerinstance.info()
         
-        # 4 - Enemy stats
-        elif userinput == "4":
+        # 5 - Enemy stats
+        elif userinput == "5":
             enemyinstance.info()
         
-        # 5 - Exit
-        elif userinput == "5":
+        # 6 - Exit
+        elif userinput == "6":
             print("Exitting script")
             break
 
