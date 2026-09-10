@@ -66,6 +66,28 @@ def run_turns(turnlength, player, enemy):
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
 
+# Run "fight loop" continuously for a specified amount of fights - player and enemy attacking based on their attack speed difference - ends on player death
+def run_turns_multiple(turnlength, player, enemy, numberoffights):
+    while True:
+        print("Run turns multiple")
+        while player.isalive & enemy.isalive:
+            # First check if player or enemy have more than 0 currenthealth
+            if enemy.currenthealth <= 0:
+                enemy.death(player)
+                # No return statement here, keeps going on until player's death in the return statement
+            if player.currenthealth <= 0:
+                enemyinstance.spawnrandomenemy()
+                player.death()
+                return # Exit loop when player dies
+
+            # If both the player and enemy remain alive then run turns based on their attackspeed
+            if player.attackspeed > enemy.attackspeed:
+                player_turn(turnlength, player, enemy)
+            if player.attackspeed < enemy.attackspeed:
+                enemy_turn(turnlength, player, enemy)
+            if player.attackspeed == enemy.attackspeed:
+                both_turn(turnlength, player, enemy)
+
 # Run "fight loop" once - player and enemy attacking based on their attack speed difference - ends on player or enemy death
 def run_turns_once(turnlength, player, enemy):
     while True:
@@ -124,7 +146,22 @@ Reviving with full Health\n""")
 
         # 2 - Fight specified number of times
         elif userinput == "2":
-            print("Fight specified number of times")
+            if playerinstance.isalive == True:
+                run_turns_multiple(turnlength, playerinstance, enemyinstance, 1)
+            else:
+                print("Player is dead\n")
+                userinput = input("""1 - Revive for X gold with full Health
+2 - Revive for free with half Health       
+         
+Choose a way to revive: """)
+                if userinput == "1":
+                    playerrevive()
+                    print("""\nPaid X gold
+Reviving with full Health\n""")
+                elif userinput == "2":
+                    playerrevive()
+                    playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
+                    print("\nReviving with half Health\n")
 
         # 3 - Fight once
         elif userinput == "3":
