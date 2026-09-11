@@ -24,6 +24,21 @@ def playerrevive():
     playerinstance.currenthealth = playerinstance.maximumhealth
     playerinstance.isalive = True
 
+def fightstartplayerdeadprompt():
+    print("Player is dead\n")
+    userinput = input("""1 - Revive for X gold with full Health
+2 - Revive for free with half Health  
+
+Choose a way to revive: """)
+    if userinput == "1":
+        playerrevive()
+        print("""\nPaid X gold
+Reviving with full Health\n""")
+    elif userinput == "2":
+        playerrevive()
+        playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
+        print("\nReviving with half Health\n")
+
 # Turns when player's attackspeed is higher than the enemy's
 def player_turn(turnlength, player, enemy):
     time.sleep(turnlength)
@@ -130,19 +145,7 @@ def game_loop():
             if playerinstance.isalive == True:
                 run_turns(turnlength, playerinstance, enemyinstance)
             else:
-                print("Player is dead\n")
-                userinput = input("""1 - Revive for X gold with full Health
-2 - Revive for free with half Health  
-
-Choose a way to revive: """)
-                if userinput == "1":
-                    playerrevive()
-                    print("""\nPaid X gold
-Reviving with full Health\n""")
-                elif userinput == "2":
-                    playerrevive()
-                    playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
-                    print("\nReviving with half Health\n")
+                fightstartplayerdeadprompt()
 
         # 2 - Fight specified number of times
         elif userinput == "2":
