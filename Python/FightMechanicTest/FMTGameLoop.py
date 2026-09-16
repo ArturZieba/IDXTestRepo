@@ -159,19 +159,7 @@ def game_loop():
             if playerinstance.isalive == True:
                 run_turns_once(turnlength, playerinstance, enemyinstance)
             else:
-                print("Player is dead\n")
-                userinput = input("""1 - Revive for X gold with full Health
-2 - Revive for free with half Health       
-         
-Choose a way to revive: """)
-                if userinput == "1":
-                    playerrevive()
-                    print("""\nPaid X gold
-Reviving with full Health\n""")
-                elif userinput == "2":
-                    playerrevive()
-                    playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
-                    print("\nReviving with half Health\n")
+                fightstartplayerdeadprompt()
         
         # 4 - Player stats
         elif userinput == "4":
