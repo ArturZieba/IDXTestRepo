@@ -20,13 +20,8 @@ def changeturnlength():
     turnlength = float(userinput) # Change string from input to float to make sure it works with other defs using this variable
     print(f"\nTurn length set to: {turnlength}\n")
 
-def playerrevive():
-    playerinstance.currenthealth = playerinstance.maximumhealth
-    playerinstance.isalive = True
-
-def mainmenu():
-    while True:
-        print("""REGULAR MENU                           DEBUG MENU
+def printmenuoptions():
+    print("""REGULAR MENU                           DEBUG MENU
 1 - Automatic fight loop                r - Revive player
 2 - Fight specified number of times     g - Set current and maximum player health
 3 - Fight once                          n - Reroll current enemy
@@ -35,69 +30,9 @@ def mainmenu():
 6 - Exit
 =====""")
 
-        # Input for the main menu selection
-        userinput = input("\nInput option chosen: ")
-        print(" ")
-
-        # 1 - Automatic fight loop
-        if userinput == "1":
-            if playerinstance.isalive == True:
-                run_turns(turnlength, playerinstance, enemyinstance)
-            else:
-                fightstartplayerdeadprompt()
-
-        # 2 - Fight specified number of times
-        elif userinput == "2":
-            if playerinstance.isalive == True:
-                run_turns_multiple(turnlength, playerinstance, enemyinstance, 1)
-            else:
-                fightstartplayerdeadprompt()
-
-        # 3 - Fight once
-        elif userinput == "3":
-            if playerinstance.isalive == True:
-                run_turns_once(turnlength, playerinstance, enemyinstance)
-            else:
-                fightstartplayerdeadprompt()
-            
-        # 4 - Player stats
-        elif userinput == "4":
-            playerinstance.info()
-            
-        # 5 - Enemy stats
-        elif userinput == "5":
-            enemyinstance.info()
-            
-        # 6 - Exit
-        elif userinput == "6":
-            print("Exitting script")
-            break
-
-        # r - Revive player
-        elif userinput == "r":
-            playerrevive()
-            print("Revived player with current health set to maximum health\n")
-
-        # g - Set current and maximum player health
-        elif userinput == "g":
-            userinput = input("\nInput desired player maximum health: ")
-            print(" ")
-            playerinstance.maximumhealth = int(userinput) # Change string from input to integer to avoid issues with value comparison
-            playerinstance.currenthealth = playerinstance.maximumhealth
-            print(f"Maximum health set to {userinput}\n")
-
-        # n - Reroll current enemy
-        elif userinput == "n":
-            enemyinstance.spawnrandomenemy()
-            print(f"Enemy rerolled to {enemyinstance.name}\n")
-
-        # t - Set turn length
-        elif userinput == "t":
-            changeturnlength()
-
-        # Input not listed is provided
-        else:
-            print(f"No {userinput} option, type in one of listed numbers")
+def playerrevive():
+    playerinstance.currenthealth = playerinstance.maximumhealth
+    playerinstance.isalive = True
 
 def fightstartplayerdeadprompt():
     print("Player is dead\n")
@@ -201,4 +136,69 @@ def run_turns_once(turnlength, player, enemy):
 
 # Main game loop
 def game_loop():
-    mainmenu()
+    while True:
+        printmenuoptions()
+
+        # Input for the main menu selection
+        userinput = input("\nInput option chosen: ")
+        print(" ")
+
+        # 1 - Automatic fight loop
+        if userinput == "1":
+            if playerinstance.isalive == True:
+                run_turns(turnlength, playerinstance, enemyinstance)
+            else:
+                fightstartplayerdeadprompt()
+
+        # 2 - Fight specified number of times
+        elif userinput == "2":
+            if playerinstance.isalive == True:
+                run_turns_multiple(turnlength, playerinstance, enemyinstance, 1)
+            else:
+                fightstartplayerdeadprompt()
+
+        # 3 - Fight once
+        elif userinput == "3":
+            if playerinstance.isalive == True:
+                run_turns_once(turnlength, playerinstance, enemyinstance)
+            else:
+                fightstartplayerdeadprompt()
+            
+        # 4 - Player stats
+        elif userinput == "4":
+            playerinstance.info()
+            
+        # 5 - Enemy stats
+        elif userinput == "5":
+            enemyinstance.info()
+            
+        # 6 - Exit
+        elif userinput == "6":
+            print("Exitting script")
+            break
+
+        # r - Revive player
+        elif userinput == "r":
+            playerrevive()
+            print("Revived player with current health set to maximum health\n")
+
+        # g - Set current and maximum player health
+        elif userinput == "g":
+            userinput = input("\nInput desired player maximum health: ")
+            print(" ")
+            playerinstance.maximumhealth = int(userinput) # Change string from input to integer to avoid issues with value comparison
+            playerinstance.currenthealth = playerinstance.maximumhealth
+            print(f"Maximum health set to {userinput}\n")
+
+        # n - Reroll current enemy
+        elif userinput == "n":
+            enemyinstance.spawnrandomenemy()
+            print(f"Enemy rerolled to {enemyinstance.name}\n")
+
+        # t - Set turn length
+        elif userinput == "t":
+            changeturnlength()
+
+        # Input not listed is provided
+        else:
+            print(f"No {userinput} option, type in one of listed numbers")
