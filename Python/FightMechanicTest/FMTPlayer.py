@@ -1,6 +1,6 @@
 import math # For floor() def
 
-import FMTTools # For randominteger() def
+import FMTTools # For random_integer() def
 
 class Player:
     # Player default values initialization
@@ -12,7 +12,7 @@ class Player:
         self.experiencerequired = experiencerequired
         self.damagemin = damagemin
         self.damagemax = damagemax
-        self.damage = FMTTools.randominteger(damagemin, damagemax)
+        self.damage = FMTTools.random_integer(damagemin, damagemax)
         self.attackspeed = attackspeed
         self.isalive = isalive
 
@@ -54,7 +54,7 @@ Experience: {self.currentexperience} / {self.experiencerequired}\n""")
     def attack(self, target):
         target.receivedamage(self.damage)
         print(f"Player damage dealt: {self.damage}")
-        self.damage = FMTTools.randominteger(self.damagemin, self.damagemax)
+        self.damage = FMTTools.random_integer(self.damagemin, self.damagemax)
 
     # Receive damage from a source
     def receivedamage(self, damage):

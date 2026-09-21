@@ -1,5 +1,5 @@
 import FMTEnemyRoster # For EnemyRoster.chooserandomenemy() def
-import FMTTools # For randominteger() def
+import FMTTools # For random_integer() def
 
 class Enemy:
     # Enemy default values initialization
@@ -9,7 +9,7 @@ class Enemy:
         self.maximumhealth = maximumhealth
         self.damagemin = damagemin
         self.damagemax = damagemax
-        self.damage = FMTTools.randominteger(damagemin, damagemax)
+        self.damage = FMTTools.random_integer(damagemin, damagemax)
         self.attackspeed = attackspeed
         self.isalive = isalive
         self.spawnweight = spawnweight
@@ -37,7 +37,7 @@ Experience granted: {self.experiencegranted}
     def attack(self, target):
         target.receivedamage(self.damage)
         print(f"{self.name} damage dealt: {self.damage}")
-        self.damage = FMTTools.randominteger(self.damagemin, self.damagemax)
+        self.damage = FMTTools.random_integer(self.damagemin, self.damagemax)
 
     # Receive damage from a source
     def receivedamage(self, damage):
