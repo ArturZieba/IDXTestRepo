@@ -1,4 +1,4 @@
-import FMTEnemyRoster # For EnemyRoster.chooserandomenemy() def
+import FMTEnemyRoster # For EnemyRoster.choose_random_enemy() def
 import FMTTools # For random_integer() def
 
 class Enemy:
@@ -47,7 +47,7 @@ Experience granted: {self.experiencegranted}
     # Reinitialize the instance with a random chosen enemy type - basically respawn without creating a new instance of the class
     def spawnrandomenemy(self):
         # Choose a random enemy from a weighted list at random
-        chosenenemy = FMTEnemyRoster.EnemyRoster.chooserandomenemy()
+        chosenenemy = FMTEnemyRoster.EnemyRoster.choose_random_enemy()
 
         # Initialize Enemy class with values of a randomly chosen enemy - "spawn" it
         self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["level"], chosenenemy["experiencegranted"])

@@ -56,6 +56,6 @@ class EnemyRoster():
             enemyrosterweighted.append(element)
     
     # Choose a random enemy from the weighted list
-    def chooserandomenemy():
+    def choose_random_enemy():
         chosenenemy = random.choice(EnemyRoster.enemyrosterweighted)
         return chosenenemy
