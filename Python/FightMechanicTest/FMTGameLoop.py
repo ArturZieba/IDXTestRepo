@@ -12,7 +12,7 @@ playerinstance = FMTPlayer.Player()
 enemyinstance = FMTEnemy.Enemy()
 
 # Adjust turnlength value while the program is running
-def changeturnlength():
+def change_turn_length():
     global turnlength
     print(f"Current turn length is: {turnlength}")
     userinput = input("\nInput desired turn length: ")
@@ -20,7 +20,7 @@ def changeturnlength():
     turnlength = float(userinput) # Change string from input to float to make sure it works with other defs using this variable
     print(f"\nTurn length set to: {turnlength}\n")
 
-def printmenuoptions():
+def print_menu_options():
     print("""REGULAR MENU                           DEBUG MENU
 1 - Automatic fight loop                r - Revive player
 2 - Fight specified number of times     g - Set current and maximum player health
@@ -30,22 +30,22 @@ def printmenuoptions():
 6 - Exit
 =====""")
 
-def playerrevive():
+def player_revive():
     playerinstance.currenthealth = playerinstance.maximumhealth
     playerinstance.isalive = True
 
-def fightstartplayerdeadprompt():
+def fight_start_player_dead_prompt():
     print("Player is dead\n")
     userinput = input("""1 - Revive for X gold with full Health
 2 - Revive for free with half Health  
 
 Choose a way to revive: """)
     if userinput == "1":
-        playerrevive()
+        player_revive()
         print("""\nPaid X gold
 Reviving with full Health\n""")
     elif userinput == "2":
-        playerrevive()
+        player_revive()
         playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
         print("\nReviving with half Health\n")
 
@@ -137,7 +137,7 @@ def run_turns_once(turnlength, player, enemy):
 # Main game loop
 def game_loop():
     while True:
-        printmenuoptions()
+        print_menu_options()
 
         # Input for the main menu selection
         userinput = input("\nInput option chosen: ")
@@ -148,21 +148,21 @@ def game_loop():
             if playerinstance.isalive == True:
                 run_turns(turnlength, playerinstance, enemyinstance)
             else:
-                fightstartplayerdeadprompt()
+                fight_start_player_dead_prompt()
 
         # 2 - Fight specified number of times
         elif userinput == "2":
             if playerinstance.isalive == True:
                 run_turns_multiple(turnlength, playerinstance, enemyinstance, 1)
             else:
-                fightstartplayerdeadprompt()
+                fight_start_player_dead_prompt()
 
         # 3 - Fight once
         elif userinput == "3":
             if playerinstance.isalive == True:
                 run_turns_once(turnlength, playerinstance, enemyinstance)
             else:
-                fightstartplayerdeadprompt()
+                fight_start_player_dead_prompt()
             
         # 4 - Player stats
         elif userinput == "4":
@@ -179,7 +179,7 @@ def game_loop():
 
         # r - Revive player
         elif userinput == "r":
-            playerrevive()
+            player_revive()
             print("Revived player with current health set to maximum health\n")
 
         # g - Set current and maximum player health
@@ -197,7 +197,7 @@ def game_loop():
 
         # t - Set turn length
         elif userinput == "t":
-            changeturnlength()
+            change_turn_length()
 
         # Input not listed is provided
         else:
