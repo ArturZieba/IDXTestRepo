@@ -35,12 +35,12 @@ Experience granted: {self.experiencegranted}
 
     # Attack a target
     def attack(self, target):
-        target.receivedamage(self.damage)
+        target.receive_damage(self.damage)
         print(f"{self.name} damage dealt: {self.damage}")
         self.damage = FMTTools.random_integer(self.damagemin, self.damagemax)
 
     # Receive damage from a source
-    def receivedamage(self, damage):
+    def receive_damage(self, damage):
         self.currenthealth -= damage
         print(f"{self.name} health: {self.currenthealth} / {self.maximumhealth}")
 
@@ -54,7 +54,7 @@ Experience granted: {self.experiencegranted}
 
     # Grant rewards to the source that caused death
     def grantrewards(self, target):
-        target.receiverewards(self.experiencegranted)
+        target.receive_rewards(self.experiencegranted)
 
     # Death once currenthealth reaches 0 or less - This is implemented in FMTGameLoop in the turns defs
     def death(self, target):
