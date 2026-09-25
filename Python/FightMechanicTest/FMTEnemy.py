@@ -45,7 +45,7 @@ Experience granted: {self.experiencegranted}
         print(f"{self.name} health: {self.currenthealth} / {self.maximumhealth}")
 
     # Reinitialize the instance with a random chosen enemy type - basically respawn without creating a new instance of the class
-    def spawnrandomenemy(self):
+    def spawn_random_enemy(self):
         # Choose a random enemy from a weighted list at random
         chosenenemy = FMTEnemyRoster.EnemyRoster.choose_random_enemy()
 
@@ -53,13 +53,13 @@ Experience granted: {self.experiencegranted}
         self.__init__(chosenenemy["name"], chosenenemy["maximumhealth"], chosenenemy["currenthealth"], chosenenemy["damagemin"], chosenenemy["damagemax"], chosenenemy["attackspeed"], chosenenemy["isalive"], chosenenemy["spawnweight"], chosenenemy["level"], chosenenemy["experiencegranted"])
 
     # Grant rewards to the source that caused death
-    def grantrewards(self, target):
+    def grant_rewards(self, target):
         target.receive_rewards(self.experiencegranted)
 
     # Death once currenthealth reaches 0 or less - This is implemented in FMTGameLoop in the turns defs
     def death(self, target):
-        self.grantrewards(target)
+        self.grant_rewards(target)
         self.isalive = False
         print("Enemy dead")
         print(f"Experience granted: {self.experiencegranted}\n")
-        self.spawnrandomenemy()
+        self.spawn_random_enemy()

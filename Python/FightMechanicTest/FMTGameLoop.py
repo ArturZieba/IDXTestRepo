@@ -79,7 +79,7 @@ def run_turns(turnlength, player, enemy):
                 enemy.death(player)
                 # No return statement here, keeps going on until player's death in the return statement
             if player.currenthealth <= 0:
-                enemyinstance.spawnrandomenemy()
+                enemyinstance.spawn_random_enemy()
                 player.death()
                 return # Exit loop when player dies
 
@@ -101,7 +101,7 @@ def run_turns_multiple(turnlength, player, enemy, numberoffights):
                 enemy.death(player)
                 # No return statement here, keeps going on until player's death in the return statement
             if player.currenthealth <= 0:
-                enemyinstance.spawnrandomenemy()
+                enemyinstance.spawn_random_enemy()
                 player.death()
                 return # Exit loop when player dies
 
@@ -122,7 +122,7 @@ def run_turns_once(turnlength, player, enemy):
                 enemy.death(player)
                 return # Exit loop when enemy dies
             if player.currenthealth <= 0:
-                enemyinstance.spawnrandomenemy()
+                enemyinstance.spawn_random_enemy()
                 player.death()
                 return # Exit loop when player dies
 
@@ -192,7 +192,7 @@ def game_loop():
 
         # n - Reroll current enemy
         elif userinput == "n":
-            enemyinstance.spawnrandomenemy()
+            enemyinstance.spawn_random_enemy()
             print(f"Enemy rerolled to {enemyinstance.name}\n")
 
         # t - Set turn length
