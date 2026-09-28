@@ -20,6 +20,7 @@ def change_turn_length():
     turnlength = float(userinput) # Change string from input to float to make sure it works with other defs using this variable
     print(f"\nTurn length set to: {turnlength}\n")
 
+# Prints menu selection options
 def print_menu_options():
     print("""REGULAR MENU                           DEBUG MENU
 1 - Automatic fight loop                r - Revive player
@@ -30,20 +31,24 @@ def print_menu_options():
 6 - Exit
 =====""")
 
+# Revive player
 def player_revive():
     playerinstance.currenthealth = playerinstance.maximumhealth
     playerinstance.isalive = True
 
+# Prompt that is displayed when attempting to start combat while the player is dead
 def fight_start_player_dead_prompt():
     print("Player is dead\n")
     userinput = input("""1 - Revive for X gold with full Health
 2 - Revive for free with half Health  
 
 Choose a way to revive: """)
+    # 1 - Revive with full health for a price
     if userinput == "1":
         player_revive()
         print("""\nPaid X gold
 Reviving with full Health\n""")
+    # 2 - Revive for free with a penalty
     elif userinput == "2":
         player_revive()
         playerinstance.currenthealth = math.floor(playerinstance.maximumhealth / 2)
@@ -137,9 +142,10 @@ def run_turns_once(turnlength, player, enemy):
 # Main game loop
 def game_loop():
     while True:
+        # Display menu selection options
         print_menu_options()
 
-        # Input for the main menu selection
+        # Input for the main menu option selection
         userinput = input("\nInput option chosen: ")
         print(" ")
 
