@@ -1,6 +1,7 @@
 import FMTEnemyRoster # For EnemyRoster.choose_random_enemy() def
 import FMTTools # For random_integer() def
 
+# Class used for objects that the player fights
 class Enemy:
     # Enemy default values initialization
     def __init__(self, name = "Enemy", currenthealth = 10, maximumhealth = 10, damagemin = 1, damagemax = 3, attackspeed = 1, isalive = True, spawnweight = 0, level = 0, experiencegranted = 1):#, target = Player()):

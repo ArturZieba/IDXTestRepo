@@ -2,6 +2,7 @@ import math # For floor() def
 
 import FMTTools # For random_integer() def
 
+# Class used for object of the player's character
 class Player:
     # Player default values initialization
     def __init__(self, currenthealth = 100, maximumhealth = 100, level = 0, currentexperience = 0, experiencerequired = 5, damagemin = 1, damagemax = 3, attackspeed = 2, isalive = True):#, target = Enemy()): 
@@ -75,5 +76,3 @@ Experience: {self.currentexperience} / {self.experiencerequired}\n""")
             self.currentexperience -= removedexperience
             print(f"""Player dead
 Lost {removedexperience} Experience\n""")
-        #else: 
-        #    print("Player dead\n") # Not needed? Worst case the above print will state "Lost 0 Experience"

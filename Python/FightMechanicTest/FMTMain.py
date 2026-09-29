@@ -3,8 +3,7 @@ import FMTGameLoop # For game_loop() def
 if __name__ == "__main__":
     # Start the full game loop
     FMTGameLoop.game_loop()
-
-    #Update comments
+    
     #Game loop for certain number of kills? (i.e. stop after 5 kills or player death)
     #Further work on a legitimate way to revive player
     #Add option to revive player for free/gold?
