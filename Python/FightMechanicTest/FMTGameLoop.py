@@ -99,13 +99,13 @@ def run_turns(turnlength, player, enemy):
 # Run "fight loop" continuously for a specified amount of fights - player and enemy attacking based on their attack speed difference - ends on player death
 def run_turns_multiple(turnlength, player, enemy):
     turnstorun = input("\nHow many turns to run? (1 - 100 allowed): ")
-        print(" ")
-    while turnstorun > 0:
-        turnstorun--
-        # Convert userinput to int so it can be checked with the list
-        if int(userinput) in list(range(1, 100)):
-            print(f"Run {userinput} turns")
+    print(" ")
+    while int(turnstorun) > 0:
+        # Convert turnstorun to int so it can be checked with the list
+        if int(turnstorun) in list(range(1, 100)):
+            print(f"Run {turnstorun} turns")
             while player.isalive & enemy.isalive:
+                turnstorun = int(turnstorun) - 1
                 # First check if player or enemy have more than 0 currenthealth
                 if enemy.currenthealth <= 0:
                     enemy.death(player)
