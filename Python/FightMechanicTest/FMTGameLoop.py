@@ -24,7 +24,7 @@ def change_turn_length():
 def print_menu_options():
     print("""REGULAR MENU                           DEBUG MENU
 1 - Automatic fight loop                r - Revive player
-2 - Fight specified number of times     g - Set current and maximum player health
+2 - Fight specified number of enemies   g - Set current and maximum player health
 3 - Fight once                          n - Reroll current enemy
 4 - Player stats                        t - Set turn length
 5 - Enemy stats
@@ -98,14 +98,15 @@ def run_turns(turnlength, player, enemy):
 
 # Run "fight loop" continuously for a specified amount of enemies - player and enemy attacking based on their attack speed difference - ends on player death
 def run_turns_multiple(turnlength, player, enemy):
-    turnstorun = input("How many turns to run (enemies to fight)? (2 - 100 allowed): ")
-    print(f"Run {turnstorun} turns")
-    while int(turnstorun) > 0 & (int(turnstorun) in list(range(2, 100))):
-        # Convert turnstorun to int so it can be checked with the list
+    enemiestofight = input("How many enemies to fight? (2 - 100 allowed): ")
+    print(f"Fight {enemiestofight} enemies")
+    while (int(enemiestofight) in list(range(1, 100))):
+        # Convert enemiestofight to int so it can be checked with the list
         if player.isalive & enemy.isalive:
+            print(f"Enemies to fight left: {enemiestofight}")
             # First check if player or enemy have more than 0 currenthealth
-            if enemy.currenthealth <= 0:
-                turnstorun = int(turnstorun) - 1
+            if (enemy.currenthealth <= 0) & (int(enemiestofight) > 0):
+                enemiestofight = int(enemiestofight) - 1
                 enemy.death(player)
                 # No return statement here, keeps going on until player's death in the return statement
             if player.currenthealth <= 0:
@@ -121,7 +122,6 @@ def run_turns_multiple(turnlength, player, enemy):
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
     else:
-        print(f"Turns to run left: {turnstorun}")
         return # Exit loop after the specified turn amount is done
 
 # Run "fight loop" once - player and enemy attacking based on their attack speed difference - ends on player or enemy death
