@@ -23,7 +23,7 @@ def change_turn_length():
 # Prints menu selection options
 def print_menu_options():
     print("""REGULAR MENU                           DEBUG MENU
-1 - Automatic fight loop                r - Revive player
+1 - Fight until death                   r - Revive player
 2 - Fight specified number of enemies   g - Set current and maximum player health
 3 - Fight once                          n - Reroll current enemy
 4 - Player stats                        t - Set turn length
@@ -75,8 +75,8 @@ def both_turn(turnlength, player, enemy):
     enemy.attack(player)
     print(" ")
 
-# Run "fight loop" continuously - player and enemy attacking based on their attack speed difference - ends on player death
-def run_turns(turnlength, player, enemy):
+# Run fight loop continuously - player and enemy attacking based on their attack speed difference - ends on player death
+def fight_until_death(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
             # First check if player or enemy have more than 0 currenthealth
@@ -163,7 +163,7 @@ def game_loop():
         # 1 - Automatic fight loop
         if userinput == "1":
             if playerinstance.isalive == True:
-                run_turns(turnlength, playerinstance, enemyinstance)
+                fight_until_death(turnlength, playerinstance, enemyinstance)
             else:
                 fight_start_player_dead_prompt()
 
