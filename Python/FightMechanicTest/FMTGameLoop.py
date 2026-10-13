@@ -25,7 +25,7 @@ def print_menu_options():
     print("""REGULAR MENU                           DEBUG MENU
 1 - Fight until death                   r - Revive player
 2 - Fight specified number of enemies   g - Set current and maximum player health
-3 - Fight once                          n - Reroll current enemy
+3 - Fight one enemy                     n - Reroll current enemy
 4 - Player stats                        t - Set turn length
 5 - Enemy stats
 6 - Exit
@@ -128,9 +128,10 @@ def fight_until_death(turnlength, player, enemy):
 #def fight_until_death()
 #def fight_enemies_specified()
 #def fight_one_enemy()
+#def fight_control_per_turn()
 
 # Run "fight loop" once - player and enemy attacking based on their attack speed difference - ends on player or enemy death
-def run_turns_once(turnlength, player, enemy):
+def fight_one_enemy(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
             # First check if player or enemy have more than 0 currenthealth
@@ -160,7 +161,7 @@ def game_loop():
         userinput = input("\nInput option chosen: ")
         print(" ")
 
-        # 1 - Automatic fight loop
+        # 1 - Fight enemies until the player dies (up to a limit?)
         if userinput == "1":
             if playerinstance.isalive == True:
                 fight_until_death(turnlength, playerinstance, enemyinstance)
@@ -174,10 +175,10 @@ def game_loop():
             else:
                 fight_start_player_dead_prompt()
 
-        # 3 - Fight once
+        # 3 - Fight one enemy
         elif userinput == "3":
             if playerinstance.isalive == True:
-                run_turns_once(turnlength, playerinstance, enemyinstance)
+                fight_one_enemy(turnlength, playerinstance, enemyinstance)
             else:
                 fight_start_player_dead_prompt()
             
