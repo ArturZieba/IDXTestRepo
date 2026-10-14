@@ -5,9 +5,9 @@ if __name__ == "__main__":
     FMTGameLoop.game_loop()
 
     #Change Fight until death to work up until x kills (to avoid infinite loop)
-    #Add feedback on return in run_turns_multiple and make sure non-ints cant be passed
-    #Change check of userinput in run_turns_multiple for only range of integers 1 - 100
-    #Fix the loop in run_turns_multiple starting another turn after finishing
+    #Add feedback on return in fight_enemies_specified and make sure non-ints cant be passed
+    #Change check of userinput in fight_enemies_specified for only range of integers 1 - 100
+    #Fix the loop in fight_enemies_specified starting another turn after finishing
     #Change def run tuns defs naming scheme
     #Split multiple turn runs and multiple enemy fights
     
