@@ -26,9 +26,10 @@ def print_menu_options():
 1 - Fight until death                   r - Revive player
 2 - Fight specified number of enemies   g - Set current and maximum player health
 3 - Fight one enemy                     n - Reroll current enemy
-4 - Player stats                        t - Set turn length
-5 - Enemy stats
-6 - Exit
+4 - Fight controlling each turn         t - Set turn length
+5 - Player stats
+6 - Enemy stats
+7 - Exit
 =====""")
 
 # Revive player
@@ -75,7 +76,7 @@ def both_turn(turnlength, player, enemy):
     enemy.attack(player)
     print(" ")
 
-# Run fight loop continuously - player and enemy attacking based on their attack speed difference - ends on player death
+# Run fight loop continuously until player dies (or a limit is reached) - player and enemy attacking based on their attack speed difference - ends on player death
 def fight_until_death(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
@@ -96,13 +97,11 @@ def fight_until_death(turnlength, player, enemy):
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
 
-# Run "fight loop" continuously for a specified number of enemies - player and enemy attacking based on their attack speed difference - ends on player death
+# Run fight loop continuously for a specified number of enemies - player and enemy attacking based on their attack speed difference - ends on player death
 def fight_enemies_specified(turnlength, player, enemy):
     print("Fight specified number of enemies WIP\n")
 
-#def fight_control_per_turn()
-
-# Run "fight loop" once - player and enemy attacking based on their attack speed difference - ends on player or enemy death
+# Run fight loop for one enemy - player and enemy attacking based on their attack speed difference - ends on player or enemy death
 def fight_one_enemy(turnlength, player, enemy):
     while True:
         while player.isalive & enemy.isalive:
@@ -122,6 +121,10 @@ def fight_one_enemy(turnlength, player, enemy):
                 enemy_turn(turnlength, player, enemy)
             if player.attackspeed == enemy.attackspeed:
                 both_turn(turnlength, player, enemy)
+
+# Run each turn manually - allow to exit, or continue fight at each turn
+def fight_control_per_turn(player, enemy):
+    print("Fight controlling each turn\n")
 
 # Main game loop
 def game_loop():
@@ -154,16 +157,20 @@ def game_loop():
             else:
                 fight_start_player_dead_prompt()
             
-        # 4 - Player stats
+        # 4 - Fight controlling each tuen
         elif userinput == "4":
+            fight_control_per_turn(playerinstance, enemyinstance)
+        
+        # 5 - Player stats
+        elif userinput == "5":
             playerinstance.info()
             
-        # 5 - Enemy stats
-        elif userinput == "5":
+        # 6 - Enemy stats
+        elif userinput == "6":
             enemyinstance.info()
             
-        # 6 - Exit
-        elif userinput == "6":
+        # 7 - Exit
+        elif userinput == "7":
             print("Exitting script")
             break
 
