@@ -79,10 +79,17 @@ def both_turn(turnlength, player, enemy):
 # Run fight loop continuously until player dies (or a limit is reached) - player and enemy attacking based on their attack speed difference - ends on player death
 def fight_until_death(turnlength, player, enemy):
     while True:
+        counter = 0 # Counter for enemy kills limit
         while player.isalive & enemy.isalive:
+            # Enemy kills limit to avoid infinite looping
+            if counter == 2:
+                counter = 0
+                return
+
             # First check if player or enemy have more than 0 currenthealth
             if enemy.currenthealth <= 0:
                 enemy.death(player)
+                counter += 1
                 # No return statement here, keeps going on until player's death in the return statement
             if player.currenthealth <= 0:
                 enemyinstance.spawn_random_enemy()

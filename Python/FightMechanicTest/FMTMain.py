@@ -9,9 +9,7 @@ if __name__ == "__main__":
     #Change check of userinput in fight_enemies_specified for only range of integers 1 - 100
     #Fix the loop in fight_enemies_specified starting another turn after finishing
     #Change def run tuns defs naming scheme
-    #Split multiple turn runs and multiple enemy fights
     
-    #Game loop for certain number of kills? (i.e. stop after 5 kills or player death)
     #Further work on a legitimate way to revive player
     #Add option to revive player for free/gold?
     #Add a safeguard for starting the game if player is dead
