@@ -1,6 +1,9 @@
 import random
 
-a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+a = [0, 1]
+tries = 0
 
 while True:
-    print(random.choice(a))
+    tries += 1
+    print(f"Try number: {tries}")
+    print(random.choices(a, weights=(499,1)))
