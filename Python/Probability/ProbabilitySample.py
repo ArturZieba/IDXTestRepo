@@ -13,3 +13,11 @@ while tries < 2000:
         probability = 1 - math.pow((1 - 0.002), tries) # 1 - (1 - Probability)^Tries -> formula for calculating an occurence of specific probability happened at least once over the amount of tries
         print(f"Try number: {tries}")
         print(f"Probability of hitting 0.2% at least once up to current try: {probability}")
+
+    # 1 + 999 = 1000 weight -> 1/1000 -> 0.1% chance
+    if random.choices(a, weights=(999,1)) == [1]:
+        probability = 1 - math.pow((1 - 0.001), tries) # 1 - (1 - Probability)^Tries -> formula for calculating an occurence of specific probability happened at least once over the amount of tries
+        print(f"Try number: {tries}")
+        print(f"Probability of hitting 0.1% at least once up to current try: {probability}")
+
+    # Print total amount and try numbers of all hit probabilities in one message instead of each being separate
