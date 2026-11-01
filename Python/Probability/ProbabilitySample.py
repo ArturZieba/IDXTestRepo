@@ -9,8 +9,8 @@ successfulprobability02 = []
 successfultries01 = []
 successfulprobability01 = []
 
+# 1 - (1 - Probability)^Tries -> formula for calculating an occurence of specific probability happened at least once over the number of tries; Rounded to 4 decimal places for clarity
 def probability(chanceofoccurence, tries):
-    # 1 - (1 - Probability)^Tries -> formula for calculating an occurence of specific probability happened at least once over the number of tries; Rounded to 4 decimal places for clarity
     return round(1 - math.pow((1 - chanceofoccurence), tries), 4)
 
 # Limit loops to fit in idx Terminal print limit
