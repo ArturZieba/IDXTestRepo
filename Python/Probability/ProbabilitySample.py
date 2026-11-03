@@ -13,6 +13,14 @@ successfulprobability01 = []
 def probability(chanceofoccurence, tries):
     return round(1 - math.pow((1 - chanceofoccurence), tries), 4)
 
+def printinfo(percentage, successfultries, successfulprobability, tries):
+    successfultries.append(tries)
+    successfulprobability.append(probability(percentage, tries))
+    print(f"\n{ percentage * 100 }% info:")
+    print(f"   Successful tries: { len(successfultries) }")
+    print(f"   Successful try numbers: {successfultries}")
+    print(f"   Probability for successful try at least once up to the successful try: {successfulprobability}")
+
 # Limit loops to fit in idx Terminal print limit
 while tries < 2000:
     tries += 1
