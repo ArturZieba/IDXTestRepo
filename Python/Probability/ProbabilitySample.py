@@ -20,6 +20,8 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
     print(f"   Successful tries: { len(successfultries) }")
     print(f"   Successful try numbers: {successfultries}")
     print(f"   Probability for successful try at least once up to the successful try: {successfulprobability}")
+    print(f"   Lowest probability: {min(succesfulprobability)}")
+    print(f"   Highest probability: {max(successfulprobability)}")
 
 # Limit loops to fit in idx Terminal print limit
 while tries < 2000:
@@ -42,12 +44,16 @@ print("\n0.2% info:")
 print(f"   Successful tries: { len(successfultries02) }")
 print(f"   Successful try numbers: {successfultries02}")
 print(f"   Probability for successful try at least once up to the successful try: {successfulprobability02}")
+print(f"   Lowest probability: {min(successfulprobability02)}")
+print(f"   Highest probability: {max(successfulprobability02)}")
 
 print("\n0.1% info:")
 print(f"   Successful tries: { len(successfultries01) }")
 print(f"   Successful try numbers: {successfultries01}")
 print(f"   Probability for successful try at least once up to the successful try: {successfulprobability01}")
+print(f"   Lowest probability: {min(successfulprobability01)}")
+print(f"   Highest probability: {max(successfulprobability01)}")
 
-# Add lowest and highest probability as separate notes
 # Move prints for % into separate def
+# Add cases for lowest and highest probability as separate notes? (no rolls, only one roll, 2+ rolls)
 # Add more rolls
