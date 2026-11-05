@@ -14,14 +14,24 @@ def probability(chanceofoccurence, tries):
     return round(1 - math.pow((1 - chanceofoccurence), tries), 4)
 
 def printinfo(percentage, successfultries, successfulprobability, tries):
-    successfultries.append(tries)
-    successfulprobability.append(probability(percentage, tries))
-    print(f"\n{ percentage * 100 }% info:")
-    print(f"   Successful tries: { len(successfultries) }")
-    print(f"   Successful try numbers: {successfultries}")
-    print(f"   Probability for successful try at least once up to the successful try: {successfulprobability}")
-    print(f"   Lowest probability: {min(succesfulprobability)}")
-    print(f"   Highest probability: {max(successfulprobability)}")
+    # No successful rolls print
+    if len(successfultries) == 0:
+        print("No tries")
+
+    # One successful roll print
+    elif len(successfultries) == 1:
+        print("1 try")
+
+    # More than one successful rolls print
+    elif len(successfultries) > 1:
+        successfultries.append(tries)
+        successfulprobability.append(probability(percentage, tries))
+        print(f"\n{ percentage * 100 }% info:")
+        print(f"   Successful tries: { len(successfultries) }")
+        print(f"   Successful try numbers: {successfultries}")
+        print(f"   Probability for successful try at least once up to the successful try: {successfulprobability}")
+        print(f"   Lowest probability: {min(succesfulprobability)}")
+        print(f"   Highest probability: {max(successfulprobability)}")
 
 # Limit loops to fit in idx Terminal print limit
 while tries < 2000:
@@ -55,5 +65,4 @@ print(f"   Lowest probability: {min(successfulprobability01)}")
 print(f"   Highest probability: {max(successfulprobability01)}")
 
 # Move prints for % into separate def
-# Add cases for lowest and highest probability as separate notes? (no rolls, only one roll, 2+ rolls)
 # Add more rolls
