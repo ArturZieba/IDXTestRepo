@@ -13,13 +13,16 @@ successfulprobability01 = []
 def probability(chanceofoccurence, tries):
     return round(1 - math.pow((1 - chanceofoccurence), tries), 4)
 
+# Print info about specific percentage chance rolls, their successful rols, how probable it is for it to happen at least once, and other information related to it
 def printinfo(percentage, successfultries, successfulprobability, tries):
     # No successful rolls print
     if len(successfultries) == 0:
+        print(f"\n{ percentage * 100 }% info:")
         print("No tries")
 
     # One successful roll print
     elif len(successfultries) == 1:
+        print(f"\n{ percentage * 100 }% info:")
         print("1 try")
 
     # More than one successful rolls print
@@ -30,7 +33,7 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
         print(f"   Successful tries: { len(successfultries) }")
         print(f"   Successful try numbers: {successfultries}")
         print(f"   Probability for successful try at least once up to the successful try: {successfulprobability}")
-        print(f"   Lowest probability: {min(succesfulprobability)}")
+        print(f"   Lowest probability: {min(successfulprobability)}")
         print(f"   Highest probability: {max(successfulprobability)}")
 
 # Limit loops to fit in idx Terminal print limit
@@ -47,22 +50,11 @@ while tries < 2000:
         successfultries01.append(tries)
         successfulprobability01.append(probability(0.001, tries))
 
+# Different percentage rolls
 print("Stats for 2000 rolls of x% probability:")
 
-# Print total amount and try numbers of all hit probabilities in one message instead of each being separate
-print("\n0.2% info:")
-print(f"   Successful tries: { len(successfultries02) }")
-print(f"   Successful try numbers: {successfultries02}")
-print(f"   Probability for successful try at least once up to the successful try: {successfulprobability02}")
-print(f"   Lowest probability: {min(successfulprobability02)}")
-print(f"   Highest probability: {max(successfulprobability02)}")
+printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
+printinfo(0.001, successfultries01, successfulprobability01, tries) # 0.1%
 
-print("\n0.1% info:")
-print(f"   Successful tries: { len(successfultries01) }")
-print(f"   Successful try numbers: {successfultries01}")
-print(f"   Probability for successful try at least once up to the successful try: {successfulprobability01}")
-print(f"   Lowest probability: {min(successfulprobability01)}")
-print(f"   Highest probability: {max(successfulprobability01)}")
-
-# Move prints for % into separate def
+# Update no roll and 1 roll cases
 # Add more rolls
