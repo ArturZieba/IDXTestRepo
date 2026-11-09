@@ -18,7 +18,7 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
     # No successful rolls print
     if len(successfultries) == 0:
         print(f"\n{ percentage * 100 }% info:")
-        print("No tries")
+        print("   No successful rolls")
 
     # One successful roll print
     elif len(successfultries) == 1:
@@ -30,9 +30,9 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
         successfultries.append(tries)
         successfulprobability.append(probability(percentage, tries))
         print(f"\n{ percentage * 100 }% info:")
-        print(f"   Successful tries: { len(successfultries) }")
-        print(f"   Successful try numbers: {successfultries}")
-        print(f"   Probability for successful try at least once up to the successful try: {successfulprobability}")
+        print(f"   Successful rolls: { len(successfultries) }")
+        print(f"   Successful roll numbers: {successfultries}")
+        print(f"   Probability for successful roll to occur at least once up to the successful roll: {successfulprobability}")
         print(f"   Lowest probability: {min(successfulprobability)}")
         print(f"   Highest probability: {max(successfulprobability)}")
 
