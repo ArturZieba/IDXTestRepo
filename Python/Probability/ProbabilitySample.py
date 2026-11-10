@@ -23,7 +23,8 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
     # One successful roll print
     elif len(successfultries) == 1:
         print(f"\n{ percentage * 100 }% info:")
-        print("1 try")
+        print(f"   Successful roll number: {successfultries}")
+        print(f"   Probability for successful roll to occur at least once up to the successful roll: {successfulprobability}")
 
     # More than one successful rolls print
     elif len(successfultries) > 1:
@@ -56,5 +57,4 @@ print("Stats for 2000 rolls of x% probability:")
 printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
 printinfo(0.001, successfultries01, successfulprobability01, tries) # 0.1%
 
-# Update no roll and 1 roll cases
 # Add more rolls
