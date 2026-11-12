@@ -5,6 +5,8 @@ a = [0, 1] # List used for weighted probability
 tries = 0 # Number of tries
 
 # Lists for specific % chance rolls
+successfultries04 = []
+successfulprobability04 = []
 successfultries03 = []
 successfulprobability03 = []
 successfultries02 = []
@@ -44,6 +46,11 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
 while tries < 2000:
     tries += 1
 
+    # 1 + 249 = 250 weight -> 1/250 -> 0.4% chance
+    if random.choices(a, weights=(249,1)) == [1]:
+        successfultries04.append(tries)
+        successfulprobability04.append(probability(0.004, tries))
+
     # 1 + 333 = 334 weight -> 1/334 -> 0.3% chance
     if random.choices(a, weights=(333,1)) == [1]:
         successfultries03.append(tries)
@@ -62,8 +69,10 @@ while tries < 2000:
 # Different percentage rolls
 print("Stats for 2000 rolls of x% probability:")
 
-printinfo(0.003, successfultries03, successfulprobability03, tries) # 0.3%
-printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
+#printinfo(0.004, successfultries04, successfulprobability04, tries) # 0.4%
+#printinfo(0.003, successfultries03, successfulprobability03, tries) # 0.3%
+#printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
 printinfo(0.001, successfultries01, successfulprobability01, tries) # 0.1%
 
+# Why is 2000 showing up so often?
 # Add more rolls
