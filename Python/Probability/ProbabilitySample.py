@@ -33,8 +33,6 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
 
     # More than one successful rolls print
     elif len(successfultries) > 1:
-        successfultries.append(tries)
-        successfulprobability.append(probability(percentage, tries))
         print(f"\n{ percentage * 100 }% info:")
         print(f"   Successful rolls: { len(successfultries) }")
         print(f"   Successful roll numbers: {successfultries}")
@@ -43,7 +41,7 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
         print(f"   Highest probability: {max(successfulprobability)}")
 
 # Limit loops to fit in idx Terminal print limit
-while tries < 2000:
+for x in range(2000):
     tries += 1
 
     # 1 + 249 = 250 weight -> 1/250 -> 0.4% chance
@@ -69,10 +67,9 @@ while tries < 2000:
 # Different percentage rolls
 print("Stats for 2000 rolls of x% probability:")
 
-#printinfo(0.004, successfultries04, successfulprobability04, tries) # 0.4%
-#printinfo(0.003, successfultries03, successfulprobability03, tries) # 0.3%
-#printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
+printinfo(0.004, successfultries04, successfulprobability04, tries) # 0.4%
+printinfo(0.003, successfultries03, successfulprobability03, tries) # 0.3%
+printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
 printinfo(0.001, successfultries01, successfulprobability01, tries) # 0.1%
 
-# Why is 2000 showing up so often?
 # Add more rolls
