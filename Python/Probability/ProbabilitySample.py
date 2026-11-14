@@ -5,6 +5,8 @@ a = [0, 1] # List used for weighted probability
 tries = 0 # Number of tries
 
 # Lists for specific % chance rolls
+successfultries05 = []
+successfulprobability05 = []
 successfultries04 = []
 successfulprobability04 = []
 successfultries03 = []
@@ -44,6 +46,11 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
 for x in range(2000):
     tries += 1
 
+    # 1 + 199 = 200 weight -> 1/200 -> 0.5% chance
+    if random.choices(a, weights=(199,1)) == [1]:
+        successfultries05.append(tries)
+        successfulprobability05.append(probability(0.005, tries))
+
     # 1 + 249 = 250 weight -> 1/250 -> 0.4% chance
     if random.choices(a, weights=(249,1)) == [1]:
         successfultries04.append(tries)
@@ -67,6 +74,7 @@ for x in range(2000):
 # Different percentage rolls
 print("Stats for 2000 rolls of x% probability:")
 
+printinfo(0.005, successfultries05, successfulprobability05, tries) # 0.5%
 printinfo(0.004, successfultries04, successfulprobability04, tries) # 0.4%
 printinfo(0.003, successfultries03, successfulprobability03, tries) # 0.3%
 printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
