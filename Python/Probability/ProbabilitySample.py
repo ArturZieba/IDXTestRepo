@@ -5,6 +5,8 @@ a = [0, 1] # List used for weighted probability
 tries = 0 # Number of tries
 
 # Lists for specific % chance rolls
+successfultries10 = []
+successfulprobability10 = []
 successfultries09 = []
 successfulprobability09 = []
 successfultries08 = []
@@ -51,13 +53,20 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
         print(f"   Highest probability: {max(successfulprobability)}")
 
 # Limit loops to fit in idx Terminal print limit
-for x in range(2000):
+rolls = 2000
+
+for x in range(rolls):
     tries += 1
+
+    # 1 + 99 = 100 weight -> 1/100 -> 1% chance
+    if random.choices(a, weights=(99,1)) == [1]:
+        successfultries10.append(tries)
+        successfulprobability10.append(probability(0.01, tries))
 
     # 1 + 111 = 112 weight -> 1/112 -> 0.9% chance
     if random.choices(a, weights=(111,1)) == [1]:
         successfultries09.append(tries)
-        successfulprobability09.append(probability(0.008, tries))
+        successfulprobability09.append(probability(0.009, tries))
 
     # 1 + 124 = 125 weight -> 1/125 -> 0.8% chance
     if random.choices(a, weights=(124,1)) == [1]:
@@ -102,6 +111,7 @@ for x in range(2000):
 # Different percentage rolls
 print("Stats for 2000 rolls of x% probability:")
 
+printinfo(0.01, successfultries10, successfulprobability10, tries) # 1%
 printinfo(0.009, successfultries09, successfulprobability09, tries) # 0.9%
 printinfo(0.008, successfultries08, successfulprobability08, tries) # 0.8%
 printinfo(0.007, successfultries07, successfulprobability07, tries) # 0.7%
@@ -112,6 +122,6 @@ printinfo(0.003, successfultries03, successfulprobability03, tries) # 0.3%
 printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
 printinfo(0.001, successfultries01, successfulprobability01, tries) # 0.1%
 
-# Add more rolls
+# Add estimated % chance per 2000 rolls
 # 0.9999 rolling into 1.0? (see 0.6%+ rolls)
 # 0.7 rounding to 0.700000000001, see about flooring the info print
