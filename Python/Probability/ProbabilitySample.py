@@ -34,18 +34,18 @@ def probability(chanceofoccurence, tries):
 def printinfo(percentage, successfultries, successfulprobability, tries):
     # No successful rolls print
     if len(successfultries) == 0:
-        print(f"\n{ percentage * 100 }% info:")
+        print(f"\n{ round(percentage * 100, 1) }% info:")
         print("   No successful rolls")
 
     # One successful roll print
     elif len(successfultries) == 1:
-        print(f"\n{ percentage * 100 }% info:")
+        print(f"\n{ round(percentage * 100, 1) }% info:")
         print(f"   Successful roll number: {successfultries}")
         print(f"   Probability for successful roll to occur at least once up to the successful roll: {successfulprobability}")
 
     # More than one successful rolls print
     elif len(successfultries) > 1:
-        print(f"\n{ percentage * 100 }% info:")
+        print(f"\n{ round(percentage * 100, 1) }% info:")
         print(f"   Successful rolls: { len(successfultries) }")
         print(f"   Successful roll numbers: {successfultries}")
         print(f"   Probability for successful roll to occur at least once up to the successful roll: {successfulprobability}")
@@ -124,4 +124,3 @@ printinfo(0.001, successfultries01, successfulprobability01, tries) # 0.1%
 
 # Add estimated % chance per 2000 rolls
 # 0.9999 rolling into 1.0? (see 0.6%+ rolls)
-# 0.7 rounding to 0.700000000001, see about flooring the info print
