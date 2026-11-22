@@ -42,7 +42,7 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
         print(f"\n{ round(percentage * 100, 1) }% info:")
         print(f"   Successful roll number: {successfultries}")
         print(f"   Probability for successful roll to occur at least once up to the successful roll: {successfulprobability}")
-        print(f"   Probability based on successful rolls per { rolls } roll: { 1 / rolls }")
+        print(f"   Probability based on successful rolls per { rolls } rolls: { round(((1 / rolls) * 100), 4) }%")
 
     # More than one successful rolls print
     elif len(successfultries) > 1:
@@ -52,7 +52,7 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
         print(f"   Probability for successful roll to occur at least once up to the successful roll: {successfulprobability}")
         print(f"   Lowest probability: { min(successfulprobability) }")
         print(f"   Highest probability: { max(successfulprobability) }")
-        print(f"   Probability based on successful rolls per { rolls } rolls: { len(successfultries) / rolls }")
+        print(f"   Probability based on successful rolls per { rolls } rolls: { round(((len(successfultries) / rolls) * 100), 1) }%")
 
 # Limit loops to fit in idx Terminal print limit
 rolls = 2000
@@ -124,5 +124,4 @@ printinfo(0.003, successfultries03, successfulprobability03, tries) # 0.3%
 printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
 printinfo(0.001, successfultries01, successfulprobability01, tries) # 0.1%
 
-# Round 
 # 0.9999 rolling into 1.0? (see 0.6%+ rolls)
