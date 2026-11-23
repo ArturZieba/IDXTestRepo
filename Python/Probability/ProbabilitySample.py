@@ -1,4 +1,4 @@
-import math # For math.pow()
+import math # For math.pow() and math.floor()
 import random # For random.choices()
 
 a = [0, 1] # List used for weighted probability
@@ -41,7 +41,7 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
     elif len(successfultries) == 1:
         print(f"\n{ round(percentage * 100, 1) }% info:")
         print(f"   Successful roll number: {successfultries}")
-        print(f"   Probability for successful roll to occur at least once up to the successful roll: {successfulprobability}")
+        print(f"   Probability for successful roll to occur at least once up to the successful roll, rounded to 4 decimal points (1.0 means the chance is above 0.9999): {successfulprobability}")
         print(f"   Probability based on successful rolls per { rolls } rolls: { round(((1 / rolls) * 100), 4) }%")
 
     # More than one successful rolls print
@@ -49,7 +49,7 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
         print(f"\n{ round(percentage * 100, 1) }% info:")
         print(f"   Successful rolls: { len(successfultries) }")
         print(f"   Successful roll numbers: { successfultries }")
-        print(f"   Probability for successful roll to occur at least once up to the successful roll: {successfulprobability}")
+        print(f"   Probability for successful roll to occur at least once up to the successful roll, rounded to 4 decimal points (1.0 means the chance is above 0.9999): {successfulprobability}")
         print(f"   Lowest probability: { min(successfulprobability) }")
         print(f"   Highest probability: { max(successfulprobability) }")
         print(f"   Probability based on successful rolls per { rolls } rolls: { round(((len(successfultries) / rolls) * 100), 1) }%")
@@ -123,5 +123,3 @@ printinfo(0.004, successfultries04, successfulprobability04, tries) # 0.4%
 printinfo(0.003, successfultries03, successfulprobability03, tries) # 0.3%
 printinfo(0.002, successfultries02, successfulprobability02, tries) # 0.2%
 printinfo(0.001, successfultries01, successfulprobability01, tries) # 0.1%
-
-# 0.9999 rolling into 1.0? (see 0.6%+ rolls)
