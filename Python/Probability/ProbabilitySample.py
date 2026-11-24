@@ -3,6 +3,7 @@ import random # For random.choices()
 
 a = [0, 1] # List used for weighted probability
 tries = 0 # Number of tries
+rolls = 2000 # Number of rolls to make
 
 # Lists for specific % chance rolls
 successfultries10 = []
@@ -53,9 +54,6 @@ def printinfo(percentage, successfultries, successfulprobability, tries):
         print(f"   Lowest probability: { min(successfulprobability) }")
         print(f"   Highest probability: { max(successfulprobability) }")
         print(f"   Probability based on successful rolls per { rolls } rolls: { round(((len(successfultries) / rolls) * 100), 1) }%")
-
-# Limit loops to fit in idx Terminal print limit
-rolls = 2000
 
 for x in range(rolls):
     tries += 1
@@ -111,7 +109,7 @@ for x in range(rolls):
         successfulprobability01.append(probability(0.001, tries))
 
 # Different percentage rolls
-print("Stats for 2000 rolls of x% probability:")
+print(f"Stats for { rolls } rolls of x% probability:")
 
 printinfo(0.01, successfultries10, successfulprobability10, tries) # 1%
 printinfo(0.009, successfultries09, successfulprobability09, tries) # 0.9%
