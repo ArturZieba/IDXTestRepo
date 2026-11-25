@@ -11,7 +11,7 @@ class EnemyRoster():
             "damagemax": 2,
             "attackspeed": 2,
             "isalive": True,
-            "spawnweight": 5,
+            "spawnweight": 15,
             "level": 1,
             "experiencegranted": 2
         }
@@ -25,7 +25,7 @@ class EnemyRoster():
             "damagemax": 4,
             "attackspeed": 1,
             "isalive": True,
-            "spawnweight": 2,
+            "spawnweight": 10,
             "level": 2,
             "experiencegranted": 10
         }
