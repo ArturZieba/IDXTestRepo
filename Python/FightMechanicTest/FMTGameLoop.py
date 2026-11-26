@@ -79,18 +79,10 @@ def both_turn(turnlength, player, enemy):
 # Run fight loop continuously until player dies (or a limit is reached) - player and enemy attacking based on their attack speed difference - ends on player death
 def fight_until_death(turnlength, player, enemy):
     while True:
-        #counter = 0 # Counter for enemy kills limit
         while player.isalive & enemy.isalive:
-            # Enemy kills limit to avoid infinite looping
-            #if counter == 2:
-            #    counter = 0
-            #    return
-
             # First check if player or enemy have more than 0 currenthealth
             if enemy.currenthealth <= 0:
                 enemy.death(player)
-                #counter += 1
-                # No return statement here, keeps going on until player's death in the return statement
             if player.currenthealth <= 0:
                 enemyinstance.spawn_random_enemy()
                 player.death()
@@ -107,6 +99,32 @@ def fight_until_death(turnlength, player, enemy):
 # Run fight loop continuously for a specified number of enemies - player and enemy attacking based on their attack speed difference - ends on player death
 def fight_enemies_specified(turnlength, player, enemy):
     print("Fight specified number of enemies WIP\n")
+
+    #while True:
+        #counter = 0 # Counter for enemy kills limit
+        #while player.isalive & enemy.isalive:
+            # Enemy kills limit to avoid infinite looping
+            #if counter == 2:
+            #    counter = 0
+            #    return
+
+            # First check if player or enemy have more than 0 currenthealth
+            #if enemy.currenthealth <= 0:
+            #    enemy.death(player)
+                #counter += 1
+                # No return statement here, keeps going on until player's death in the return statement
+            #if player.currenthealth <= 0:
+            #    enemyinstance.spawn_random_enemy()
+            #    player.death()
+            #    return # Exit loop when player dies
+
+            # If both the player and enemy remain alive then run turns based on their attackspeed
+            #if player.attackspeed > enemy.attackspeed:
+            #    player_turn(turnlength, player, enemy)
+            #if player.attackspeed < enemy.attackspeed:
+            #    enemy_turn(turnlength, player, enemy)
+            #if player.attackspeed == enemy.attackspeed:
+            #    both_turn(turnlength, player, enemy)
 
 # Run fight loop for one enemy - player and enemy attacking based on their attack speed difference - ends on player or enemy death
 def fight_one_enemy(turnlength, player, enemy):

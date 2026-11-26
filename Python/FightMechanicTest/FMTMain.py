@@ -8,9 +8,7 @@ if __name__ == "__main__":
     #Add feedback on return in fight_enemies_specified and make sure non-ints cant be passed
     #Change check of userinput in fight_enemies_specified for only range of integers 1 - 100
     #Fix the loop in fight_enemies_specified starting another turn after finishing
-    #Change def run tuns defs naming scheme
     
     #Further work on a legitimate way to revive player
     #Add option to revive player for free/gold?
-    #Add a safeguard for starting the game if player is dead
     #Add gear/attributes/something to adjust player stats
