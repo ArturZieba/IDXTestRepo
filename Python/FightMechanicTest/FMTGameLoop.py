@@ -99,10 +99,13 @@ def fight_until_death(turnlength, player, enemy):
 # Run fight loop continuously for a specified number of enemies - player and enemy attacking based on their attack speed difference - ends on player death
 def fight_enemies_specified(turnlength, player, enemy):
     print("Fight specified number of enemies WIP\n")
+    counter = 0 # Counter for enemy kills limit
+    while True:
+        while player.isalive & enemy.isalive & (counter < 2):
+            counter += 1
+            print(f"{ counter } loop")
 
-    #while True:
-        #counter = 0 # Counter for enemy kills limit
-        #while player.isalive & enemy.isalive:
+        return    
             # Enemy kills limit to avoid infinite looping
             #if counter == 2:
             #    counter = 0
