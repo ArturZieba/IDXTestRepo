@@ -3,7 +3,7 @@ import random # For random.choices()
 
 a = [0, 1] # List used for weighted probability
 tries = 0 # Number of tries
-rolls = 2000 # Number of rolls to make
+rolls = 3000 # Number of rolls to make
 
 # Lists for specific % chance rolls
 successfultries10 = []
